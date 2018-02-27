@@ -1,0 +1,9 @@
+{% import Link from './Link' %}
+<Link
+        text="Bar"
+        path="bar"
+/>
+
+<h3>I'am foo page!</h3>
+
+

@@ -1,10 +1,13 @@
 {% import Header from './Header.sht' %}
 {% import Footer from './Footer.sht' %}
+{% import Router from './Router' %}
 
 <Header/>
 <main>
     <pre>
         Router for sham-ui
     </pre>
+
+    <Router/>
 </main>
 <Footer/>

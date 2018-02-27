@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {},
+  "html": "",
+  "nodes": Array [],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "types": Array [],
+  },
+}
+`;
