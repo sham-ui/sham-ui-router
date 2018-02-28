@@ -1,13 +1,29 @@
 {% import Header from './Header.sht' %}
 {% import Footer from './Footer.sht' %}
 {% import Router from './Router' %}
+{% import Link from './Link' %}
 
 <Header/>
 <main>
+    <ul>
+        <li>
+            <Link text="Foo" path="foo" useActiveClass={{true}} />
+        </li>
+        <li>
+            <Link text="Bar" path="bar" useActiveClass={{true}} />
+        </li>
+    </ul>
     <pre>
         Router for sham-ui
     </pre>
-
     <Router/>
+    <ul>
+        <li>
+            <Link text="Foo" path="foo" useActiveClass={{true}} />
+        </li>
+        <li>
+            <Link text="Bar" path="bar" />
+        </li>
+    </ul>
 </main>
 <Footer/>

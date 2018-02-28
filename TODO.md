@@ -1,4 +1,4 @@
 ### TODO
 * [x] Link widget 
-* Call router resolve after registration complete
-* Link active class
+* [x] Call router resolve after registration complete
+* [x] Link active class

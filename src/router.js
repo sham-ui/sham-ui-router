@@ -4,23 +4,25 @@ import Navigo from 'navigo';
 export default class Router {
     @inject UI = 'sham-ui';
 
-    constructor( root = null, useHash = false, hash = '#' ) {
+    constructor( root = null, useHash = false, hash = '#', autoResolve = true ) {
         DI.bind( 'router', this );
         this.router = new Navigo( root, useHash, hash );
-        this.activePageUrl = null;
         this.activePageWidget = null;
         this.activePageOptions = null;
+        this.activePageLinks = new Set();
+        if ( autoResolve ) {
+            this.UI.render.on( 'RegistrationComplete', this.resolve.bind( this ) );
+        }
     }
 
     resolve() {
-        this.router.resolve.apply( this.router, arguments );
+        this.router.resolve();
     }
 
     bindPage( url, name, pageWidget, widgetOptions ) {
         this.on( url, {
             as: name,
             uses: () => {
-                this.activePageUrl = url;
                 this.activePageWidget = pageWidget;
                 this.activePageOptions = widgetOptions;
                 this._renderActivatePage();
@@ -33,6 +35,7 @@ export default class Router {
         const widget = DI.resolve( 'widgets:router' );
         if ( undefined !== widget ) {
             this.UI.render.ONLY( widget.ID );
+            this.activePageLinks.forEach( x => x.update() )
         }
     }
 
@@ -65,10 +68,18 @@ export default class Router {
     }
 
     lastRouteResolved() {
-        return this.router.link.apply( this.router, arguments );
+        return this.router.lastRouteResolved.apply( this.router, arguments );
     }
 
     generate() {
         return this.router.generate.apply( this.router, arguments );
+    }
+
+    _registerActivePageLink( widget ) {
+        this.activePageLinks.add( widget );
+    }
+
+    _unregisterActivePageLink( widget ) {
+        this.activePageLinks.delete( widget );
     }
 }

@@ -1,1 +1,6 @@
-<a href="{{this.generateURL( path, params )}}">{{text}}</a>
+<a
+    href="{{this.generateURL( path, params )}}"
+    class="{{useActiveClass && this.isActive( path, params ) ? activeClass : ''}}"
+>
+    {{text}}
+</a>

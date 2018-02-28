@@ -5,7 +5,6 @@ export default class extends RouterWidget {
     constructor() {
         super( ...arguments );
         DI.bind( 'widgets:router', this );
-        this._lastRenderedPage = null;
     }
 
     render() {
