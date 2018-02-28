@@ -32,7 +32,7 @@ export default class Router {
     }
 
     _renderActivatePage() {
-        const widget = DI.resolve( 'widgets:router' );
+        const widget = DI.resolve( 'widgets:active-page-container' );
         if ( undefined !== widget ) {
             this.UI.render.ONLY( widget.ID );
             this.activePageLinks.forEach( x => x.update() )

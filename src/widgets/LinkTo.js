@@ -1,7 +1,7 @@
 import { DI, inject, options } from 'sham-ui';
-import LinkWidget from './Link.sht';
+import LinkToWidget from './LinkTo.sht';
 
-export default class extends LinkWidget {
+export default class extends LinkToWidget {
     @inject router = 'router';
 
     @options

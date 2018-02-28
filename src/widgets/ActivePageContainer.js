@@ -1,10 +1,10 @@
 import { DI, options } from 'sham-ui';
-import RouterWidget from './Router.sht';
+import ActivePageContainer from './ActivePageContainer.sht';
 
-export default class extends RouterWidget {
+export default class extends ActivePageContainer {
     constructor() {
         super( ...arguments );
-        DI.bind( 'widgets:router', this );
+        DI.bind( 'widgets:active-page-container', this );
     }
 
     render() {

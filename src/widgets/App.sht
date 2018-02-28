@@ -1,28 +1,28 @@
 {% import Header from './Header.sht' %}
 {% import Footer from './Footer.sht' %}
-{% import Router from './Router' %}
-{% import Link from './Link' %}
+{% import ActivePageContainer from './ActivePageContainer' %}
+{% import LinkTo from './LinkTo' %}
 
 <Header/>
 <main>
     <ul>
         <li>
-            <Link text="Foo" path="foo" useActiveClass={{true}} />
+            <LinkTo text="Foo" path="foo" useActiveClass={{true}} />
         </li>
         <li>
-            <Link text="Bar" path="bar" useActiveClass={{true}} />
+            <LinkTo text="Bar" path="bar" useActiveClass={{true}} />
         </li>
     </ul>
     <pre>
         Router for sham-ui
     </pre>
-    <Router/>
+    <ActivePageContainer/>
     <ul>
         <li>
-            <Link text="Foo" path="foo" useActiveClass={{true}} />
+            <LinkTo text="Foo" path="foo" useActiveClass={{true}} />
         </li>
         <li>
-            <Link text="Bar" path="bar" />
+            <LinkTo text="Bar" path="bar" />
         </li>
     </ul>
 </main>
