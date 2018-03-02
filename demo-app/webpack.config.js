@@ -5,8 +5,8 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 const env = process.env.WEBPACK_ENV;
 const plugins = [];
 const entry = [
-    './src/main.js',
-    './src/styles/main.scss',
+    path.join( __dirname, 'src/main.js' ),
+    path.join( __dirname, 'src/styles/main.scss' )
 ];
 
 if ( env === 'build' ) {
@@ -50,7 +50,7 @@ module.exports = {
             test: /(\.js)$/,
             loader: 'babel-loader',
             exclude: /(node_modules)/,
-            include: __dirname
+            include: [ __dirname, path.join( __dirname, '../src' ) ]
         }, {
             test: /\.sht/,
             loader: 'sham-ui-templates-loader?hot'

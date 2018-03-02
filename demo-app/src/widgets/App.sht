@@ -1,9 +1,6 @@
-{% import Header from './Header.sht' %}
-{% import Footer from './Footer.sht' %}
-{% import ActivePageContainer from './ActivePageContainer' %}
-{% import LinkTo from './LinkTo' %}
+{% import ActivePageContainer from '../../../src/widgets/ActivePageContainer' %}
+{% import LinkTo from '../../../src/widgets/LinkTo' %}
 
-<Header/>
 <main>
     <ul>
         <li>
@@ -26,4 +23,3 @@
         </li>
     </ul>
 </main>
-<Footer/>

@@ -4,7 +4,7 @@
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
   "version": "0.0.1",
   "scripts": {
-    "start": "node server.js",
+    "start": "node demo-app/server.js",
     "test": "jest --coverage",
     "watch": "jest --watchAll",
     "build": "WEBPACK_ENV=build webpack"
