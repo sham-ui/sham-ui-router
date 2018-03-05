@@ -4,16 +4,8 @@ exports[`renders correctly 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {},
-  "html": "<h3>I'am BAR page!</h3>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
+  "html": "Content for dummy widget",
+  "nodes": Array [],
   "options": Object {
     "actionSequence": Array [
       "render",

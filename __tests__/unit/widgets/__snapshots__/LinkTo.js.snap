@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`activeClass options 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {
+    "activeClass": "test-active",
+    "path": "base",
+    "useActiveClass": true,
+  },
+  "html": "<a href=\\"/base\\" class=\\"test-active\\"></a>",
+  "nodes": Array [
+    Object {
+      "ID": undefined,
+      "constructorOptions": null,
+      "html": null,
+      "nodes": null,
+      "options": null,
+    },
+  ],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "activeClass": "test-active",
+    "params": Object {},
+    "path": "base",
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "text": "",
+    "types": Array [],
+    "useActiveClass": true,
+  },
+}
+`;
+
+exports[`click 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {
+    "path": "base",
+  },
+  "html": "<a href=\\"/base\\" class=\\"\\"></a>",
+  "nodes": Array [
+    Object {
+      "ID": undefined,
+      "constructorOptions": null,
+      "html": null,
+      "nodes": null,
+      "options": null,
+    },
+  ],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "activeClass": "active",
+    "params": Object {},
+    "path": "base",
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "text": "",
+    "types": Array [],
+    "useActiveClass": false,
+  },
+}
+`;
+
+exports[`destroy 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {
+    "path": "base",
+    "text": "Base page",
+  },
+  "html": "<a href=\\"/base\\" class=\\"\\">Base page</a>",
+  "nodes": Array [
+    Object {
+      "ID": undefined,
+      "constructorOptions": null,
+      "html": null,
+      "nodes": null,
+      "options": null,
+    },
+  ],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "activeClass": "active",
+    "params": Object {},
+    "path": "base",
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "text": "Base page",
+    "types": Array [],
+    "useActiveClass": false,
+  },
+}
+`;
+
+exports[`params options 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {
+    "params": Object {
+      "id": 1,
+    },
+    "path": "base",
+  },
+  "html": "<a href=\\"/base/1\\" class=\\"\\"></a>",
+  "nodes": Array [
+    Object {
+      "ID": undefined,
+      "constructorOptions": null,
+      "html": null,
+      "nodes": null,
+      "options": null,
+    },
+  ],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "activeClass": "active",
+    "params": Object {
+      "id": 1,
+    },
+    "path": "base",
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "text": "",
+    "types": Array [],
+    "useActiveClass": false,
+  },
+}
+`;
+
+exports[`path options required correctly 1`] = `"LinkTo.options.path required!"`;
+
+exports[`remove 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {
+    "path": "base",
+    "text": "Base page",
+  },
+  "html": "",
+  "nodes": Array [
+    Object {
+      "ID": undefined,
+      "constructorOptions": null,
+      "html": null,
+      "nodes": null,
+      "options": null,
+    },
+  ],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "activeClass": "active",
+    "params": Object {},
+    "path": "base",
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "text": "Base page",
+    "types": Array [],
+    "useActiveClass": false,
+  },
+}
+`;
+
+exports[`render correctly 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {
+    "path": "base",
+    "text": "Base page",
+  },
+  "html": "<a href=\\"/base\\" class=\\"\\">Base page</a>",
+  "nodes": Array [
+    Object {
+      "ID": undefined,
+      "constructorOptions": null,
+      "html": null,
+      "nodes": null,
+      "options": null,
+    },
+  ],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "activeClass": "active",
+    "params": Object {},
+    "path": "base",
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "text": "Base page",
+    "types": Array [],
+    "useActiveClass": false,
+  },
+}
+`;
+
+exports[`useActiveClass options 1`] = `
+Object {
+  "ID": "widget",
+  "constructorOptions": Object {
+    "path": "base",
+    "useActiveClass": true,
+  },
+  "html": "<a href=\\"/base\\" class=\\"active\\"></a>",
+  "nodes": Array [
+    Object {
+      "ID": undefined,
+      "constructorOptions": null,
+      "html": null,
+      "nodes": null,
+      "options": null,
+    },
+  ],
+  "options": Object {
+    "actionSequence": Array [
+      "render",
+      "bindEvents",
+    ],
+    "activeClass": "active",
+    "params": Object {},
+    "path": "base",
+    "renderAsync": false,
+    "renderDependence": Array [],
+    "text": "",
+    "types": Array [],
+    "useActiveClass": true,
+  },
+}
+`;

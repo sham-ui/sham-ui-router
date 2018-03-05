@@ -5,13 +5,13 @@ export default class extends LinkToWidget {
     @inject router = 'router';
 
     @options
-    get text() {
-        return '';
+    get path() {
+        throw new Error( 'LinkTo.options.path required!' );
     }
 
     @options
-    get defaultUrl() {
-        return '/';
+    get text() {
+        return '';
     }
 
     @options
@@ -30,11 +30,11 @@ export default class extends LinkToWidget {
     }
 
     generateURL( path, params ) {
-        return this.router.generate( path, params );
+        return this.lastGeneratedURL = this.router.generate( path, params );
     }
 
     isActive( path, params ) {
-        return this.generateURL( path, params ) === this.router.lastRouteResolved().url;
+        return this.lastGeneratedURL === this.router.lastRouteResolved().url;
     }
 
     _registryInRouter() {
@@ -72,6 +72,7 @@ export default class extends LinkToWidget {
     }
 
     remove() {
+        this.aNode.removeEventListener( 'click', this.__bindedClick );
         super.remove( ...arguments );
         this._removeFromRouter();
     }
