@@ -1,3 +1,3 @@
-export default jest.fn().mockImplementation(() => {
+export default jest.fn().mockImplementation( () => {
     return {};
-});
+} );
