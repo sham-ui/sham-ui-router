@@ -4,4 +4,4 @@
 * [x] Link active class
 * Webpack config
 * Fill Readme
-* Fix tests
+* [x] Fix tests
