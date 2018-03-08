@@ -5,11 +5,6 @@ export default class extends LinkToWidget {
     @inject router = 'router';
 
     @options
-    get path() {
-        throw new Error( 'LinkTo.options.path required!' );
-    }
-
-    @options
     get text() {
         return '';
     }

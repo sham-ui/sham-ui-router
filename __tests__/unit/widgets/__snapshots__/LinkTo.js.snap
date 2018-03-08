@@ -140,8 +140,6 @@ Object {
 }
 `;
 
-exports[`path options required correctly 1`] = `"LinkTo.options.path required!"`;
-
 exports[`remove 1`] = `
 Object {
   "ID": "widget",

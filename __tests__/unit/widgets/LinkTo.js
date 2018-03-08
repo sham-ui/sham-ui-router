@@ -6,10 +6,6 @@ afterEach( () => {
     DI.bind( 'router', null );
 } );
 
-it( 'path options required correctly', () => {
-    expect( () => renderer( LinkTo, {} ) ).toThrowErrorMatchingSnapshot();
-} );
-
 it( 'render correctly', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
