@@ -1,4 +1,4 @@
-import Router from '../../src/router';
+import Router from '../../src/index';
 import Navigo from 'navigo';
 import { DI } from 'sham-ui';
 import DummyWidget from './widgets/Dummy.sht';

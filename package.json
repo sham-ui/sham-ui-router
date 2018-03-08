@@ -1,6 +1,7 @@
 {
   "name": "sham-ui-router",
   "description": "Router for sham-ui",
+  "main": "index.js",
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
   "version": "0.0.1",
   "scripts": {

@@ -2,7 +2,7 @@ import { DI } from 'sham-ui';
 import App from '../widgets/App.sht';
 import FooPage from '../widgets/FooPage.sht';
 import BarPage from '../widgets/BarPage.sht';
-import Router from '../../../src/router';
+import Router from '../../../src';
 
 export default function() {
     const router = new Router();

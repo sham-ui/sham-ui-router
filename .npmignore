@@ -5,5 +5,10 @@ node_modules
 .idea
 Thumbs.db
 
-/dist/
+/src/
 /coverage/
+/demo-app/
+/__tests__/
+/__mocks__/
+TODO.md
+webpack.config.js
