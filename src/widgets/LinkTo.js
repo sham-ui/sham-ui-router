@@ -24,6 +24,11 @@ export default class extends LinkToWidget {
         return 'active';
     }
 
+    @options
+    get className() {
+        return '';
+    }
+
     generateURL( path, params ) {
         return this.lastGeneratedURL = this.router.generate( path, params );
     }

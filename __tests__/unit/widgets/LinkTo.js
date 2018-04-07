@@ -96,6 +96,47 @@ it( 'activeClass options', () => {
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
+it ( 'className option', () => {
+    const generateMock = jest.fn();
+    DI.bind( 'router', {
+        generate: generateMock
+    } );
+
+    generateMock.mockReturnValueOnce( '/base' );
+
+    const meta = renderer( LinkTo, {
+        path: 'base',
+        text: 'Base page',
+        className: 'foo bar'
+    } );
+    expect( meta.widget.querySelector( 'a' ).className ).toEqual( 'foo bar' );
+    expect( meta.toJSON() ).toMatchSnapshot();
+} );
+
+it ( 'className option & useActiveClass & activeClass', () => {
+    const generateMock = jest.fn();
+    const lastRouteResolvedMock = jest.fn();
+    const registerActivePageLinkMock = jest.fn();
+
+    DI.bind( 'router', {
+        generate: generateMock,
+        lastRouteResolved: lastRouteResolvedMock,
+        _registerActivePageLink: registerActivePageLinkMock
+    } );
+
+    generateMock.mockReturnValueOnce( '/base' );
+    lastRouteResolvedMock.mockReturnValueOnce( { url: '/base' } );
+
+    const meta = renderer( LinkTo, {
+        path: 'base',
+        useActiveClass: true,
+        activeClass: 'test-active',
+        className: 'foo'
+    } );
+    expect( meta.widget.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
+    expect( meta.toJSON() ).toMatchSnapshot();
+} );
+
 it( 'click', () => {
     const generateMock = jest.fn();
     const navigateMock = jest.fn();

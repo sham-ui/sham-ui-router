@@ -45,7 +45,7 @@ Add [LinkTo](https://github.com/sham-ui/sham-ui-router/blob/master/src/widgets/L
 ```html
 {% import LinkTo from 'sham-ui-router/link-to' %}
 ... 
-    <LinkTo text="Foo" path="foo" params={{params}} useActiveClass={{true}} />
+    <LinkTo text="Foo" path="foo" params={{params}} useActiveClass={{true}} className="custom-class-1 custom-class-2"/>
 ...
 ```
 
