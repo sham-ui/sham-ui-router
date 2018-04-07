@@ -3,12 +3,13 @@
   "description": "Router for sham-ui",
   "main": "index.js",
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "start": "node demo-app/server.js",
     "test": "jest --coverage",
     "watch": "jest --watchAll",
-    "build": "WEBPACK_ENV=build webpack"
+    "build": "WEBPACK_ENV=build webpack",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
