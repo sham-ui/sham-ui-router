@@ -4,7 +4,10 @@ exports[`renders correctly 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {},
-  "html": "Content for dummy widget",
+  "html": "
+<h1>Title</h1>
+<div>Content for dummy widget</div>
+",
   "nodes": Array [],
   "options": Object {
     "actionSequence": Array [
