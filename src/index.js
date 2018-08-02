@@ -7,6 +7,7 @@ export default class Router {
     constructor( root = null, useHash = false, hash = '#', autoResolve = true ) {
         DI.bind( 'router', this );
         this.router = new Navigo( root, useHash, hash );
+        this._initProxyMethods();
         this.activePageWidget = null;
         this.activePageOptions = null;
         this.activePageLinks = new Set();
@@ -15,8 +16,28 @@ export default class Router {
         }
     }
 
-    resolve() {
-        this.router.resolve();
+    _initProxyMethods() {
+        [
+            'resolve',
+            'on',
+            'off',
+            'notFound',
+            'navigate',
+            'hooks',
+            'destroy',
+            'link',
+            'lastRouteResolved',
+            'generate'
+        ].forEach( methodName => {
+            Object.defineProperty( this, methodName, {
+                value: function() {
+                    return this.router[ methodName ].apply( this.router, arguments )
+                },
+                configurable: true,
+                enumerable: true,
+                writable: true
+            } );
+        } );
     }
 
     bindPage( url, name, pageWidget, widgetOptions ) {
@@ -37,42 +58,6 @@ export default class Router {
             this.UI.render.ONLY( widget.ID );
             this.activePageLinks.forEach( x => x.update() )
         }
-    }
-
-    on() {
-        this.router.on.apply( this.router, arguments );
-    }
-
-    off() {
-        this.router.off.apply( this.router, arguments );
-    }
-
-    notFound() {
-        this.router.notFound.apply( this.router, arguments );
-    }
-
-    navigate() {
-        this.router.navigate.apply( this.router, arguments );
-    }
-
-    hooks() {
-        this.router.hooks.apply( this.router, arguments );
-    }
-
-    destroy() {
-        this.router.destroy.apply( this.router, arguments )
-    }
-
-    link() {
-        return this.router.link.apply( this.router, arguments );
-    }
-
-    lastRouteResolved() {
-        return this.router.lastRouteResolved.apply( this.router, arguments );
-    }
-
-    generate() {
-        return this.router.generate.apply( this.router, arguments );
     }
 
     _registerActivePageLink( widget ) {
