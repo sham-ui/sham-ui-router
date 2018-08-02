@@ -12,7 +12,7 @@ export default class Router {
         this.activePageOptions = null;
         this.activePageLinks = new Set();
         if ( autoResolve ) {
-            this.UI.render.on( 'RegistrationComplete', this.resolve.bind( this ) );
+            this.UI.render.on( 'RegistrationComplete', () => this.resolve() );
         }
     }
 
