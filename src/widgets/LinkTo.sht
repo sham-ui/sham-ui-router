@@ -6,6 +6,7 @@
             useActiveClass && this.isActive( path, params ) ? activeClass : ''
         ].join( ' ' ).trim()
     }}"
+    :onclick={{this.click.bind( this )}}
 >
     {{text}}
 </a>

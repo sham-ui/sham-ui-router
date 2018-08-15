@@ -5,6 +5,9 @@ Object {
   "ID": "widget",
   "constructorOptions": Object {
     "activeClass": "test-active",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
     "useActiveClass": true,
   },
@@ -25,6 +28,9 @@ Object {
     ],
     "activeClass": "test-active",
     "className": "",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
@@ -42,6 +48,9 @@ Object {
   "constructorOptions": Object {
     "activeClass": "test-active",
     "className": "foo",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
     "useActiveClass": true,
   },
@@ -62,6 +71,9 @@ Object {
     ],
     "activeClass": "test-active",
     "className": "foo",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
@@ -78,6 +90,9 @@ Object {
   "ID": "widget",
   "constructorOptions": Object {
     "className": "foo bar",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
     "text": "Base page",
   },
@@ -98,6 +113,9 @@ Object {
     ],
     "activeClass": "active",
     "className": "foo bar",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
@@ -113,6 +131,9 @@ exports[`click 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
   },
   "html": "<a href=\\"/base\\" class=\\"\\"></a>",
@@ -132,6 +153,9 @@ Object {
     ],
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
@@ -147,6 +171,9 @@ exports[`destroy 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
     "text": "Base page",
   },
@@ -167,6 +194,9 @@ Object {
     ],
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
@@ -182,6 +212,9 @@ exports[`params options 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {
       "id": 1,
     },
@@ -204,6 +237,9 @@ Object {
     ],
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {
       "id": 1,
     },
@@ -221,6 +257,9 @@ exports[`remove 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
     "text": "Base page",
   },
@@ -241,6 +280,9 @@ Object {
     ],
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
@@ -256,6 +298,9 @@ exports[`render correctly 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
     "text": "Base page",
   },
@@ -276,6 +321,9 @@ Object {
     ],
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
@@ -291,6 +339,9 @@ exports[`useActiveClass options 1`] = `
 Object {
   "ID": "widget",
   "constructorOptions": Object {
+    "directives": Object {
+      "onclick": [Function],
+    },
     "path": "base",
     "useActiveClass": true,
   },
@@ -311,6 +362,9 @@ Object {
     ],
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "onclick": [Function],
+    },
     "params": Object {},
     "path": "base",
     "renderAsync": false,
