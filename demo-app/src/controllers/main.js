@@ -15,4 +15,4 @@ export default function() {
     } );
 
     DI.bind( 'widgets:app', app );
-};
+}

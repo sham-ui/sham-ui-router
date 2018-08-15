@@ -1,4 +1,4 @@
-import { DI, options } from 'sham-ui';
+import { DI } from 'sham-ui';
 import ActivePageContainer from './ActivePageContainer.sht';
 
 export default class extends ActivePageContainer {
@@ -11,6 +11,7 @@ export default class extends ActivePageContainer {
         super.render( ...arguments );
         const router = DI.resolve( 'router' );
         this.remove();
+        // eslint-disable-next-line no-undef
         ShamUIView.insert(
             this,
             this.container,

@@ -96,7 +96,7 @@ it( 'activeClass options', () => {
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
-it ( 'className option', () => {
+it( 'className option', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
         generate: generateMock
@@ -113,7 +113,7 @@ it ( 'className option', () => {
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
-it ( 'className option & useActiveClass & activeClass', () => {
+it( 'className option & useActiveClass & activeClass', () => {
     const generateMock = jest.fn();
     const lastRouteResolvedMock = jest.fn();
     const registerActivePageLinkMock = jest.fn();

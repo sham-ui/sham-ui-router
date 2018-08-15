@@ -1,4 +1,4 @@
-import { DI, inject, options } from 'sham-ui';
+import { inject, options } from 'sham-ui';
 import directives from 'sham-ui-directives';
 import LinkToWidgetTemplate from './LinkTo.sht';
 
@@ -8,22 +8,34 @@ export default class LinkToWidget extends LinkToWidgetTemplate {
             ...options,
             directives: {
                 onclick: directives.onclick,
-                ...options.directives,
+                ...options.directives
             }
         } );
     }
 
     @inject router = 'router';
 
-    @options get text() { return ''; }
-    @options get params() { return {} }
-    @options get useActiveClass() { return false; }
-    @options get activeClass() { return 'active'; }
-    @options get className() { return ''; }
+    @options get text() {
+        return '';
+    }
+    @options get params() {
+        return {};
+    }
+    @options get useActiveClass() {
+        return false;
+    }
+    @options get activeClass() {
+        return 'active';
+    }
+    @options get className() {
+        return '';
+    }
 
     generateURL( path, params ) {
         return this.lastGeneratedURL = this.router.generate( path, params );
     }
+
+    // eslint-disable-next-line no-unused-vars
     isActive( path, params ) {
         return this.lastGeneratedURL === this.router.lastRouteResolved().url;
     }

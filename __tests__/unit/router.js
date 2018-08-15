@@ -18,7 +18,7 @@ afterEach( () => {
 } );
 
 it( 'use Navigo', () => {
-    const router = new Router();
+    new Router();
     expect( Navigo ).toHaveBeenCalledTimes( 1 );
 } );
 
@@ -35,7 +35,7 @@ it( 'params', () => {
 } );
 
 it( 'DI registry', () => {
-    const router = new Router();
+    new Router();
     expect( DI.resolve( 'router' ) ).toBeInstanceOf( Router );
 } );
 
@@ -199,7 +199,7 @@ it( 'bindPage', () => {
             resolve: () => {
                 onMock.mock.calls[ 0 ][ 1 ].uses();
             }
-        }
+        };
     } );
     const renderOnlyMock = jest.fn();
     DI.bind( 'sham-ui', {

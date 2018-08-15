@@ -31,7 +31,7 @@ export default class Router {
         ].forEach( methodName => {
             Object.defineProperty( this, methodName, {
                 value: function() {
-                    return this.router[ methodName ].apply( this.router, arguments )
+                    return this.router[ methodName ].apply( this.router, arguments );
                 },
                 configurable: true,
                 enumerable: true,
@@ -56,7 +56,7 @@ export default class Router {
         const widget = DI.resolve( 'widgets:active-page-container' );
         if ( undefined !== widget ) {
             this.UI.render.ONLY( widget.ID );
-            this.activePageLinks.forEach( x => x.update() )
+            this.activePageLinks.forEach( x => x.update() );
         }
     }
 

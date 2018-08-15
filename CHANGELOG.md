@@ -1,3 +1,12 @@
+## 0.0.6
+Fix autoBind after refactoring
+
+## 0.0.5
+* Refactoring
+
+## 0.0.4
+* Update sham-ui-test-helpers
+
 ## 0.0.3
 * Pass `className` to `LinkTo` widget [ISSUE #1](https://github.com/sham-ui/sham-ui-router/issues/1)
 * `prepublish` script
