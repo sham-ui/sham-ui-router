@@ -3,7 +3,7 @@
   "description": "Router for sham-ui",
   "main": "index.js",
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "scripts": {
     "start": "node demo-app/server.js",
     "test:coverage": "jest --coverage",

@@ -1,5 +1,8 @@
+## 0.0.7
+* Refactoring
+
 ## 0.0.6
-Fix autoBind after refactoring
+* Fix autoBind after refactoring
 
 ## 0.0.5
 * Refactoring
