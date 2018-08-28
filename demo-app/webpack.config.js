@@ -18,7 +18,6 @@ const entry = [
 
 module.exports = {
     entry,
-    mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     output: {
         path: path.join( __dirname, 'dist' ),
@@ -27,7 +26,7 @@ module.exports = {
     },
     plugins: plugins,
     module: {
-        rules: [ {
+        loaders: [ {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract( {
                 fallback: 'style-loader',

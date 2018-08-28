@@ -4,6 +4,10 @@ const plugins = [
     new webpack.NoEmitOnErrorsPlugin()
 ];
 
+if ( process.env.WEBPACK_ENV === 'build' ) {
+    plugins.push( new webpack.optimize.UglifyJsPlugin( { minimize: true } ) );
+}
+
 module.exports = {
     entry: {
         index: './src/index.js',
@@ -15,23 +19,18 @@ module.exports = {
         filename: '[name].js',
         publicPath: '/',
         library: [ 'sham-ui-router', 'sham-ui-router/[name]' ],
-        libraryTarget: 'commonjs2'
+        libraryTarget: 'umd'
     },
-    externals: [
-        'sham-ui',
-        'sham-ui-templates',
-        'sham-ui-directives'
-    ],
     plugins: plugins,
     module: {
-        rules: [ {
+        loaders: [ {
             test: /(\.js)$/,
             loader: 'babel-loader',
             exclude: /(node_modules)/,
             include: __dirname
         }, {
             test: /\.sht/,
-            loader: 'sham-ui-templates-loader?{}'
+            loader: 'sham-ui-templates-loader'
         } ]
     }
 };

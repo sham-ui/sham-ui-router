@@ -1,3 +1,6 @@
+## 0.0.10
+* Downgrade webpack
+
 ## 0.0.9
 * Fix webpack build
 
