@@ -6,8 +6,8 @@ node_modules
 .eslintrc.js
 Thumbs.db
 
-/src/
 /coverage/
+/src/
 /demo-app/
 /__tests__/
 /__mocks__/

@@ -1,5 +1,5 @@
 import { inject, options } from 'sham-ui';
-import directives from 'sham-ui-directives';
+import { onclick } from 'sham-ui-directives';
 import LinkToWidgetTemplate from './LinkTo.sht';
 
 export default class LinkToWidget extends LinkToWidgetTemplate {
@@ -7,7 +7,7 @@ export default class LinkToWidget extends LinkToWidgetTemplate {
         super( selector, id, {
             ...options,
             directives: {
-                onclick: directives.onclick,
+                onclick,
                 ...options.directives
             }
         } );

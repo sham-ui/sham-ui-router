@@ -2,5 +2,5 @@ node_modules/
 .idea
 coverage/
 /index.js
-active-page-container.js
-link-to.js
+/active-page-container.js
+/link-to.js

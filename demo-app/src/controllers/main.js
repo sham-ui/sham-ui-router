@@ -8,7 +8,8 @@ export default function() {
     const router = new Router();
     router
         .bindPage( '/foo', 'foo', FooPage, {} )
-        .bindPage( '/bar', 'bar', BarPage, {} );
+        .bindPage( '/bar', 'bar', BarPage, {} )
+        .bindPage( '/', 'root', FooPage, {} );
 
     const app = new App( 'body', 'app', {
 
