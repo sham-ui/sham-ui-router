@@ -1,3 +1,6 @@
+## 0.0.9
+* Fix webpack build
+
 ## 0.0.8
 * Update dependencies
 * Regenerate with new sham-ui-cli
