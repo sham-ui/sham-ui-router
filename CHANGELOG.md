@@ -1,3 +1,7 @@
+## 0.0.8
+* Update dependencies
+* Regenerate with new sham-ui-cli
+
 ## 0.0.7
 * Refactoring
 
