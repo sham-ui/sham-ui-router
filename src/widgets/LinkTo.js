@@ -1,34 +1,30 @@
 import { inject, options } from 'sham-ui';
-import { onclick } from 'sham-ui-directives';
+import { onclick, ref } from 'sham-ui-directives';
 import LinkToWidgetTemplate from './LinkTo.sht';
+import { ACTIVE_PAGE_LINK_TYPE } from '../settings';
 
 export default class LinkToWidget extends LinkToWidgetTemplate {
-    constructor( selector, id, options ) {
-        super( selector, id, {
+    constructor( options ) {
+        super( {
             ...options,
             directives: {
                 onclick,
+                ref,
                 ...options.directives
             }
         } );
     }
 
-    @inject router = 'router';
+    @inject router;
+    @inject( 'sham-ui:store' ) widgetStore;
 
-    @options get text() {
-        return '';
-    }
+    @options text = '';
+    @options useActiveClass = false;
+    @options activeClass = 'active';
+    @options className = '';
+
     @options get params() {
         return {};
-    }
-    @options get useActiveClass() {
-        return false;
-    }
-    @options get activeClass() {
-        return 'active';
-    }
-    @options get className() {
-        return '';
     }
 
     generateURL( path, params ) {
@@ -39,30 +35,31 @@ export default class LinkToWidget extends LinkToWidgetTemplate {
     isActive( path, params ) {
         return this.lastGeneratedURL === this.router.lastRouteResolved().url;
     }
-    _registryInRouter() {
+
+    generateClassName( className, useActiveClass, activeClass, path, params ) {
+        return [
+            className,
+            useActiveClass && this.isActive( path, params ) ? activeClass : ''
+        ].join( ' ' ).trim();
+    }
+
+    _registryType() {
+        const storeHasType = this.widgetStore.byType.has( ACTIVE_PAGE_LINK_TYPE );
         if ( this.options.useActiveClass ) {
-            this.router._registerActivePageLink( this );
+            if ( !storeHasType ) {
+                this.widgetStore.byType.set( ACTIVE_PAGE_LINK_TYPE, new Set() );
+            }
+            this.widgetStore.byType.get( ACTIVE_PAGE_LINK_TYPE ).add( this );
+        } else if ( storeHasType ) {
+            this.widgetStore.byType.get( ACTIVE_PAGE_LINK_TYPE ).delete( this );
         }
     }
-    _removeFromRouter() {
-        if ( this.options.useActiveClass ) {
-            this.router._unregisterActivePageLink( this );
-        }
-    }
-    get aNode() {
-        return this.querySelector( 'a' );
-    }
+
     update() {
         super.update( ...arguments );
-        this._registryInRouter();
+        this._registryType();
     }
-    destroy() {
-        this._removeFromRouter();
-    }
-    remove() {
-        super.remove( ...arguments );
-        this._removeFromRouter();
-    }
+
     click( e ) {
         e.preventDefault();
         this.router.navigate( this.aNode.getAttribute( 'href' ) );

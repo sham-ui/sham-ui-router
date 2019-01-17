@@ -1,12 +1,9 @@
 <a
-    href="{{this.generateURL( path, params )}}"
-    class="{{
-        [
-            className,
-            useActiveClass && this.isActive( path, params ) ? activeClass : ''
-        ].join( ' ' ).trim()
-    }}"
+    href={{this.generateURL( path, params )}}
+    class={{this.generateClassName( className, useActiveClass, activeClass, path, params )}}
     :onclick={{this.click.bind( this )}}
+    :ref="aNode"
 >
     {{text}}
+    {% defblock %}
 </a>

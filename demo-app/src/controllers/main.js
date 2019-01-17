@@ -1,4 +1,3 @@
-import { DI } from 'sham-ui';
 import App from '../widgets/App.sht';
 import FooPage from '../widgets/FooPage.sht';
 import BarPage from '../widgets/BarPage.sht';
@@ -11,9 +10,8 @@ export default function() {
         .bindPage( '/bar', 'bar', BarPage, {} )
         .bindPage( '/', 'root', FooPage, {} );
 
-    const app = new App( 'body', 'app', {
-
+    new App( {
+        ID: 'app',
+        containerSelector: 'body'
     } );
-
-    DI.bind( 'widgets:app', app );
 }

@@ -5,10 +5,14 @@ import renderer from 'sham-ui-test-helpers';
 
 it( 'renders correctly', () => {
     const generateMock = jest.fn();
+    const lastRouteResolvedMock = jest.fn();
+
+    lastRouteResolvedMock.mockReturnValue( { url: '' } );
 
     DI.bind( 'router', {
         generate: generateMock,
         activePageWidget: DummyWidget,
+        lastRouteResolved: lastRouteResolvedMock,
         activePageOptions: {
             path: 'base',
             text: 'Base page'

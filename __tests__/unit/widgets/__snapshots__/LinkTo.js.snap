@@ -2,376 +2,232 @@
 
 exports[`activeClass options 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "activeClass": "test-active",
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "path": "base",
-    "useActiveClass": true,
-  },
-  "html": "<a href=\\"/base\\" class=\\"test-active\\"></a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "test-active",
     "className": "",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "",
     "types": Array [],
     "useActiveClass": true,
   },
+  "html": "
+<a href=\\"/base\\" class=\\"test-active\\">
+  <!--default-->
+</a>
+",
 }
 `;
 
 exports[`className option & useActiveClass & activeClass 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "test-active",
     "className": "foo",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
-    },
-    "path": "base",
-    "useActiveClass": true,
-  },
-  "html": "<a href=\\"/base\\" class=\\"foo test-active\\"></a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
-    "activeClass": "test-active",
-    "className": "foo",
-    "directives": Object {
-      "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "",
     "types": Array [],
     "useActiveClass": true,
   },
+  "html": "
+<a href=\\"/base\\" class=\\"foo test-active\\">
+  <!--default-->
+</a>
+",
 }
 `;
 
 exports[`className option 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "className": "foo bar",
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "path": "base",
-    "text": "Base page",
-  },
-  "html": "<a href=\\"/base\\" class=\\"foo bar\\">Base page</a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "active",
     "className": "foo bar",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "Base page",
     "types": Array [],
     "useActiveClass": false,
   },
+  "html": "
+<a href=\\"/base\\" class=\\"foo bar\\">Base page
+  <!--default-->
+</a>
+",
 }
 `;
 
 exports[`click 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "path": "base",
-  },
-  "html": "<a href=\\"/base\\" class=\\"\\"></a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "active",
     "className": "",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "",
     "types": Array [],
     "useActiveClass": false,
   },
+  "html": "
+<a href=\\"/base\\" class=\\"\\">
+  <!--default-->
+</a>
+",
 }
 `;
 
 exports[`destroy 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "path": "base",
-    "text": "Base page",
-  },
-  "html": "<a href=\\"/base\\" class=\\"\\">Base page</a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "active",
     "className": "",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "Base page",
     "types": Array [],
     "useActiveClass": false,
   },
+  "html": "
+<a href=\\"/base\\" class=\\"\\">Base page
+  <!--default-->
+</a>
+",
 }
 `;
 
 exports[`params options 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "params": Object {
-      "id": 1,
-    },
-    "path": "base",
-  },
-  "html": "<a href=\\"/base/1\\" class=\\"\\"></a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "active",
     "className": "",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {
       "id": 1,
     },
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "",
     "types": Array [],
     "useActiveClass": false,
   },
+  "html": "
+<a href=\\"/base/1\\" class=\\"\\">
+  <!--default-->
+</a>
+",
 }
 `;
 
 exports[`remove 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "path": "base",
-    "text": "Base page",
-  },
-  "html": "",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "active",
     "className": "",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "Base page",
     "types": Array [],
     "useActiveClass": false,
   },
+  "html": "",
 }
 `;
 
 exports[`render correctly 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "path": "base",
-    "text": "Base page",
-  },
-  "html": "<a href=\\"/base\\" class=\\"\\">Base page</a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "active",
     "className": "",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "Base page",
     "types": Array [],
     "useActiveClass": false,
   },
+  "html": "
+<a href=\\"/base\\" class=\\"\\">Base page
+  <!--default-->
+</a>
+",
 }
 `;
 
 exports[`useActiveClass options 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {
-    "directives": Object {
-      "onclick": [Function],
-    },
-    "path": "base",
-    "useActiveClass": true,
-  },
-  "html": "<a href=\\"/base\\" class=\\"active\\"></a>",
-  "nodes": Array [
-    Object {
-      "ID": undefined,
-      "constructorOptions": null,
-      "html": null,
-      "nodes": null,
-      "options": null,
-    },
-  ],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
+  "Constructor": "LinkToWidget",
+  "Options": Object {
+    "ID": "widget",
     "activeClass": "active",
     "className": "",
+    "containerSelector": "body",
     "directives": Object {
       "onclick": [Function],
+      "ref": [Function],
     },
     "params": Object {},
     "path": "base",
-    "renderAsync": false,
-    "renderDependence": Array [],
     "text": "",
     "types": Array [],
     "useActiveClass": true,
   },
+  "html": "
+<a href=\\"/base\\" class=\\"active\\">
+  <!--default-->
+</a>
+",
 }
 `;

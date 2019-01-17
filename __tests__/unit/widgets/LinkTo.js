@@ -45,14 +45,10 @@ it( 'params options', () => {
 it( 'useActiveClass options', () => {
     const generateMock = jest.fn();
     const lastRouteResolvedMock = jest.fn();
-    const registerActivePageLinkMock = jest.fn();
-    const unregisterActivePageLink = jest.fn();
 
     DI.bind( 'router', {
         generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock,
-        _registerActivePageLink: registerActivePageLinkMock,
-        _unregisterActivePageLink: unregisterActivePageLink
+        lastRouteResolved: lastRouteResolvedMock
     } );
 
     generateMock.mockReturnValue( '/base' );
@@ -66,12 +62,8 @@ it( 'useActiveClass options', () => {
     expect( generateMock.mock.calls.length ).toBe( 1 );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', {} ] );
     expect( lastRouteResolvedMock.mock.calls.length ).toBe( 1 );
-    expect( registerActivePageLinkMock.mock.calls.length ).toBe( 1 );
-    expect( registerActivePageLinkMock.mock.calls[ 0 ][ 0 ] ).toBe( meta.widget );
 
-    DI.resolve( 'sham-ui' ).render.FORCE_ALL();
-    expect( unregisterActivePageLink.mock.calls.length ).toBe( 1 );
-    expect( unregisterActivePageLink.mock.calls[ 0 ][ 0 ] ).toBe( meta.widget );
+    DI.resolve( 'sham-ui' ).render.ALL();
 } );
 
 it( 'activeClass options', () => {
@@ -187,9 +179,8 @@ it( 'destroy', () => {
         text: 'Base page'
     } );
 
-    DI.resolve( 'sham-ui' ).render.FORCE_ALL();
+    DI.resolve( 'sham-ui' ).render.ALL();
 
-    meta.widget.remove();
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( generateMock.mock.calls.length ).toBe( 2 );
 } );

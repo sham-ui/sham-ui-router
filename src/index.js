@@ -1,8 +1,9 @@
 import { DI, inject } from 'sham-ui';
 import Navigo from 'navigo';
+import { ACTIVE_PAGE_LINK_TYPE, ACTIVE_PAGE_CONTAINER_ID } from './settings';
 
 export default class Router {
-    @inject UI = 'sham-ui';
+    @inject( 'sham-ui' ) UI;
 
     constructor( root = null, useHash = false, hash = '#', autoResolve = true ) {
         DI.bind( 'router', this );
@@ -10,9 +11,8 @@ export default class Router {
         this._initProxyMethods();
         this.activePageWidget = null;
         this.activePageOptions = null;
-        this.activePageLinks = new Set();
         if ( autoResolve ) {
-            this.UI.render.on( 'RegistrationComplete', () => this.resolve() );
+            this.UI.render.one( 'RegistrationComplete', () => this.resolve() );
         }
     }
 
@@ -53,18 +53,7 @@ export default class Router {
     }
 
     _renderActivatePage() {
-        const widget = DI.resolve( 'widgets:active-page-container' );
-        if ( undefined !== widget ) {
-            this.UI.render.ONLY( widget.ID );
-            this.activePageLinks.forEach( x => x.update() );
-        }
-    }
-
-    _registerActivePageLink( widget ) {
-        this.activePageLinks.add( widget );
-    }
-
-    _unregisterActivePageLink( widget ) {
-        this.activePageLinks.delete( widget );
+        this.UI.render.ONLY_IDS( ACTIVE_PAGE_CONTAINER_ID );
+        this.UI.render.ONLY_TYPES( ACTIVE_PAGE_LINK_TYPE );
     }
 }

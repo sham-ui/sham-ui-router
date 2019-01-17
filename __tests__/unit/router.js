@@ -8,7 +8,9 @@ beforeEach( () => {
     Navigo.mockClear();
     DI.bind( 'sham-ui', {
         render: {
-            on: jest.fn()
+            one: jest.fn(),
+            ONLY_IDS: jest.fn(),
+            ONLY_TYPES: jest.fn()
         }
     } );
 } );
@@ -23,15 +25,15 @@ it( 'use Navigo', () => {
 } );
 
 it( 'params', () => {
-    const onMock = jest.fn();
+    const oneMock = jest.fn();
     DI.bind( 'sham-ui', {
         render: {
-            on: onMock
+            one: oneMock
         }
     } );
     new Router( null, false, '#', false );
     expect( Navigo ).toHaveBeenCalledTimes( 1 );
-    expect( onMock.mock.calls.length ).toBe( 0 );
+    expect( oneMock.mock.calls.length ).toBe( 0 );
 } );
 
 it( 'DI registry', () => {
@@ -201,11 +203,13 @@ it( 'bindPage', () => {
             }
         };
     } );
-    const renderOnlyMock = jest.fn();
+    const renderOnlyIdsMock = jest.fn();
+    const renderOnlyTypesMock = jest.fn();
     DI.bind( 'sham-ui', {
         render: {
-            on: jest.fn(),
-            ONLY: renderOnlyMock
+            one: jest.fn(),
+            ONLY_IDS: renderOnlyIdsMock,
+            ONLY_TYPES: renderOnlyTypesMock
         }
     } );
     DI.bind( 'widgets:active-page-container', { ID: 'test' } );
@@ -213,7 +217,6 @@ it( 'bindPage', () => {
     const router = new Router();
     expect( router.activePageWidget ).toEqual( null );
     expect( router.activePageOptions ).toEqual( null );
-    expect( router.activePageLinks.size ).toEqual( 0 );
 
     router.bindPage( '/', 'root', DummyWidget, { foo: 1 } );
 
@@ -222,24 +225,14 @@ it( 'bindPage', () => {
     expect( Object.keys( onMock.mock.calls[ 0 ][ 1 ] ).sort() ).toEqual( [ 'as', 'uses' ] );
     expect( onMock.mock.calls[ 0 ][ 1 ].as ).toBe( 'root' );
 
-    const activePageLink = {
-        update: jest.fn()
-    };
-    router._registerActivePageLink( activePageLink );
-    expect( router.activePageLinks.size ).toBe( 1 );
-    expect( Array.from( router.activePageLinks.values() ) ).toEqual( [ activePageLink ] );
-
     router.resolve();
 
     expect( router.activePageWidget ).toEqual( DummyWidget );
     expect( router.activePageOptions ).toEqual( { foo: 1 } );
-    expect( renderOnlyMock.mock.calls.length ).toBe( 1 );
-    expect( renderOnlyMock.mock.calls[ 0 ] ).toEqual( [ 'test' ] );
-    expect( activePageLink.update.mock.calls.length ).toBe( 1 );
-    expect( activePageLink.update.mock.calls[ 0 ].length ).toBe( 0 );
-
-    router._unregisterActivePageLink( activePageLink );
-    expect( router.activePageLinks.size ).toBe( 0 );
+    expect( renderOnlyIdsMock.mock.calls.length ).toBe( 1 );
+    expect( renderOnlyIdsMock.mock.calls[ 0 ] ).toEqual( [ 'active-page-container' ] );
+    expect( renderOnlyTypesMock.mock.calls.length ).toBe( 1 );
+    expect( renderOnlyTypesMock.mock.calls[ 0 ] ).toEqual( [ 'link-to-active-page' ] );
 } );
 
 

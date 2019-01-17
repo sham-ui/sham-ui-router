@@ -4,10 +4,6 @@ const plugins = [
     new webpack.NoEmitOnErrorsPlugin()
 ];
 
-if ( process.env.WEBPACK_ENV === 'build' ) {
-    plugins.push( new webpack.optimize.UglifyJsPlugin( { minimize: true } ) );
-}
-
 module.exports = {
     entry: {
         index: './src/index.js',
@@ -21,16 +17,19 @@ module.exports = {
         library: [ 'sham-ui-router', 'sham-ui-router/[name]' ],
         libraryTarget: 'umd'
     },
+    externals: [
+        'sham-ui'
+    ],
     plugins: plugins,
     module: {
-        loaders: [ {
+        rules: [ {
             test: /(\.js)$/,
             loader: 'babel-loader',
             exclude: /(node_modules)/,
             include: __dirname
         }, {
             test: /\.sht/,
-            loader: 'sham-ui-templates-loader'
+            loader: 'sham-ui-templates-loader?{}'
         } ]
     }
 };

@@ -1,3 +1,8 @@
+## 2.0.0
+* Upgrade `sham-ui-*` deps
+* Add support `<LinkTo>Text of link</LinkTo>` 
+* Optimize rendering `ActivePageContainer`
+
 ## 0.0.10
 * Downgrade webpack
 

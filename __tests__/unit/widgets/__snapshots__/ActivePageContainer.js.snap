@@ -2,21 +2,15 @@
 
 exports[`renders correctly 1`] = `
 Object {
-  "ID": "widget",
-  "constructorOptions": Object {},
+  "Constructor": "ActivePageContainer",
+  "Options": Object {
+    "ID": "active-page-container",
+    "containerSelector": "body",
+    "types": Array [],
+  },
   "html": "
 <h1>Title</h1>
 <div>Content for dummy widget</div>
 ",
-  "nodes": Array [],
-  "options": Object {
-    "actionSequence": Array [
-      "render",
-      "bindEvents",
-    ],
-    "renderAsync": false,
-    "renderDependence": Array [],
-    "types": Array [],
-  },
 }
 `;
