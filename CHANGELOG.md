@@ -1,3 +1,6 @@
+## 2.0.1
+* Change `libraryTarget` to `commonjs2`
+
 ## 2.0.0
 * Upgrade `sham-ui-*` deps
 * Add support `<LinkTo>Text of link</LinkTo>` 

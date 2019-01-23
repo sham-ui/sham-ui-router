@@ -15,7 +15,7 @@ module.exports = {
         filename: '[name].js',
         publicPath: '/',
         library: [ 'sham-ui-router', 'sham-ui-router/[name]' ],
-        libraryTarget: 'umd'
+        libraryTarget: 'commonjs2'
     },
     externals: [
         'sham-ui'
