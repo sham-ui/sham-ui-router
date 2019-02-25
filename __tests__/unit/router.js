@@ -222,7 +222,7 @@ it( 'bindPage', () => {
 
     expect( onMock.mock.calls.length ).toBe( 1 );
     expect( onMock.mock.calls[ 0 ][ 0 ] ).toBe( '/' );
-    expect( Object.keys( onMock.mock.calls[ 0 ][ 1 ] ).sort() ).toEqual( [ 'as', 'uses' ] );
+    expect( Object.keys( onMock.mock.calls[ 0 ][ 1 ] ).sort() ).toEqual( [ 'as', 'foo', 'uses' ] );
     expect( onMock.mock.calls[ 0 ][ 1 ].as ).toBe( 'root' );
 
     router.resolve();

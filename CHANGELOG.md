@@ -1,3 +1,6 @@
+## 2.1.0
+* Pass widget options to Navigo [ISSUE #3](https://github.com/sham-ui/sham-ui-router/issues/3) 
+
 ## 2.0.1
 * Change `libraryTarget` to `commonjs2`
 

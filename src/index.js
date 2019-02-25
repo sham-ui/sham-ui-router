@@ -47,7 +47,8 @@ export default class Router {
                 this.activePageWidget = pageWidget;
                 this.activePageOptions = widgetOptions;
                 this._renderActivatePage();
-            }
+            },
+            ...widgetOptions
         } );
         return this;
     }
