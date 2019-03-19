@@ -1,3 +1,6 @@
+## 2.1.1
+* Update dependencies
+
 ## 2.1.0
 * Pass widget options to Navigo [ISSUE #3](https://github.com/sham-ui/sham-ui-router/issues/3) 
 
