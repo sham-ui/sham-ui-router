@@ -18,7 +18,7 @@ export default class ActivePageContainer extends Widget {
         const { router } = this;
         const url = router.lastRouteResolved().url;
         if ( null !== this.lastRendererdURL && url !== this.lastRendererdURL ) {
-            this.remove();
+            this._clearContainer();
         }
         window.__UI__.insert(
             this,
@@ -40,5 +40,19 @@ export default class ActivePageContainer extends Widget {
             );
         }
         delete this.__data__;
+    }
+
+    _clearContainer() {
+
+        // Remove self from parent's children map or child ref.
+        if ( this.unbind ) {
+            this.unbind();
+        }
+
+        // Remove all nested views.
+        let i = this.nested.length;
+        while ( i-- ) {
+            this.UI.render.unregister( this.nested[ i ].ID );
+        }
     }
 }

@@ -54,9 +54,7 @@ export default class Router {
     }
 
     _renderActivatePage() {
-        this.UI.render.ONLY_TYPES(
-            ACTIVE_PAGE_CONTAINER_TYPE,
-            ACTIVE_PAGE_LINK_TYPE
-        );
+        this.UI.render.ONLY_TYPES( ACTIVE_PAGE_CONTAINER_TYPE );
+        this.UI.render.ONLY_TYPES( ACTIVE_PAGE_LINK_TYPE );
     }
 }

@@ -227,9 +227,11 @@ it( 'bindPage', () => {
 
     expect( router.activePageWidget ).toEqual( DummyWidget );
     expect( router.activePageOptions ).toEqual( { foo: 1 } );
-    expect( renderOnlyTypesMock.mock.calls.length ).toBe( 1 );
+    expect( renderOnlyTypesMock.mock.calls ).toHaveLength( 2 );
     expect( renderOnlyTypesMock.mock.calls[ 0 ] ).toEqual( [
-        'active-page-container',
+        'active-page-container'
+    ] );
+    expect( renderOnlyTypesMock.mock.calls[ 1 ] ).toEqual( [
         'link-to-active-page'
     ] );
 } );
