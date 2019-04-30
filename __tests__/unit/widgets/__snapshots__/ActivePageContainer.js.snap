@@ -1,12 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`correct process dynamic placet 1`] = `
+Object {
+  "Constructor": "DynamicPlaceActivePageContainer",
+  "Options": Object {
+    "ID": "widget",
+    "containerSelector": "body",
+    "types": Array [],
+    "withWrapper": false,
+  },
+  "html": "
+<h1>Title</h1>
+<div>Content for dummy widget</div>
+<!--ActivePageContainer-->
+<!--if-->
+",
+}
+`;
+
+exports[`correct process dynamic placet 2`] = `
+Object {
+  "Constructor": "DynamicPlaceActivePageContainer",
+  "Options": Object {
+    "ID": "widget",
+    "containerSelector": "body",
+    "types": Array [],
+    "withWrapper": true,
+  },
+  "html": "
+<div class=\\"wrapper\\">
+  <h1>Title</h1>
+  <div>Content for dummy widget</div>
+</div>
+<!--if-->
+",
+}
+`;
+
 exports[`renders correctly 1`] = `
 Object {
   "Constructor": "ActivePageContainer",
   "Options": Object {
-    "ID": "active-page-container",
+    "ID": "widget",
     "containerSelector": "body",
-    "types": Array [],
+    "types": Array [
+      "active-page-container",
+    ],
   },
   "html": "
 <h1>Title</h1>

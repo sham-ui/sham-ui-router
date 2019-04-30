@@ -1,6 +1,6 @@
 import { DI, inject } from 'sham-ui';
 import Navigo from 'navigo';
-import { ACTIVE_PAGE_LINK_TYPE, ACTIVE_PAGE_CONTAINER_ID } from './settings';
+import { ACTIVE_PAGE_LINK_TYPE, ACTIVE_PAGE_CONTAINER_TYPE } from './settings';
 
 export default class Router {
     @inject( 'sham-ui' ) UI;
@@ -54,7 +54,9 @@ export default class Router {
     }
 
     _renderActivatePage() {
-        this.UI.render.ONLY_IDS( ACTIVE_PAGE_CONTAINER_ID );
-        this.UI.render.ONLY_TYPES( ACTIVE_PAGE_LINK_TYPE );
+        this.UI.render.ONLY_TYPES(
+            ACTIVE_PAGE_CONTAINER_TYPE,
+            ACTIVE_PAGE_LINK_TYPE
+        );
     }
 }

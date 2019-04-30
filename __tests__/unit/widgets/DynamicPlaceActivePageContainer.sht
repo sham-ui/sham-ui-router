@@ -1,0 +1,9 @@
+{% import ActivePageContainer from '../../../src/widgets/ActivePageContainer' %}
+
+{% if withWrapper %}
+    <div class="wrapper">
+        <ActivePageContainer/>
+    </div>
+{% else %}
+    <ActivePageContainer/>
+{% endif %}

@@ -1,18 +1,17 @@
-import { inject, Widget } from 'sham-ui';
-import { ACTIVE_PAGE_CONTAINER_ID } from '../settings';
+import { inject, Widget, options } from 'sham-ui';
+import { ACTIVE_PAGE_CONTAINER_TYPE } from '../settings';
 
 export default class ActivePageContainer extends Widget {
-    constructor( options ) {
-        super( {
-            ...options,
-            ID: ACTIVE_PAGE_CONTAINER_ID
-        } );
+    constructor() {
+        super( ...arguments );
         this.lastRendererdURL = null;
         this.ref = null;
     }
 
     /** @type Router */
     @inject router;
+
+    @options types = [ ACTIVE_PAGE_CONTAINER_TYPE ];
 
     render() {
         super.render( ...arguments );

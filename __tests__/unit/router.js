@@ -203,12 +203,10 @@ it( 'bindPage', () => {
             }
         };
     } );
-    const renderOnlyIdsMock = jest.fn();
     const renderOnlyTypesMock = jest.fn();
     DI.bind( 'sham-ui', {
         render: {
             one: jest.fn(),
-            ONLY_IDS: renderOnlyIdsMock,
             ONLY_TYPES: renderOnlyTypesMock
         }
     } );
@@ -229,10 +227,11 @@ it( 'bindPage', () => {
 
     expect( router.activePageWidget ).toEqual( DummyWidget );
     expect( router.activePageOptions ).toEqual( { foo: 1 } );
-    expect( renderOnlyIdsMock.mock.calls.length ).toBe( 1 );
-    expect( renderOnlyIdsMock.mock.calls[ 0 ] ).toEqual( [ 'active-page-container' ] );
     expect( renderOnlyTypesMock.mock.calls.length ).toBe( 1 );
-    expect( renderOnlyTypesMock.mock.calls[ 0 ] ).toEqual( [ 'link-to-active-page' ] );
+    expect( renderOnlyTypesMock.mock.calls[ 0 ] ).toEqual( [
+        'active-page-container',
+        'link-to-active-page'
+    ] );
 } );
 
 
