@@ -1,6 +1,5 @@
 import { DI, inject } from 'sham-ui';
 import Navigo from 'navigo';
-import { ACTIVE_PAGE_LINK_TYPE, ACTIVE_PAGE_CONTAINER_TYPE } from './settings';
 
 export default class Router {
     @inject( 'sham-ui' ) UI;
@@ -9,7 +8,7 @@ export default class Router {
         DI.bind( 'router', this );
         this.router = new Navigo( root, useHash, hash );
         this._initProxyMethods();
-        this.activePageWidget = null;
+        this.activePageComponent = null;
         this.activePageOptions = null;
         if ( autoResolve ) {
             this.UI.render.one( 'RegistrationComplete', () => this.resolve() );
@@ -40,15 +39,15 @@ export default class Router {
         } );
     }
 
-    bindPage( url, name, pageWidget, widgetOptions ) {
+    bindPage( url, name, pageComponent, componentOptions ) {
         this.on( url, {
             as: name,
             uses: () => {
-                this.activePageWidget = pageWidget;
-                this.activePageOptions = widgetOptions;
+                this.activePageComponent = pageComponent;
+                this.activePageOptions = componentOptions;
                 this._renderActivatePage();
             },
-            ...widgetOptions
+            ...componentOptions
         } );
         return this;
     }

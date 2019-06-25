@@ -1,3 +1,7 @@
+## 3.0.0
+* Update dependencies
+* Configure `externals` for webpack
+
 ## 2.1.4
 * Some fixs for side effects
 

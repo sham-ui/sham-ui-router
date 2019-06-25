@@ -1,15 +1,15 @@
 import ShamUI, { DI } from 'sham-ui';
-import controller from './controllers/main';
+import initializer from './initializers/main';
 
-DI.bind( 'widget-binder', controller );
+DI.bind( 'component-binder', initializer );
 
 if ( module.hot ) {
     const UI = DI.resolve( 'sham-ui' );
     if ( undefined !== UI ) {
         UI.render.unregister( 'app' );
-        DI.resolve( 'sham-ui:store' ).forEach( widget => {
+        DI.resolve( 'sham-ui:store' ).forEach( component => {
             try {
-                UI.render.unregister( widget.ID );
+                UI.render.unregister( component.ID );
             } catch ( e ) {
                 // eslint-disable-next-line no-empty
             }

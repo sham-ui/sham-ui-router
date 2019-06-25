@@ -15,10 +15,10 @@ yarn add sham-ui-router
 ```
 
 ## Usage
-Bind page widgets in `widget-binder`:
+Bind page component in `component-binder`:
 ```js
-import FooPage from '../widgets/FooPage.sht';
-import BarPage from '../widgets/BarPage.sht';
+import FooPage from '../components/FooPage.sht';
+import BarPage from '../components/BarPage.sht';
 import Router from 'sham-ui-router';
 
 const router = new Router();
@@ -26,8 +26,8 @@ router
     .bindPage( 
         '/foo', // URL
         'foo', // Name
-        FooPage, // Widget class
-        { widgetOption: 1 } // Widget options
+        FooPage, // Component class
+        { componentOption: 1 } // Component options
     )
     .bindPage( '/bar', 'bar', BarPage, {} );
 ```
@@ -40,7 +40,7 @@ In `App.sht` add `ActivePageContainer`:
 ...
 ```
 
-Add [LinkTo](https://github.com/sham-ui/sham-ui-router/blob/master/src/widgets/LinkTo.js) widgets in templates:
+Add [LinkTo](https://github.com/sham-ui/sham-ui-router/blob/master/src/components/LinkTo.js) components in templates:
 
 ```html
 {% import LinkTo from 'sham-ui-router/link-to' %}

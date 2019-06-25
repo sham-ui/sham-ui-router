@@ -1,7 +1,7 @@
 <a
     href={{this.generateURL( path, params )}}
     class={{this.generateClassName( className, useActiveClass, activeClass, path, params )}}
-    :onclick={{this.click.bind( this )}}
+    :onclick={{::this.click}}
     :ref="aNode"
 >
     {{text}}

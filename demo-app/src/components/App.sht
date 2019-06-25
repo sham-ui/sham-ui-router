@@ -1,5 +1,5 @@
-{% import ActivePageContainer from '../../../src/widgets/ActivePageContainer' %}
-{% import LinkTo from '../../../src/widgets/LinkTo' %}
+{% import ActivePageContainer from '../../../src/components/ActivePageContainer' %}
+{% import LinkTo from '../../../src/components/LinkTo' %}
 
 <main>
     <ul>

@@ -1,7 +1,6 @@
-import { inject, Widget, options } from 'sham-ui';
-import { ACTIVE_PAGE_CONTAINER_TYPE } from '../settings';
+import { inject, Component, options } from 'sham-ui';
 
-export default class ActivePageContainer extends Widget {
+export default class ActivePageContainer extends Component {
     constructor() {
         super( ...arguments );
         this.lastRendererdURL = null;
@@ -24,22 +23,11 @@ export default class ActivePageContainer extends Widget {
             this,
             this.container,
             this,
-            router.activePageWidget,
+            router.activePageComponent,
             router.activePageOptions,
             this.owner
         );
         this.lastRendererdURL = url;
-    }
-
-    update( data ) {
-        this.__data__ = Object.assign( {}, this.options, data );
-        if ( data ) {
-            Object.defineProperties(
-                this.options,
-                Object.getOwnPropertyDescriptors( data )
-            );
-        }
-        delete this.__data__;
     }
 
     _clearContainer() {

@@ -1,6 +1,6 @@
-import App from '../widgets/App.sht';
-import FooPage from '../widgets/FooPage.sht';
-import BarPage from '../widgets/BarPage.sht';
+import App from '../components/App.sht';
+import FooPage from '../components/FooPage.sht';
+import BarPage from '../components/BarPage.sht';
 import Router from '../../../src';
 
 export default function() {

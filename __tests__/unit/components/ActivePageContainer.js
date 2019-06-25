@@ -1,6 +1,6 @@
 import { DI } from 'sham-ui';
-import ActivePageContainer from '../../../src/widgets/ActivePageContainer';
-import DummyWidget from './Dummy.sht';
+import ActivePageContainer from '../../../src/components/ActivePageContainer';
+import DummyComponent from './Dummy.sht';
 import DynamicPlaceActivePageContainer from './DynamicPlaceActivePageContainer.sht';
 import renderer from 'sham-ui-test-helpers';
 
@@ -13,7 +13,7 @@ it( 'renders correctly', () => {
 
     DI.bind( 'router', {
         generate: generateMock,
-        activePageWidget: DummyWidget,
+        activePageComponent: DummyComponent,
         lastRouteResolved: lastRouteResolvedMock,
         activePageOptions: {
             path: 'base',
@@ -35,7 +35,7 @@ it( 'correct process dynamic placet', () => {
 
     DI.bind( 'router', {
         generate: generateMock,
-        activePageWidget: DummyWidget,
+        activePageComponent: DummyComponent,
         lastRouteResolved: lastRouteResolvedMock,
         activePageOptions: {
             path: 'base',
@@ -49,7 +49,7 @@ it( 'correct process dynamic placet', () => {
         withWrapper: false
     } );
     expect( meta.toJSON() ).toMatchSnapshot();
-    meta.widget.update( {
+    meta.component.update( {
         withWrapper: true
     } );
     expect( meta.toJSON() ).toMatchSnapshot();

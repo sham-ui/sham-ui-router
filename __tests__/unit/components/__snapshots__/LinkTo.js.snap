@@ -2,9 +2,9 @@
 
 exports[`activeClass options 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "test-active",
     "className": "",
     "containerSelector": "body",
@@ -28,9 +28,9 @@ Object {
 
 exports[`className option & useActiveClass & activeClass 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "test-active",
     "className": "foo",
     "containerSelector": "body",
@@ -54,9 +54,9 @@ Object {
 
 exports[`className option 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "active",
     "className": "foo bar",
     "containerSelector": "body",
@@ -80,9 +80,9 @@ Object {
 
 exports[`click 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "active",
     "className": "",
     "containerSelector": "body",
@@ -106,9 +106,9 @@ Object {
 
 exports[`destroy 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "active",
     "className": "",
     "containerSelector": "body",
@@ -132,9 +132,9 @@ Object {
 
 exports[`params options 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "active",
     "className": "",
     "containerSelector": "body",
@@ -160,9 +160,9 @@ Object {
 
 exports[`remove 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "active",
     "className": "",
     "containerSelector": "body",
@@ -182,9 +182,9 @@ Object {
 
 exports[`render correctly 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "active",
     "className": "",
     "containerSelector": "body",
@@ -208,9 +208,9 @@ Object {
 
 exports[`useActiveClass options 1`] = `
 Object {
-  "Constructor": "LinkToWidget",
+  "Constructor": "LinkToComponent",
   "Options": Object {
-    "ID": "widget",
+    "ID": "component",
     "activeClass": "active",
     "className": "",
     "containerSelector": "body",

@@ -1,4 +1,4 @@
-{% import LinkTo from '../../../src/widgets/LinkTo' %}
+{% import LinkTo from '../../../src/components/LinkTo' %}
 <LinkTo
         text="Foo"
         path="foo"

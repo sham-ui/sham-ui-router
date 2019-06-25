@@ -1,5 +1,5 @@
 import { DI } from 'sham-ui';
-import LinkTo from '../../../src/widgets/LinkTo';
+import LinkTo from '../../../src/components/LinkTo';
 import renderer from 'sham-ui-test-helpers';
 
 afterEach( () => {
@@ -19,7 +19,7 @@ it( 'render correctly', () => {
         text: 'Base page'
     } );
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( generateMock.mock.calls.length ).toBe( 1 );
+    expect( generateMock.mock.calls ).toHaveLength( 1 );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', {} ] );
 } );
 
@@ -38,7 +38,7 @@ it( 'params options', () => {
         }
     } );
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( generateMock.mock.calls.length ).toBe( 1 );
+    expect( generateMock.mock.calls ).toHaveLength( 1 );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', { id: 1 } ] );
 } );
 
@@ -59,9 +59,9 @@ it( 'useActiveClass options', () => {
         useActiveClass: true
     } );
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( generateMock.mock.calls.length ).toBe( 1 );
+    expect( generateMock.mock.calls ).toHaveLength( 1 );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', {} ] );
-    expect( lastRouteResolvedMock.mock.calls.length ).toBe( 1 );
+    expect( lastRouteResolvedMock.mock.calls ).toHaveLength( 1 );
 
     DI.resolve( 'sham-ui' ).render.ALL();
 } );
@@ -101,7 +101,7 @@ it( 'className option', () => {
         text: 'Base page',
         className: 'foo bar'
     } );
-    expect( meta.widget.querySelector( 'a' ).className ).toEqual( 'foo bar' );
+    expect( meta.component.querySelector( 'a' ).className ).toEqual( 'foo bar' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
@@ -125,7 +125,7 @@ it( 'className option & useActiveClass & activeClass', () => {
         activeClass: 'test-active',
         className: 'foo'
     } );
-    expect( meta.widget.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
+    expect( meta.component.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
@@ -143,10 +143,10 @@ it( 'click', () => {
     const meta = renderer( LinkTo, {
         path: 'base'
     } );
-    meta.widget.querySelector( 'a' ).click();
+    meta.component.querySelector( 'a' ).click();
 
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( navigateMock.mock.calls.length ).toBe( 1 );
+    expect( navigateMock.mock.calls ).toHaveLength( 1 );
     expect( navigateMock.mock.calls[ 0 ] ).toEqual( [ '/base' ] );
 } );
 
@@ -162,7 +162,7 @@ it( 'remove', () => {
         path: 'base',
         text: 'Base page'
     } );
-    meta.widget.remove();
+    meta.component.remove();
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
@@ -182,5 +182,5 @@ it( 'destroy', () => {
     DI.resolve( 'sham-ui' ).render.ALL();
 
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( generateMock.mock.calls.length ).toBe( 2 );
+    expect( generateMock.mock.calls ).toHaveLength( 2 );
 } );

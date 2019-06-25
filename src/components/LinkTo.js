@@ -1,9 +1,8 @@
 import { inject, options } from 'sham-ui';
 import { onclick, ref } from 'sham-ui-directives';
-import LinkToWidgetTemplate from './LinkTo.sht';
-import { ACTIVE_PAGE_LINK_TYPE } from '../settings';
+import LinkToComponentTemplate from './LinkTo.sht';
 
-export default class LinkToWidget extends LinkToWidgetTemplate {
+export default class LinkToComponent extends LinkToComponentTemplate {
     constructor( options ) {
         super( {
             ...options,
@@ -16,7 +15,7 @@ export default class LinkToWidget extends LinkToWidgetTemplate {
     }
 
     @inject router;
-    @inject( 'sham-ui:store' ) widgetStore;
+    @inject( 'sham-ui:store' ) componentStore;
 
     @options text = '';
     @options useActiveClass = false;
@@ -44,14 +43,15 @@ export default class LinkToWidget extends LinkToWidgetTemplate {
     }
 
     _registryType() {
-        const storeHasType = this.widgetStore.byType.has( ACTIVE_PAGE_LINK_TYPE );
+        const activeLinkType = ACTIVE_PAGE_LINK_TYPE;
+        const storeHasType = this.componentStore.byType.has( activeLinkType );
         if ( this.options.useActiveClass ) {
             if ( !storeHasType ) {
-                this.widgetStore.byType.set( ACTIVE_PAGE_LINK_TYPE, new Set() );
+                this.componentStore.byType.set( activeLinkType, new Set() );
             }
-            this.widgetStore.byType.get( ACTIVE_PAGE_LINK_TYPE ).add( this );
+            this.componentStore.byType.get( activeLinkType ).add( this );
         } else if ( storeHasType ) {
-            this.widgetStore.byType.get( ACTIVE_PAGE_LINK_TYPE ).delete( this );
+            this.componentStore.byType.get( activeLinkType ).delete( this );
         }
     }
 

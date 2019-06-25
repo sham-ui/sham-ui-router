@@ -1,4 +1,4 @@
-{% import ActivePageContainer from '../../../src/widgets/ActivePageContainer' %}
+{% import ActivePageContainer from '../../../src/components/ActivePageContainer' %}
 
 {% if withWrapper %}
     <div class="wrapper">
