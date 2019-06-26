@@ -1,5 +1,5 @@
 {% import ActivePageContainer from '../../../src/components/ActivePageContainer' %}
-{% import LinkTo from '../../../src/components/LinkTo' %}
+{% import LinkTo from '../../../src/components/LinkTo.sfc' %}
 
 <main>
     <ul>

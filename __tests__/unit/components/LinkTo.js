@@ -1,5 +1,5 @@
 import { DI } from 'sham-ui';
-import LinkTo from '../../../src/components/LinkTo';
+import LinkTo from '../../../src/components/LinkTo.sfc';
 import renderer from 'sham-ui-test-helpers';
 
 afterEach( () => {

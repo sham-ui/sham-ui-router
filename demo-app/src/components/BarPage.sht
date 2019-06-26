@@ -1,4 +1,4 @@
-{% import LinkTo from '../../../src/components/LinkTo' %}
+{% import LinkTo from '../../../src/components/LinkTo.sfc' %}
 <LinkTo
         text="Foo"
         path="foo"

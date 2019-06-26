@@ -11,7 +11,7 @@ const plugins = [
 module.exports = {
     entry: {
         index: './src/index.js',
-        'link-to': './src/components/LinkTo.js',
+        'link-to': './src/components/LinkTo.sfc',
         'active-page-container': './src/components/ActivePageContainer.js'
     },
     output: {
