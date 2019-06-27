@@ -49,3 +49,12 @@ Add [LinkTo](https://github.com/sham-ui/sham-ui-router/blob/master/src/component
 ...
 ```
 
+Or use `hrefto` directive:
+```html
+...
+    <a :hrefto={{ {"path": "foo",  "params": params} }} className="custom-class-1 custom-class-2">
+        Foo
+    </a>
+...
+```
+

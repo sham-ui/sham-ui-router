@@ -1,6 +1,7 @@
 import App from '../components/App.sht';
 import FooPage from '../components/FooPage.sht';
 import BarPage from '../components/BarPage.sht';
+import hrefto from '../../../src/directives/href-to';
 import Router from '../../../src';
 
 export default function() {
@@ -12,6 +13,9 @@ export default function() {
 
     new App( {
         ID: 'app',
-        containerSelector: 'body'
+        containerSelector: 'body',
+        directives: {
+            hrefto
+        }
     } );
 }

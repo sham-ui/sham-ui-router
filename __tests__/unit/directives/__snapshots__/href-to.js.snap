@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`activeClass 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base\\" class=\\"test-active\\"> Base page </a>",
+}
+`;
+
+exports[`class & useActiveClass & activeClass 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a class=\\"foo test-active\\" href=\\"/base\\"> Base page </a>",
+}
+`;
+
+exports[`click 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base\\"> Base page </a>",
+}
+`;
+
+exports[`destroy 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base\\" class=\\"active\\"> Base page </a>",
+}
+`;
+
+exports[`params 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base/1\\"> Base page </a>",
+}
+`;
+
+exports[`params from options 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "params": Object {
+      "id": 1,
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base/1\\"> Base page </a>",
+}
+`;
+
+exports[`remove 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "",
+}
+`;
+
+exports[`render correctly 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base\\"> Base page </a>",
+}
+`;
+
+exports[`useActiveClass 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base\\" class=\\"active\\"> Base page </a>",
+}
+`;
+
+exports[`useActiveClass 2`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "types": Array [],
+  },
+  "html": "<a href=\\"/base\\" class=\\"\\"> Base page </a>",
+}
+`;

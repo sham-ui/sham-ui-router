@@ -9,6 +9,16 @@
         <li>
             <LinkTo text="Bar" path="bar" useActiveClass={{true}} />
         </li>
+        <li>
+            <a :hrefto={{ {"path": "foo", "useActiveClass": true} }}>
+                With directive
+            </a>
+        </li>
+        <li>
+            <LinkTo path="foo" useActiveClass="true">
+                With block
+            </LinkTo>
+        </li>
     </ul>
     <pre>
         Router for sham-ui

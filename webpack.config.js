@@ -12,7 +12,8 @@ module.exports = {
     entry: {
         index: './src/index.js',
         'link-to': './src/components/LinkTo.sfc',
-        'active-page-container': './src/components/ActivePageContainer.js'
+        'active-page-container': './src/components/ActivePageContainer.js',
+        'href-to': './src/directives/href-to.js'
     },
     output: {
         path: __dirname,

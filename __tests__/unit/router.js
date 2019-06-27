@@ -10,7 +10,8 @@ beforeEach( () => {
         render: {
             one: jest.fn(),
             ONLY_IDS: jest.fn(),
-            ONLY_TYPES: jest.fn()
+            ONLY_TYPES: jest.fn(),
+            emit: jest.fn()
         }
     } );
 } );
@@ -207,7 +208,8 @@ it( 'bindPage', () => {
     DI.bind( 'sham-ui', {
         render: {
             one: jest.fn(),
-            ONLY_TYPES: renderOnlyTypesMock
+            ONLY_TYPES: renderOnlyTypesMock,
+            emit: jest.fn()
         }
     } );
 
