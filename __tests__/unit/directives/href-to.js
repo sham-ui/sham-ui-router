@@ -1,5 +1,6 @@
 import { DI } from 'sham-ui';
 import HrefTo from '../../../src/directives/href-to';
+import path from '../../../src/builders/params';
 import renderer, { compile } from 'sham-ui-test-helpers';
 
 it( 'render correctly', () => {
@@ -264,4 +265,42 @@ it( 'destroy', () => {
 
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( generateMock.mock.calls ).toHaveLength( 2 );
+} );
+
+it( 'params builder', () => {
+    const generateMock = jest.fn();
+    const lastRouteResolvedMock = jest.fn();
+    const registerActivePageLinkMock = jest.fn();
+
+    DI.bind( 'router', {
+        generate: generateMock,
+        lastRouteResolved: lastRouteResolvedMock,
+        _registerActivePageLink: registerActivePageLinkMock
+    } );
+
+    generateMock.mockReturnValueOnce( '/base/1' );
+    lastRouteResolvedMock.mockReturnValueOnce( { url: '/base/1' } );
+
+    const meta = renderer(
+        compile`
+            <a 
+                :hrefto={{ path( 'base' ).param( 'id', 1 )._useActiveClass()._activeClass( 'test-active' ) }}
+                class="foo"
+            >
+                Base page
+            </a>
+        `,
+        {
+            directives: {
+                'hrefto': HrefTo
+            },
+            path
+        }
+    );
+    expect( meta.component.querySelector( 'a' ).className ).toBe( 'foo test-active' );
+    expect( meta.component.querySelector( 'a' ).href ).toBe(
+        'http://sham-ui-router.example.com/base/1'
+    );
+    expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', { id: 1 } ] );
+    expect( meta.toJSON() ).toMatchSnapshot();
 } );

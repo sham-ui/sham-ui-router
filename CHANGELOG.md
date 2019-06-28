@@ -2,7 +2,8 @@
 * Update dependencies
 * Configure `externals` for webpack
 * Refactoring `LinkTo` as SFC
-* Add `href-to` directive 
+* Add `href-to` directive
+* Add `params` for building `href-to` directive argument
 
 ## 2.1.4
 * Some fixs for side effects

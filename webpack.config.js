@@ -13,7 +13,8 @@ module.exports = {
         index: './src/index.js',
         'link-to': './src/components/LinkTo.sfc',
         'active-page-container': './src/components/ActivePageContainer.js',
-        'href-to': './src/directives/href-to.js'
+        'href-to': './src/directives/href-to.js',
+        'params': './src/builders/params.js'
     },
     output: {
         path: __dirname,

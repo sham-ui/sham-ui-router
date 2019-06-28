@@ -75,6 +75,22 @@ Object {
 }
 `;
 
+exports[`params builder 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "directives": Object {
+      "hrefto": [Function],
+    },
+    "path": [Function],
+    "types": Array [],
+  },
+  "html": "<a class=\\"foo test-active\\" href=\\"/base/1\\"> Base page </a>",
+}
+`;
+
 exports[`params from options 1`] = `
 Object {
   "Constructor": "dummy",

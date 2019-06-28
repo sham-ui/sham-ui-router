@@ -1,5 +1,6 @@
 {% import ActivePageContainer from '../../../src/components/ActivePageContainer' %}
 {% import LinkTo from '../../../src/components/LinkTo.sfc' %}
+{% import path from '../../../src/builders/params' %}
 
 <main>
     <ul>
@@ -12,6 +13,11 @@
         <li>
             <a :hrefto={{ {"path": "foo", "useActiveClass": true} }}>
                 With directive
+            </a>
+        </li>
+        <li>
+            <a :hrefto={{ path( "foo" )._useActiveClass() }}>
+            With directive & param builder
             </a>
         </li>
         <li>

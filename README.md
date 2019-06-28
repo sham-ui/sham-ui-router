@@ -58,3 +58,12 @@ Or use `hrefto` directive:
 ...
 ```
 
+Or use `hrefto` directive with `params` helper:
+```html
+{% import path from 'sham-ui-router/params' %}
+...
+    <a :hrefto={{path("foo").param("id", 2)}} className="custom-class-1 custom-class-2">
+        Foo
+    </a>
+...
+```
