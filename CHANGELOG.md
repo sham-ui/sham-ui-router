@@ -1,3 +1,6 @@
+## 3.0.1
+* Fix build
+
 ## 3.0.0
 * Update dependencies
 * Configure `externals` for webpack
