@@ -1,18 +1,13 @@
-import { DI, inject } from 'sham-ui';
+import { DI } from 'sham-ui';
+import { storage } from './storage';
 import Navigo from 'navigo';
 
 export default class Router {
-    @inject( 'sham-ui' ) UI;
-
-    constructor( root = null, useHash = false, hash = '#', autoResolve = true ) {
+    constructor( root = null, useHash = false, hash = '#' ) {
         DI.bind( 'router', this );
+        this.storage = storage;
         this.router = new Navigo( root, useHash, hash );
         this._initProxyMethods();
-        this.activePageComponent = null;
-        this.activePageOptions = null;
-        if ( autoResolve ) {
-            this.UI.render.one( 'RegistrationComplete', () => this.resolve() );
-        }
     }
 
     _initProxyMethods() {
@@ -43,18 +38,16 @@ export default class Router {
         this.on( url, {
             as: name,
             uses: () => {
-                this.activePageComponent = pageComponent;
-                this.activePageOptions = componentOptions;
-                this._renderActivatePage();
+                this.storage.activePageComponent = pageComponent;
+                this.storage.activePageOptions = componentOptions;
+                this.storage.url = url;
+                this.storage.name = name;
+                const lastRoute = this.lastRouteResolved();
+                this.storage.params = lastRoute === undefined ? {} : lastRoute.params;
+                this.storage.sync();
             },
             ...componentOptions
         } );
         return this;
-    }
-
-    _renderActivatePage() {
-        this.UI.render.ONLY_TYPES( ACTIVE_PAGE_CONTAINER_TYPE );
-        this.UI.render.ONLY_TYPES( ACTIVE_PAGE_LINK_TYPE );
-        this.UI.render.emit( 'RouteChanged' );
     }
 }

@@ -1,15 +1,15 @@
-import { inject } from 'sham-ui';
+import { inject } from 'sham-ui-macro/babel.macro';
 
 export default class HrefTo {
     @inject router;
-    @inject( 'sham-ui' ) UI;
 
     constructor() {
         this.node = null;
         this.activeClass = null;
         this.lastGeneratedURL = null;
-        this.routeChangedListener = null;
+        this.urlWatching = false;
         this.click = this.click.bind( this );
+        this.toggleActiveClass = this.toggleActiveClass.bind( this );
     }
 
     bind( node ) {
@@ -26,9 +26,9 @@ export default class HrefTo {
     }
 
     _unbindRouteChangedListener() {
-        if ( null !== this.routeChangedListener ) {
-            this.routeChangedListener.off();
-            this.routeChangedListener = null;
+        if ( this.urlWatching ) {
+            this.router.storage.removeWatcher( 'url', this.toggleActiveClass );
+            this.urlWatching = false;
         }
     }
 
@@ -39,11 +39,9 @@ export default class HrefTo {
         this.node.href = url;
         if ( useActiveClass ) {
             this.toggleActiveClass();
-            if ( null === this.routeChangedListener ) {
-                this.routeChangedListener = this.UI.render.on(
-                    'RouteChanged',
-                    ::this.toggleActiveClass
-                );
+            if ( !this.urlWatching ) {
+                this.urlWatching = true;
+                this.router.storage.addWatcher( 'url', this.toggleActiveClass );
             }
         } else {
             this._unbindRouteChangedListener();
@@ -51,7 +49,7 @@ export default class HrefTo {
     }
 
     toggleActiveClass() {
-        if ( this.lastGeneratedURL === this.router.lastRouteResolved().url ) {
+        if ( this.lastGeneratedURL === this.router.storage.url ) {
             this.node.classList.add( this.activeClass );
         } else {
             this.node.classList.remove( this.activeClass );

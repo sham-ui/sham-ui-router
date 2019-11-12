@@ -1,21 +1,15 @@
-import { inject, Component, options } from 'sham-ui';
+import { Component } from 'sham-ui';
+import { useStorage } from '../storage';
 
-export default class ActivePageContainer extends Component {
+class ActivePageContainer extends Component {
     constructor() {
         super( ...arguments );
         this.lastRendererdURL = null;
         this.ref = null;
     }
 
-    /** @type Router */
-    @inject router;
-
-    @options types = [ ACTIVE_PAGE_CONTAINER_TYPE ];
-
-    render() {
-        super.render( ...arguments );
-        const { router } = this;
-        const url = router.lastRouteResolved().url;
+    updateSpots() {
+        const url = this.options.routerData.url;
         if ( null !== this.lastRendererdURL && url !== this.lastRendererdURL ) {
             this._clearContainer();
         }
@@ -23,9 +17,10 @@ export default class ActivePageContainer extends Component {
             this,
             this.container,
             this,
-            router.activePageComponent,
-            router.activePageOptions,
-            this.owner
+            this.options.routerData.activePageComponent,
+            this.options.routerData.activePageOptions,
+            this.owner,
+            this.blocks
         );
         this.lastRendererdURL = url;
     }
@@ -40,7 +35,9 @@ export default class ActivePageContainer extends Component {
         // Remove all nested views.
         let i = this.nested.length;
         while ( i-- ) {
-            this.UI.render.unregister( this.nested[ i ].ID );
+            this.nested[ i ].remove();
         }
     }
 }
+
+export default useStorage( 'routerData' )( ActivePageContainer );

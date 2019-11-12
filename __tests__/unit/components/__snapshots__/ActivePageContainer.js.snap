@@ -5,8 +5,6 @@ Object {
   "Constructor": "DynamicPlaceActivePageContainer",
   "Options": Object {
     "ID": "component",
-    "containerSelector": "body",
-    "types": Array [],
     "withWrapper": false,
   },
   "html": "
@@ -23,8 +21,6 @@ Object {
   "Constructor": "DynamicPlaceActivePageContainer",
   "Options": Object {
     "ID": "component",
-    "containerSelector": "body",
-    "types": Array [],
     "withWrapper": true,
   },
   "html": "
@@ -42,10 +38,14 @@ Object {
   "Constructor": "ActivePageContainer",
   "Options": Object {
     "ID": "component",
-    "containerSelector": "body",
-    "types": Array [
-      "active-page-container",
-    ],
+    "routerData": Object {
+      "activePageComponent": [Function],
+      "activePageOptions": Object {
+        "path": "base",
+        "text": "Base page",
+      },
+      "url": "",
+    },
   },
   "html": "
 <h1>Title</h1>

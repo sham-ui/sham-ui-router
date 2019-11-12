@@ -6,18 +6,10 @@ jest.mock( 'navigo' );
 
 beforeEach( () => {
     Navigo.mockClear();
-    DI.bind( 'sham-ui', {
-        render: {
-            one: jest.fn(),
-            ONLY_IDS: jest.fn(),
-            ONLY_TYPES: jest.fn(),
-            emit: jest.fn()
-        }
-    } );
 } );
 
 afterEach( () => {
-    DI.bind( 'sham-ui', null );
+    DI.resolve( 'router:storage' ).reset();
 } );
 
 it( 'use Navigo', () => {
@@ -26,15 +18,8 @@ it( 'use Navigo', () => {
 } );
 
 it( 'params', () => {
-    const oneMock = jest.fn();
-    DI.bind( 'sham-ui', {
-        render: {
-            one: oneMock
-        }
-    } );
     new Router( null, false, '#', false );
     expect( Navigo ).toHaveBeenCalledTimes( 1 );
-    expect( oneMock.mock.calls ).toHaveLength( 0 );
 } );
 
 it( 'DI registry', () => {
@@ -199,23 +184,18 @@ it( 'bindPage', () => {
     Navigo.mockImplementation( () => {
         return {
             on: onMock,
-            resolve: () => {
+            resolve() {
                 onMock.mock.calls[ 0 ][ 1 ].uses();
+            },
+            lastRouteResolved() {
+                return {};
             }
         };
     } );
-    const renderOnlyTypesMock = jest.fn();
-    DI.bind( 'sham-ui', {
-        render: {
-            one: jest.fn(),
-            ONLY_TYPES: renderOnlyTypesMock,
-            emit: jest.fn()
-        }
-    } );
 
     const router = new Router();
-    expect( router.activePageComponent ).toEqual( null );
-    expect( router.activePageOptions ).toEqual( null );
+    expect( router.storage.activePageComponent ).toEqual( null );
+    expect( router.storage.activePageOptions ).toEqual( null );
 
     router.bindPage( '/', 'root', DummyComponent, { foo: 1 } );
 
@@ -226,19 +206,6 @@ it( 'bindPage', () => {
 
     router.resolve();
 
-    expect( router.activePageComponent ).toEqual( DummyComponent );
-    expect( router.activePageOptions ).toEqual( { foo: 1 } );
-    expect( renderOnlyTypesMock.mock.calls ).toHaveLength( 2 );
-    expect( renderOnlyTypesMock.mock.calls[ 0 ] ).toEqual( [
-        'active-page-container'
-    ] );
-    expect( renderOnlyTypesMock.mock.calls[ 1 ] ).toEqual( [
-        'link-to-active-page'
-    ] );
-} );
-
-
-it( 'safe _renderActivatePage', () => {
-    const router = new Router();
-    router._renderActivatePage();
+    expect( router.storage.activePageComponent ).toEqual( DummyComponent );
+    expect( router.storage.activePageOptions ).toEqual( { foo: 1 } );
 } );

@@ -1,3 +1,9 @@
+## master
+* Update dependencies
+* Add `size-limit`
+* Remove `autoResolve`
+* Rewrite with `sham-ui-data-storage`
+
 ## 3.0.1
 * Fix build
 

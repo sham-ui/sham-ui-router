@@ -7,15 +7,14 @@ Object {
     "ID": "component",
     "activeClass": "test-active",
     "className": "",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
     "params": Object {},
     "path": "base",
+    "routerData": Object {
+      "activePageComponent": null,
+      "activePageOptions": null,
+      "url": "/base",
+    },
     "text": "",
-    "types": Array [],
     "useActiveClass": true,
   },
   "html": "
@@ -33,15 +32,14 @@ Object {
     "ID": "component",
     "activeClass": "test-active",
     "className": "foo",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
     "params": Object {},
     "path": "base",
+    "routerData": Object {
+      "activePageComponent": null,
+      "activePageOptions": null,
+      "url": "/base",
+    },
     "text": "",
-    "types": Array [],
     "useActiveClass": true,
   },
   "html": "
@@ -59,15 +57,14 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "foo bar",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
     "params": Object {},
     "path": "base",
+    "routerData": Object {
+      "activePageComponent": null,
+      "activePageOptions": null,
+      "url": "",
+    },
     "text": "Base page",
-    "types": Array [],
     "useActiveClass": false,
   },
   "html": "
@@ -85,45 +82,18 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
     "params": Object {},
     "path": "base",
+    "routerData": Object {
+      "activePageComponent": null,
+      "activePageOptions": null,
+      "url": "",
+    },
     "text": "",
-    "types": Array [],
     "useActiveClass": false,
   },
   "html": "
 <a href=\\"/base\\" class=\\"\\">
-  <!--default-->
-</a>
-",
-}
-`;
-
-exports[`destroy 1`] = `
-Object {
-  "Constructor": "LinkToComponent",
-  "Options": Object {
-    "ID": "component",
-    "activeClass": "active",
-    "className": "",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
-    "params": Object {},
-    "path": "base",
-    "text": "Base page",
-    "types": Array [],
-    "useActiveClass": false,
-  },
-  "html": "
-<a href=\\"/base\\" class=\\"\\">Base page
   <!--default-->
 </a>
 ",
@@ -137,17 +107,16 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
     "params": Object {
       "id": 1,
     },
     "path": "base",
+    "routerData": Object {
+      "activePageComponent": null,
+      "activePageOptions": null,
+      "url": "",
+    },
     "text": "",
-    "types": Array [],
     "useActiveClass": false,
   },
   "html": "
@@ -158,28 +127,6 @@ Object {
 }
 `;
 
-exports[`remove 1`] = `
-Object {
-  "Constructor": "LinkToComponent",
-  "Options": Object {
-    "ID": "component",
-    "activeClass": "active",
-    "className": "",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
-    "params": Object {},
-    "path": "base",
-    "text": "Base page",
-    "types": Array [],
-    "useActiveClass": false,
-  },
-  "html": "",
-}
-`;
-
 exports[`render correctly 1`] = `
 Object {
   "Constructor": "LinkToComponent",
@@ -187,15 +134,14 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
     "params": Object {},
     "path": "base",
+    "routerData": Object {
+      "activePageComponent": null,
+      "activePageOptions": null,
+      "url": "",
+    },
     "text": "Base page",
-    "types": Array [],
     "useActiveClass": false,
   },
   "html": "
@@ -213,15 +159,14 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
-    "containerSelector": "body",
-    "directives": Object {
-      "onclick": [Function],
-      "ref": [Function],
-    },
     "params": Object {},
     "path": "base",
+    "routerData": Object {
+      "activePageComponent": null,
+      "activePageOptions": null,
+      "url": "/base",
+    },
     "text": "",
-    "types": Array [],
     "useActiveClass": true,
   },
   "html": "

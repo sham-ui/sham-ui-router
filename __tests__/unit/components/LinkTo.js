@@ -1,9 +1,11 @@
 import { DI } from 'sham-ui';
+import { storage } from '../../../src/storage';
 import LinkTo from '../../../src/components/LinkTo.sfc';
 import renderer from 'sham-ui-test-helpers';
 
 afterEach( () => {
     DI.bind( 'router', null );
+    DI.resolve( 'router:storage' ).reset();
 } );
 
 it( 'render correctly', () => {
@@ -44,15 +46,14 @@ it( 'params options', () => {
 
 it( 'useActiveClass options', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
 
     DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock
+        generate: generateMock
     } );
 
     generateMock.mockReturnValue( '/base' );
-    lastRouteResolvedMock.mockReturnValue( { url: '/base' } );
+    storage.url = '/base';
+    storage.sync();
 
     const meta = renderer( LinkTo, {
         path: 'base',
@@ -61,24 +62,18 @@ it( 'useActiveClass options', () => {
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( generateMock.mock.calls ).toHaveLength( 1 );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', {} ] );
-    expect( lastRouteResolvedMock.mock.calls ).toHaveLength( 1 );
-
-    DI.resolve( 'sham-ui' ).render.ALL();
 } );
 
 it( 'activeClass options', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-    const registerActivePageLinkMock = jest.fn();
 
     DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock,
-        _registerActivePageLink: registerActivePageLinkMock
+        generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    lastRouteResolvedMock.mockReturnValueOnce( { url: '/base' } );
+    storage.url = '/base';
+    storage.sync();
 
     const meta = renderer( LinkTo, {
         path: 'base',
@@ -101,23 +96,20 @@ it( 'className option', () => {
         text: 'Base page',
         className: 'foo bar'
     } );
-    expect( meta.component.querySelector( 'a' ).className ).toEqual( 'foo bar' );
+    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'foo bar' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
 it( 'className option & useActiveClass & activeClass', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-    const registerActivePageLinkMock = jest.fn();
 
     DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock,
-        _registerActivePageLink: registerActivePageLinkMock
+        generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    lastRouteResolvedMock.mockReturnValueOnce( { url: '/base' } );
+    storage.url = '/base';
+    storage.sync();
 
     const meta = renderer( LinkTo, {
         path: 'base',
@@ -125,7 +117,7 @@ it( 'className option & useActiveClass & activeClass', () => {
         activeClass: 'test-active',
         className: 'foo'
     } );
-    expect( meta.component.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
+    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
@@ -143,7 +135,7 @@ it( 'click', () => {
     const meta = renderer( LinkTo, {
         path: 'base'
     } );
-    meta.component.querySelector( 'a' ).click();
+    meta.component.container.querySelector( 'a' ).click();
 
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( navigateMock.mock.calls ).toHaveLength( 1 );
@@ -162,25 +154,7 @@ it( 'remove', () => {
         path: 'base',
         text: 'Base page'
     } );
+    const container = meta.component.container;
     meta.component.remove();
-    expect( meta.toJSON() ).toMatchSnapshot();
-} );
-
-it( 'destroy', () => {
-    const generateMock = jest.fn();
-    DI.bind( 'router', {
-        generate: generateMock
-    } );
-
-    generateMock.mockReturnValue( '/base' );
-
-    const meta = renderer( LinkTo, {
-        path: 'base',
-        text: 'Base page'
-    } );
-
-    DI.resolve( 'sham-ui' ).render.ALL();
-
-    expect( meta.toJSON() ).toMatchSnapshot();
-    expect( generateMock.mock.calls ).toHaveLength( 2 );
+    expect( container.innerHTML ).toEqual( '' );
 } );

@@ -1,11 +1,17 @@
 import { DI } from 'sham-ui';
+import { storage } from '../../../src/storage';
 import HrefTo from '../../../src/directives/href-to';
 import path from '../../../src/builders/params';
 import renderer, { compile } from 'sham-ui-test-helpers';
 
+afterEach( () => {
+    DI.resolve( 'router:storage' ).reset();
+} );
+
 it( 'render correctly', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
+        storage,
         generate: generateMock
     } );
 
@@ -32,6 +38,7 @@ it( 'render correctly', () => {
 it( 'params', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
+        storage,
         generate: generateMock
     } );
 
@@ -57,6 +64,7 @@ it( 'params', () => {
 it( 'params from options', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
+        storage,
         generate: generateMock
     } );
 
@@ -84,15 +92,15 @@ it( 'params from options', () => {
 
 it( 'useActiveClass', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
 
     DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock
+        storage,
+        generate: generateMock
     } );
 
     generateMock.mockReturnValue( '/base' );
-    lastRouteResolvedMock.mockReturnValue( { url: '/base' } );
+    storage.url = '/base';
+    storage.sync();
 
     const meta = renderer(
         compile`
@@ -109,28 +117,25 @@ it( 'useActiveClass', () => {
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( generateMock.mock.calls ).toHaveLength( 1 );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', {} ] );
-    expect( lastRouteResolvedMock.mock.calls ).toHaveLength( 1 );
-    expect( meta.component.querySelector( 'a' ).className ).toEqual( 'active' );
+    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'active' );
 
-    lastRouteResolvedMock.mockReturnValue( { url: '/baz' } );
-    DI.resolve( 'sham-ui' ).render.emit( 'RouteChanged' );
-    expect( meta.component.querySelector( 'a' ).className ).toEqual( '' );
+    storage.url = '/baz';
+    storage.sync();
+    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( '' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
 it( 'activeClass', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-    const registerActivePageLinkMock = jest.fn();
 
     DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock,
-        _registerActivePageLink: registerActivePageLinkMock
+        storage,
+        generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    lastRouteResolvedMock.mockReturnValueOnce( { url: '/base' } );
+    storage.url = '/base';
+    storage.sync();
 
     const meta = renderer(
         compile`
@@ -149,17 +154,15 @@ it( 'activeClass', () => {
 
 it( 'class & useActiveClass & activeClass', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-    const registerActivePageLinkMock = jest.fn();
 
     DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock,
-        _registerActivePageLink: registerActivePageLinkMock
+        storage,
+        generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    lastRouteResolvedMock.mockReturnValueOnce( { url: '/base' } );
+    storage.url = '/base';
+    storage.sync();
 
     const meta = renderer(
         compile`
@@ -176,7 +179,7 @@ it( 'class & useActiveClass & activeClass', () => {
             }
         }
     );
-    expect( meta.component.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
+    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
@@ -185,6 +188,7 @@ it( 'click', () => {
     const navigateMock = jest.fn();
 
     DI.bind( 'router', {
+        storage,
         generate: generateMock,
         navigate: navigateMock
     } );
@@ -204,7 +208,7 @@ it( 'click', () => {
             }
         }
     );
-    meta.component.querySelector( 'a' ).click();
+    meta.component.container.querySelector( 'a' ).click();
 
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( navigateMock.mock.calls ).toHaveLength( 1 );
@@ -214,6 +218,7 @@ it( 'click', () => {
 it( 'remove', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
+        storage,
         generate: generateMock
     } );
 
@@ -236,50 +241,17 @@ it( 'remove', () => {
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
-it( 'destroy', () => {
-    const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-    DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock
-    } );
-
-    generateMock.mockReturnValue( '/base' );
-    lastRouteResolvedMock.mockReturnValue( { url: '/base' } );
-
-    const meta = renderer(
-        compile`
-            <a :hrefto={{ {'path': 'base', 'useActiveClass': true} }}>
-                Base page
-            </a>
-        
-        `,
-        {
-            directives: {
-                'hrefto': HrefTo
-            }
-        }
-    );
-
-    DI.resolve( 'sham-ui' ).render.ALL();
-
-    expect( meta.toJSON() ).toMatchSnapshot();
-    expect( generateMock.mock.calls ).toHaveLength( 2 );
-} );
-
 it( 'params builder', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-    const registerActivePageLinkMock = jest.fn();
 
     DI.bind( 'router', {
-        generate: generateMock,
-        lastRouteResolved: lastRouteResolvedMock,
-        _registerActivePageLink: registerActivePageLinkMock
+        storage,
+        generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base/1' );
-    lastRouteResolvedMock.mockReturnValueOnce( { url: '/base/1' } );
+    storage.url = '/base/1';
+    storage.sync();
 
     const meta = renderer(
         compile`
@@ -297,8 +269,8 @@ it( 'params builder', () => {
             path
         }
     );
-    expect( meta.component.querySelector( 'a' ).className ).toBe( 'foo test-active' );
-    expect( meta.component.querySelector( 'a' ).href ).toBe(
+    expect( meta.component.container.querySelector( 'a' ).className ).toBe( 'foo test-active' );
+    expect( meta.component.container.querySelector( 'a' ).href ).toBe(
         'http://sham-ui-router.example.com/base/1'
     );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', { id: 1 } ] );

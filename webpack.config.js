@@ -1,11 +1,7 @@
 const webpack = require( 'webpack' );
 
 const plugins = [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.DefinePlugin( {
-        ACTIVE_PAGE_CONTAINER_TYPE: JSON.stringify( 'active-page-container' ),
-        ACTIVE_PAGE_LINK_TYPE: JSON.stringify( 'link-to-active-page' )
-    } )
+    new webpack.NoEmitOnErrorsPlugin()
 ];
 
 module.exports = {
@@ -26,7 +22,9 @@ module.exports = {
     externals: [
         'sham-ui',
         'sham-ui-directives',
-        'navigo'
+        'sham-ui-data-storage',
+        'navigo',
+        /^(core-js)/
     ],
     plugins: plugins,
     module: {

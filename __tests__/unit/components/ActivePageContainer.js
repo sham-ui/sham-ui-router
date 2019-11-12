@@ -1,25 +1,27 @@
 import { DI } from 'sham-ui';
+import { storage } from '../../../src/storage';
 import ActivePageContainer from '../../../src/components/ActivePageContainer';
 import DummyComponent from './Dummy.sht';
 import DynamicPlaceActivePageContainer from './DynamicPlaceActivePageContainer.sht';
 import renderer from 'sham-ui-test-helpers';
 
+afterEach( () => {
+    DI.resolve( 'router:storage' ).reset();
+} );
 
 it( 'renders correctly', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-
-    lastRouteResolvedMock.mockReturnValue( { url: '' } );
 
     DI.bind( 'router', {
-        generate: generateMock,
-        activePageComponent: DummyComponent,
-        lastRouteResolved: lastRouteResolvedMock,
-        activePageOptions: {
-            path: 'base',
-            text: 'Base page'
-        }
+        storage,
+        generate: generateMock
     } );
+    storage.activePageComponent = DummyComponent;
+    storage.activePageOptions = {
+        path: 'base',
+        text: 'Base page'
+    };
+    storage.sync();
 
     generateMock.mockReturnValue( '/base' );
 
@@ -29,19 +31,17 @@ it( 'renders correctly', () => {
 
 it( 'correct process dynamic placet', () => {
     const generateMock = jest.fn();
-    const lastRouteResolvedMock = jest.fn();
-
-    lastRouteResolvedMock.mockReturnValue( { url: '' } );
 
     DI.bind( 'router', {
-        generate: generateMock,
-        activePageComponent: DummyComponent,
-        lastRouteResolved: lastRouteResolvedMock,
-        activePageOptions: {
-            path: 'base',
-            text: 'Base page'
-        }
+        storage,
+        generate: generateMock
     } );
+    storage.activePageComponent = DummyComponent;
+    storage.activePageOptions = {
+        path: 'base',
+        text: 'Base page'
+    };
+    storage.sync();
 
     generateMock.mockReturnValue( '/base' );
 
