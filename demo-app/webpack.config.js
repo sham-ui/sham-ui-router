@@ -8,10 +8,6 @@ const plugins = [
     new ExtractTextPlugin( {
         allChunks: true,
         filename: 'bundle.css'
-    } ),
-    new webpack.DefinePlugin( {
-        ACTIVE_PAGE_CONTAINER_TYPE: JSON.stringify( 'active-page-container' ),
-        ACTIVE_PAGE_LINK_TYPE: JSON.stringify( 'link-to-active-page' )
     } )
 ];
 const entry = [

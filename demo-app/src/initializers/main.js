@@ -9,11 +9,12 @@ export default function() {
     router
         .bindPage( '/foo', 'foo', FooPage, {} )
         .bindPage( '/bar', 'bar', BarPage, {} )
-        .bindPage( '/', 'root', FooPage, {} );
+        .bindPage( '/', 'root', FooPage, {} )
+        .resolve();
 
     new App( {
         ID: 'app',
-        containerSelector: 'body',
+        container: document.querySelector( 'body' ),
         directives: {
             hrefto
         }
