@@ -1,9 +1,0 @@
-{% import ActivePageContainer from '../../../src/components/ActivePageContainer' %}
-
-{% if withWrapper %}
-    <div class="wrapper">
-        <ActivePageContainer/>
-    </div>
-{% else %}
-    <ActivePageContainer/>
-{% endif %}

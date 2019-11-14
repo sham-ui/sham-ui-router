@@ -1,7 +1,7 @@
 import Router from '../../src/index';
 import Navigo from 'navigo';
 import { DI } from 'sham-ui';
-import DummyComponent from './components/Dummy.sht';
+import { compile } from 'sham-ui-test-helpers';
 jest.mock( 'navigo' );
 
 beforeEach( () => {
@@ -196,6 +196,11 @@ it( 'bindPage', () => {
     const router = new Router();
     expect( router.storage.activePageComponent ).toEqual( null );
     expect( router.storage.activePageOptions ).toEqual( null );
+
+    const DummyComponent = compile`
+        <h1>Title</h1>
+        <div>Content for dummy component</div>
+    `;
 
     router.bindPage( '/', 'root', DummyComponent, { foo: 1 } );
 

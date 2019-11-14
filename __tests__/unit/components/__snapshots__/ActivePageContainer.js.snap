@@ -2,7 +2,7 @@
 
 exports[`correct process dynamic placet 1`] = `
 Object {
-  "Constructor": "DynamicPlaceActivePageContainer",
+  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "withWrapper": false,
@@ -18,7 +18,7 @@ Object {
 
 exports[`correct process dynamic placet 2`] = `
 Object {
-  "Constructor": "DynamicPlaceActivePageContainer",
+  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "withWrapper": true,

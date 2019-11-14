@@ -1,9 +1,7 @@
 import { DI } from 'sham-ui';
 import { storage } from '../../../src/storage';
 import ActivePageContainer from '../../../src/components/ActivePageContainer';
-import DummyComponent from './Dummy.sht';
-import DynamicPlaceActivePageContainer from './DynamicPlaceActivePageContainer.sht';
-import renderer from 'sham-ui-test-helpers';
+import renderer, { compile } from 'sham-ui-test-helpers';
 
 afterEach( () => {
     DI.resolve( 'router:storage' ).reset();
@@ -16,7 +14,10 @@ it( 'renders correctly', () => {
         storage,
         generate: generateMock
     } );
-    storage.activePageComponent = DummyComponent;
+    storage.activePageComponent = compile`
+        <h1>Title</h1>
+        <div>Content for dummy component</div>
+    `;
     storage.activePageOptions = {
         path: 'base',
         text: 'Base page'
@@ -36,7 +37,10 @@ it( 'correct process dynamic placet', () => {
         storage,
         generate: generateMock
     } );
-    storage.activePageComponent = DummyComponent;
+    storage.activePageComponent = compile`
+        <h1>Title</h1>
+        <div>Content for dummy component</div>
+    `;
     storage.activePageOptions = {
         path: 'base',
         text: 'Base page'
@@ -45,9 +49,22 @@ it( 'correct process dynamic placet', () => {
 
     generateMock.mockReturnValue( '/base' );
 
-    const meta = renderer( DynamicPlaceActivePageContainer, {
-        withWrapper: false
-    } );
+    const meta = renderer(
+        compile( {
+            ActivePageContainer
+        } )`
+        {% if withWrapper %}
+            <div class="wrapper">
+                <ActivePageContainer/>
+            </div>
+        {% else %}
+            <ActivePageContainer/>
+        {% endif %}
+        `,
+        {
+            withWrapper: false
+        }
+    );
     expect( meta.toJSON() ).toMatchSnapshot();
     meta.component.update( {
         withWrapper: true
