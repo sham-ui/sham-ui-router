@@ -1,9 +1,12 @@
 <template>
     <a
-            href={{this.generateURL( path, params )}}
-            class={{this.generateClassName( className, useActiveClass, activeClass )}}
-            :onclick={{::this.click}}
-            :ref="aNode"
+        :hrefto={{ {
+            'path': path,
+            'params': params,
+            'useActiveClass': useActiveClass,
+            'activeClass': activeClass
+        } }}
+        class={{className}}
     >
         {{text}}
         {% defblock %}
@@ -12,8 +15,6 @@
 
 <script>
     import { options, inject, mergeWithTemplate } from 'sham-ui-macro/babel.macro';
-    import { useStorage } from '../storage';
-    import { onclick, ref } from 'sham-ui-directives';
 
     @mergeWithTemplate
     class LinkToComponent extends Template {
@@ -24,36 +25,7 @@
         @options activeClass = 'active';
         @options className = '';
         @options params = {};
-
-        copyFromConstructorArgument() {
-            super.copyFromConstructorArgument( ...arguments );
-            if ( !this.directives ) {
-                this.directives = {};
-            }
-            this.directives.onclick = onclick;
-            this.directives.ref = ref;
-        }
-
-        generateURL( path, params ) {
-            return this.lastGeneratedURL = this.router.generate( path, params );
-        }
-
-        get isActive() {
-            return this.lastGeneratedURL === this.options.routerData.url;
-        }
-
-        generateClassName( className, useActiveClass, activeClass ) {
-            return [
-                className,
-                useActiveClass && this.isActive ? activeClass : ''
-            ].join( ' ' ).trim();
-        }
-
-        click( e ) {
-            e.preventDefault();
-            this.router.navigate( this.aNode.getAttribute( 'href' ) );
-        }
     }
 
-    export default useStorage( 'routerData' )( LinkToComponent );
+    export default LinkToComponent;
 </script>

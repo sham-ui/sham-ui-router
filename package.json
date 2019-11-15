@@ -61,8 +61,7 @@
   "dependencies": {
     "navigo": "^7.1.2",
     "sham-ui": "^4.0.0",
-    "sham-ui-data-storage": "^1.0.1",
-    "sham-ui-directives": "^4.0.0"
+    "sham-ui-data-storage": "^1.0.1"
   },
   "babel": {
     "presets": [

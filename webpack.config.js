@@ -21,7 +21,6 @@ module.exports = {
     },
     externals: [
         'sham-ui',
-        'sham-ui-directives',
         'sham-ui-data-storage',
         'navigo',
         /^(core-js)/

@@ -7,18 +7,16 @@ Object {
     "ID": "component",
     "activeClass": "test-active",
     "className": "",
+    "directives": Object {
+      "hrefto": [Function],
+    },
     "params": Object {},
     "path": "base",
-    "routerData": Object {
-      "activePageComponent": null,
-      "activePageOptions": null,
-      "url": "/base",
-    },
     "text": "",
     "useActiveClass": true,
   },
   "html": "
-<a href=\\"/base\\" class=\\"test-active\\">
+<a class=\\"test-active\\" href=\\"/base\\">
   <!--default-->
 </a>
 ",
@@ -32,18 +30,16 @@ Object {
     "ID": "component",
     "activeClass": "test-active",
     "className": "foo",
+    "directives": Object {
+      "hrefto": [Function],
+    },
     "params": Object {},
     "path": "base",
-    "routerData": Object {
-      "activePageComponent": null,
-      "activePageOptions": null,
-      "url": "/base",
-    },
     "text": "",
     "useActiveClass": true,
   },
   "html": "
-<a href=\\"/base\\" class=\\"foo test-active\\">
+<a class=\\"foo test-active\\" href=\\"/base\\">
   <!--default-->
 </a>
 ",
@@ -57,18 +53,16 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "foo bar",
+    "directives": Object {
+      "hrefto": [Function],
+    },
     "params": Object {},
     "path": "base",
-    "routerData": Object {
-      "activePageComponent": null,
-      "activePageOptions": null,
-      "url": "",
-    },
     "text": "Base page",
     "useActiveClass": false,
   },
   "html": "
-<a href=\\"/base\\" class=\\"foo bar\\">Base page
+<a class=\\"foo bar\\" href=\\"/base\\">Base page
   <!--default-->
 </a>
 ",
@@ -82,18 +76,16 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "hrefto": [Function],
+    },
     "params": Object {},
     "path": "base",
-    "routerData": Object {
-      "activePageComponent": null,
-      "activePageOptions": null,
-      "url": "",
-    },
     "text": "",
     "useActiveClass": false,
   },
   "html": "
-<a href=\\"/base\\" class=\\"\\">
+<a class=\\"\\" href=\\"/base\\">
   <!--default-->
 </a>
 ",
@@ -107,20 +99,18 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "hrefto": [Function],
+    },
     "params": Object {
       "id": 1,
     },
     "path": "base",
-    "routerData": Object {
-      "activePageComponent": null,
-      "activePageOptions": null,
-      "url": "",
-    },
     "text": "",
     "useActiveClass": false,
   },
   "html": "
-<a href=\\"/base/1\\" class=\\"\\">
+<a class=\\"\\" href=\\"/base/1\\">
   <!--default-->
 </a>
 ",
@@ -134,18 +124,16 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "hrefto": [Function],
+    },
     "params": Object {},
     "path": "base",
-    "routerData": Object {
-      "activePageComponent": null,
-      "activePageOptions": null,
-      "url": "",
-    },
     "text": "Base page",
     "useActiveClass": false,
   },
   "html": "
-<a href=\\"/base\\" class=\\"\\">Base page
+<a class=\\"\\" href=\\"/base\\">Base page
   <!--default-->
 </a>
 ",
@@ -159,18 +147,16 @@ Object {
     "ID": "component",
     "activeClass": "active",
     "className": "",
+    "directives": Object {
+      "hrefto": [Function],
+    },
     "params": Object {},
     "path": "base",
-    "routerData": Object {
-      "activePageComponent": null,
-      "activePageOptions": null,
-      "url": "/base",
-    },
     "text": "",
     "useActiveClass": true,
   },
   "html": "
-<a href=\\"/base\\" class=\\"active\\">
+<a class=\\"active\\" href=\\"/base\\">
   <!--default-->
 </a>
 ",
