@@ -4,6 +4,7 @@
 * Remove `autoResolve`
 * Rewrite with `sham-ui-data-storage`
 * Rewrite `link-to` component with `href-to` directive
+* Add travis-ci
 
 ## 3.0.1
 * Fix build
