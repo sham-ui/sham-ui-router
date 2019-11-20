@@ -24,23 +24,86 @@ yarn add sham-ui-router
 
 #### Table of Contents
 
+-   [ParamsBuilder](#paramsbuilder)
+    -   [param](#param)
+        -   [Parameters](#parameters)
+    -   [\_params](#_params)
+        -   [Parameters](#parameters-1)
+    -   [\_useActiveClass](#_useactiveclass)
+    -   [\_activeClass](#_activeclass)
+        -   [Parameters](#parameters-2)
+-   [path](#path)
+    -   [Parameters](#parameters-3)
 -   [Router](#router)
-    -   [Parameters](#parameters)
+    -   [Parameters](#parameters-4)
     -   [Examples](#examples)
     -   [storage](#storage)
     -   [bindPage](#bindpage)
-        -   [Parameters](#parameters-1)
+        -   [Parameters](#parameters-5)
     -   [resolve](#resolve)
     -   [notFound](#notfound)
     -   [navigate](#navigate)
-        -   [Parameters](#parameters-2)
+        -   [Parameters](#parameters-6)
     -   [hooks](#hooks)
-        -   [Parameters](#parameters-3)
+        -   [Parameters](#parameters-7)
     -   [generate](#generate)
-        -   [Parameters](#parameters-4)
+        -   [Parameters](#parameters-8)
         -   [Examples](#examples-1)
 -   [RouterStorage](#routerstorage)
     -   [Properties](#properties)
+
+### ParamsBuilder
+
+Helper for build params for href-to directive
+
+Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+#### param
+
+Add param for page
+
+##### Parameters
+
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Param name
+-   `value` **any** Param value
+
+Returns **[ParamsBuilder](#paramsbuilder)** 
+
+#### \_params
+
+Set params
+
+##### Parameters
+
+-   `value` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **[ParamsBuilder](#paramsbuilder)** 
+
+#### \_useActiveClass
+
+User active class
+
+Returns **[ParamsBuilder](#paramsbuilder)** 
+
+#### \_activeClass
+
+Set active class
+
+##### Parameters
+
+-   `activeClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **[ParamsBuilder](#paramsbuilder)** 
+
+### path
+
+Create new ParamsBuilder
+
+#### Parameters
+
+-   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of destination page
+
+Returns **[ParamsBuilder](#paramsbuilder)** 
 
 ### Router
 
