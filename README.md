@@ -260,7 +260,7 @@ Or use `hrefto` directive:
 
 ```html
 ...
-    <a :hrefto={{ {"path": "foo",  "params": params} }} className="custom-class-1 custom-class-2">
+    <a :hrefto={{ {"path": "foo",  "params": params} }} class="custom-class-1 custom-class-2">
         Foo
     </a>
 ...
@@ -271,7 +271,7 @@ Or use `hrefto` directive with `params` helper:
 ```html
 {% import path from 'sham-ui-router/params' %}
 ...
-    <a :hrefto={{path("foo").param("id", 2)}} className="custom-class-1 custom-class-2">
+    <a :hrefto={{path("foo").param("id", 2)}} class="custom-class-1 custom-class-2">
         Foo
     </a>
 ...
