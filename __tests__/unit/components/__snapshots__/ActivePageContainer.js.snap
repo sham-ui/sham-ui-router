@@ -44,6 +44,8 @@ Object {
         "path": "base",
         "text": "Base page",
       },
+      "name": "",
+      "params": Object {},
       "url": "",
     },
   },
