@@ -34,9 +34,11 @@ yarn add sham-ui-router
         -   [Parameters](#parameters-2)
 -   [path](#path)
     -   [Parameters](#parameters-3)
+-   [ActivePageContainer](#activepagecontainer)
+    -   [Examples](#examples)
 -   [Router](#router)
     -   [Parameters](#parameters-4)
-    -   [Examples](#examples)
+    -   [Examples](#examples-1)
     -   [storage](#storage)
     -   [bindPage](#bindpage)
         -   [Parameters](#parameters-5)
@@ -48,7 +50,7 @@ yarn add sham-ui-router
         -   [Parameters](#parameters-7)
     -   [generate](#generate)
         -   [Parameters](#parameters-8)
-        -   [Examples](#examples-1)
+        -   [Examples](#examples-2)
 -   [RouterStorage](#routerstorage)
     -   [Properties](#properties)
 
@@ -104,6 +106,21 @@ Create new ParamsBuilder
 -   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of destination page
 
 Returns **[ParamsBuilder](#paramsbuilder)** 
+
+### ActivePageContainer
+
+**Extends Component**
+
+Component-container for page
+
+#### Examples
+
+```javascript
+{% import ActivePageContainer from 'sham-ui-router/active-page-container' %}
+...
+<ActivePageContainer/>
+...
+```
 
 ### Router
 

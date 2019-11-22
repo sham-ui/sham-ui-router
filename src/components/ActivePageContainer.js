@@ -1,6 +1,14 @@
 import { Component } from 'sham-ui';
 import { useStorage } from '../storage';
 
+/**
+ * Component-container for page
+ * @example
+ * {% import ActivePageContainer from 'sham-ui-router/active-page-container' %}
+ * ...
+ * <ActivePageContainer/>
+ * ...
+ */
 class ActivePageContainer extends Component {
     constructor() {
         super( ...arguments );
