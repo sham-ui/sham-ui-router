@@ -14,12 +14,10 @@
 </template>
 
 <script>
-    import { options, inject, mergeWithTemplate } from 'sham-ui-macro/babel.macro';
+    import { options, mergeWithTemplate } from 'sham-ui-macro/babel.macro';
 
     @mergeWithTemplate
     class LinkToComponent extends Template {
-        @inject router;
-
         @options text = '';
         @options useActiveClass = false;
         @options activeClass = 'active';
