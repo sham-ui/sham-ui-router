@@ -1,5 +1,14 @@
 import { inject } from 'sham-ui-macro/babel.macro';
 
+/**
+ * Directive for links
+ * @example
+ * ...
+ *   <a :hrefto={{ {"path": "foo",  "params": params} }} class="custom-class-1 custom-class-2">
+ *     Foo
+ *   </a>
+ * ....
+ */
 export default class HrefTo {
     @inject router;
 

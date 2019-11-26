@@ -36,9 +36,11 @@ yarn add sham-ui-router
     -   [Parameters](#parameters-3)
 -   [ActivePageContainer](#activepagecontainer)
     -   [Examples](#examples)
+-   [HrefTo](#hrefto)
+    -   [Examples](#examples-1)
 -   [Router](#router)
     -   [Parameters](#parameters-4)
-    -   [Examples](#examples-1)
+    -   [Examples](#examples-2)
     -   [storage](#storage)
     -   [bindPage](#bindpage)
         -   [Parameters](#parameters-5)
@@ -50,7 +52,7 @@ yarn add sham-ui-router
         -   [Parameters](#parameters-7)
     -   [generate](#generate)
         -   [Parameters](#parameters-8)
-        -   [Examples](#examples-2)
+        -   [Examples](#examples-3)
 -   [RouterStorage](#routerstorage)
     -   [Properties](#properties)
 
@@ -120,6 +122,20 @@ Component-container for page
 ...
 <ActivePageContainer/>
 ...
+```
+
+### HrefTo
+
+Directive for links
+
+#### Examples
+
+```javascript
+...
+  <a :hrefto={{ {"path": "foo",  "params": params} }} class="custom-class-1 custom-class-2">
+    Foo
+  </a>
+....
 ```
 
 ### Router
