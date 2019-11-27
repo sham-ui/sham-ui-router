@@ -36,6 +36,10 @@ yarn add sham-ui-router
     -   [Parameters](#parameters-3)
 -   [ActivePageContainer](#activepagecontainer)
     -   [Examples](#examples)
+-   [LinkTo](#linkto)
+    -   [Properties](#properties)
+-   [LinkToOptions](#linktooptions)
+    -   [Properties](#properties-1)
 -   [HrefTo](#hrefto)
     -   [Examples](#examples-1)
 -   [Router](#router)
@@ -54,7 +58,7 @@ yarn add sham-ui-router
         -   [Parameters](#parameters-8)
         -   [Examples](#examples-3)
 -   [RouterStorage](#routerstorage)
-    -   [Properties](#properties)
+    -   [Properties](#properties-2)
 
 ### ParamsBuilder
 
@@ -123,6 +127,28 @@ Component-container for page
 <ActivePageContainer/>
 ...
 ```
+
+### LinkTo
+
+Component for link to page
+
+#### Properties
+
+-   `options` **[LinkToOptions](#linktooptions)** 
+
+### LinkToOptions
+
+Options for LinkTo
+
+Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+#### Properties
+
+-   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of page for link. Default ''
+-   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Params of page for link. Default {}
+-   `text` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Text for link. Default ''
+-   `useActiveClass` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** User activeClass options for active page link. Default false
+-   `activeClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Class name for active link. Default 'active'
 
 ### HrefTo
 

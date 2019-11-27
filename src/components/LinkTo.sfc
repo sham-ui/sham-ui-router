@@ -18,6 +18,7 @@
 
     @mergeWithTemplate
     class LinkToComponent extends Template {
+        @options path = '';
         @options text = '';
         @options useActiveClass = false;
         @options activeClass = 'active';
