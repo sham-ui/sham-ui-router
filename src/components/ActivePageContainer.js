@@ -7,7 +7,7 @@ import { useStorage } from '../storage';
  * @property {string} path Name of page for link. Default ''
  * @property {Object} params Params of page for link. Default {}
  * @property {string} text Text for link. Default ''
- * @property {boolean} useActiveClass User activeClass options for active page link. Default false
+ * @property {boolean} useActiveClass Use activeClass options for active page link. Default false
  * @property {string} activeClass Class name for active link. Default 'active'
  */
 

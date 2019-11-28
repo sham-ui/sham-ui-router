@@ -46,7 +46,7 @@ export default function path( path ) {
         },
 
         /**
-         * User active class
+         * Use active class
          * @name _useActiveClass
          * @method
          * @memberof ParamsBuilder
