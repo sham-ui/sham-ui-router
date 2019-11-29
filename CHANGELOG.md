@@ -5,6 +5,7 @@
 * Rewrite with `sham-ui-data-storage`
 * Rewrite `link-to` component with `href-to` directive
 * Add travis-ci
+* Add documentation
 
 ## 3.0.1
 * Fix build

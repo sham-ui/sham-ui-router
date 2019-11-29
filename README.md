@@ -25,6 +25,7 @@ yarn add sham-ui-router
 #### Table of Contents
 
 -   [ParamsBuilder](#paramsbuilder)
+    -   [Examples](#examples)
     -   [param](#param)
         -   [Parameters](#parameters)
     -   [\_params](#_params)
@@ -35,16 +36,16 @@ yarn add sham-ui-router
 -   [path](#path)
     -   [Parameters](#parameters-3)
 -   [ActivePageContainer](#activepagecontainer)
-    -   [Examples](#examples)
+    -   [Examples](#examples-1)
 -   [LinkTo](#linkto)
     -   [Properties](#properties)
 -   [LinkToOptions](#linktooptions)
     -   [Properties](#properties-1)
 -   [HrefTo](#hrefto)
-    -   [Examples](#examples-1)
+    -   [Examples](#examples-2)
 -   [Router](#router)
     -   [Parameters](#parameters-4)
-    -   [Examples](#examples-2)
+    -   [Examples](#examples-3)
     -   [storage](#storage)
     -   [bindPage](#bindpage)
         -   [Parameters](#parameters-5)
@@ -56,7 +57,7 @@ yarn add sham-ui-router
         -   [Parameters](#parameters-7)
     -   [generate](#generate)
         -   [Parameters](#parameters-8)
-        -   [Examples](#examples-3)
+        -   [Examples](#examples-4)
 -   [RouterStorage](#routerstorage)
     -   [Properties](#properties-2)
 
@@ -65,6 +66,17 @@ yarn add sham-ui-router
 Helper for build params for href-to directive
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+#### Examples
+
+```javascript
+{% import path from 'sham-ui-router/params' %}
+...
+<a :hrefto={{path("foo").param("id", 2)}} class="custom-class-1 custom-class-2">
+ Foo
+</a>
+...
+```
 
 #### param
 
@@ -89,7 +101,7 @@ Returns **[ParamsBuilder](#paramsbuilder)**
 
 #### \_useActiveClass
 
-User active class
+Use active class
 
 Returns **[ParamsBuilder](#paramsbuilder)** 
 
@@ -147,7 +159,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 -   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of page for link. Default ''
 -   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Params of page for link. Default {}
 -   `text` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Text for link. Default ''
--   `useActiveClass` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** User activeClass options for active page link. Default false
+-   `useActiveClass` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use activeClass options for active page link. Default false
 -   `activeClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Class name for active link. Default 'active'
 
 ### HrefTo
@@ -276,62 +288,3 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 -   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Current page params
 -   `activePageComponent` **Class&lt;Component>** Current page component class
 -   `activePageOptions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options for current page component
-
-## Usage
-
-Bind page component in `component-binder`:
-
-```js
-import FooPage from '../components/FooPage.sht';
-import BarPage from '../components/BarPage.sht';
-import Router from 'sham-ui-router';
-
-const router = new Router();
-router
-    .bindPage( 
-        '/foo', // URL
-        'foo', // Name
-        FooPage, // Component class
-        { componentOption: 1 } // Component options
-    )
-    .bindPage( '/bar', 'bar', BarPage, {} );
-```
-
-In `App.sht` add `ActivePageContainer`:
-
-```html
-{% import ActivePageContainer from 'sham-ui-router/active-page-container' %}
-...
-    <ActivePageContainer/>
-...
-```
-
-Add [LinkTo](https://github.com/sham-ui/sham-ui-router/blob/master/src/components/LinkTo.js) components in templates:
-
-```html
-{% import LinkTo from 'sham-ui-router/link-to' %}
-... 
-    <LinkTo text="Foo" path="foo" params={{params}} useActiveClass={{true}} className="custom-class-1 custom-class-2"/>
-...
-```
-
-Or use `hrefto` directive:
-
-```html
-...
-    <a :hrefto={{ {"path": "foo",  "params": params} }} class="custom-class-1 custom-class-2">
-        Foo
-    </a>
-...
-```
-
-Or use `hrefto` directive with `params` helper:
-
-```html
-{% import path from 'sham-ui-router/params' %}
-...
-    <a :hrefto={{path("foo").param("id", 2)}} class="custom-class-1 custom-class-2">
-        Foo
-    </a>
-...
-```

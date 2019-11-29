@@ -1,6 +1,13 @@
 /**
  * Helper for build params for href-to directive
  * @typedef {Object} ParamsBuilder
+ * @example
+ * {% import path from 'sham-ui-router/params' %}
+ * ...
+ * <a :hrefto={{path("foo").param("id", 2)}} class="custom-class-1 custom-class-2">
+ *  Foo
+ * </a>
+ * ...
  */
 
 /**
