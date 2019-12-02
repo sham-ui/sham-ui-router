@@ -1,4 +1,4 @@
-## master
+## 4.0.0
 * Update dependencies
 * Add `size-limit`
 * Remove `autoResolve`
