@@ -1,3 +1,6 @@
+## 4.0.1
+* Replace `router.lastRouteResolved` with `router:storage` 
+
 ## 4.0.0
 * Update dependencies
 * Add `size-limit`

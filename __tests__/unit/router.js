@@ -149,21 +149,6 @@ it( 'link', () => {
     expect( linkMock.mock.calls[ 0 ] ).toEqual( [] );
 } );
 
-it( 'lastRouteResolved', () => {
-    const lastRouteResolvedMock = jest.fn();
-    Navigo.mockImplementation( () => {
-        return {
-            lastRouteResolved: lastRouteResolvedMock
-        };
-    } );
-
-    const router = new Router();
-    router.lastRouteResolved();
-
-    expect( lastRouteResolvedMock.mock.calls ).toHaveLength( 1 );
-    expect( lastRouteResolvedMock.mock.calls[ 0 ] ).toEqual( [] );
-} );
-
 it( 'generate', () => {
     const generateMock = jest.fn();
     Navigo.mockImplementation( () => {

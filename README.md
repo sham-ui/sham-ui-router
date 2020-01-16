@@ -50,14 +50,14 @@ yarn add sham-ui-router
     -   [bindPage](#bindpage)
         -   [Parameters](#parameters-5)
     -   [resolve](#resolve)
+    -   [generate](#generate)
+        -   [Parameters](#parameters-6)
+        -   [Examples](#examples-4)
     -   [notFound](#notfound)
     -   [navigate](#navigate)
-        -   [Parameters](#parameters-6)
-    -   [hooks](#hooks)
         -   [Parameters](#parameters-7)
-    -   [generate](#generate)
+    -   [hooks](#hooks)
         -   [Parameters](#parameters-8)
-        -   [Examples](#examples-4)
 -   [RouterStorage](#routerstorage)
     -   [Properties](#properties-2)
 
@@ -216,7 +216,7 @@ Bind page component & url
 ##### Parameters
 
 -   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Url for page
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Page name
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Page name\*
 -   `pageComponent` **Class&lt;Component>** Component for page
 -   `componentOptions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options for component
 
@@ -225,6 +225,29 @@ Returns **[Router](#router)**
 #### resolve
 
 Resolve current url & run router
+
+#### generate
+
+-   **See: <https://github.com/krasimir/navigo#named-routes>**
+
+Generate url for page
+
+##### Parameters
+
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** 
+
+##### Examples
+
+```javascript
+router
+    .bindPage( '/trip/:tripId/edit', 'trip.edit', PageComponent, {} )
+    .bindPage( '/trip/save', 'trip.save', PageComponent, {} )
+    .bindPage( '/trip/:action/:tripId', 'trip.action', PageComponent, {} );
+console.log(router.generate('trip.edit', { tripId: 42 })); // --> /trip/42/edit
+console.log(router.generate('trip.action', { tripId: 42, action: 'save' })); // --> /trip/save/42
+console.log(router.generate('trip.save')); // --> /trip/save
+```
 
 #### notFound
 
@@ -249,29 +272,6 @@ Hooks
 ##### Parameters
 
 -   `hooks` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object with hooks
-
-#### generate
-
--   **See: <https://github.com/krasimir/navigo#named-routes>**
-
-Generate url for page
-
-##### Parameters
-
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
--   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** 
-
-##### Examples
-
-```javascript
-router
-    .bindPage( '/trip/:tripId/edit', 'trip.edit', PageComponent, {} )
-    .bindPage( '/trip/save', 'trip.save', PageComponent, {} )
-    .bindPage( '/trip/:action/:tripId', 'trip.action', PageComponent, {} );
-console.log(router.generate('trip.edit', { tripId: 42 })); // --> /trip/42/edit
-console.log(router.generate('trip.action', { tripId: 42, action: 'save' })); // --> /trip/save/42
-console.log(router.generate('trip.save')); // --> /trip/save
-```
 
 ### RouterStorage
 

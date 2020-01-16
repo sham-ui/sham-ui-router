@@ -35,6 +35,25 @@ export default class Router {
          */
         this.storage = storage;
         this.router = new Navigo( root, useHash, hash );
+
+        // Create proxy descriptor for _lastRouteResolved for set storage
+        let _lastRouteResolved = null;
+        Object.defineProperty( this.router, '_lastRouteResolved', {
+            configurable: true,
+            enumerable: true,
+            get() {
+                return _lastRouteResolved;
+            },
+            set( value ) {
+                if ( null !== value ) {
+                    storage.url = value.url;
+                    storage.name = value.name;
+                    storage.params = value.params || {};
+                }
+                _lastRouteResolved = value;
+            }
+        } );
+
         this._initProxyMethods();
     }
 
@@ -103,7 +122,6 @@ export default class Router {
             'hooks',
             'destroy',
             'link',
-            'lastRouteResolved',
             'generate'
         ].forEach( methodName => {
             Object.defineProperty( this, methodName, {
@@ -120,7 +138,7 @@ export default class Router {
     /**
      * Bind page component & url
      * @param {string} url Url for page
-     * @param {string} name Page name
+     * @param {string} name Page name*
      * @param {Class<Component>} pageComponent Component for page
      * @param {Object} componentOptions Options for component
      * @return {Router}
@@ -131,10 +149,6 @@ export default class Router {
             uses: () => {
                 this.storage.activePageComponent = pageComponent;
                 this.storage.activePageOptions = componentOptions;
-                this.storage.url = url;
-                this.storage.name = name;
-                const lastRoute = this.lastRouteResolved();
-                this.storage.params = lastRoute === undefined ? {} : lastRoute.params;
                 this.storage.sync();
             },
             ...componentOptions
