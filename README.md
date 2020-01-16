@@ -1,7 +1,7 @@
 # sham-ui-router
 
 [![Build Status](https://travis-ci.com/sham-ui/sham-ui-router.svg?branch=master)](https://travis-ci.com/sham-ui/sham-ui-router)
-[![npm version](https://badge.fury.io/js/sham-ui-router.svg)](https://badge.fury.io/js/sham-ui-data-storage)
+[![npm version](https://badge.fury.io/js/sham-ui-router.svg)](https://badge.fury.io/js/sham-ui-router)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 Router for sham-ui
