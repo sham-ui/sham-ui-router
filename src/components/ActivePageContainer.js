@@ -38,6 +38,9 @@ class ActivePageContainer extends Component {
         if ( null !== this.lastRendererdURL && url !== this.lastRendererdURL ) {
             this._clearContainer();
         }
+        if ( null === this.options.routerData.activePageComponent ) {
+            return;
+        }
         window.__UI__.insert(
             this,
             this.container,

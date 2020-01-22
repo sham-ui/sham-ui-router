@@ -24,17 +24,17 @@ yarn add sham-ui-router
 
 #### Table of Contents
 
+-   [path](#path)
+    -   [Parameters](#parameters)
 -   [ParamsBuilder](#paramsbuilder)
     -   [Examples](#examples)
     -   [param](#param)
-        -   [Parameters](#parameters)
-    -   [\_params](#_params)
         -   [Parameters](#parameters-1)
+    -   [\_params](#_params)
+        -   [Parameters](#parameters-2)
     -   [\_useActiveClass](#_useactiveclass)
     -   [\_activeClass](#_activeclass)
-        -   [Parameters](#parameters-2)
--   [path](#path)
-    -   [Parameters](#parameters-3)
+        -   [Parameters](#parameters-3)
 -   [ActivePageContainer](#activepagecontainer)
     -   [Examples](#examples-1)
 -   [LinkTo](#linkto)
@@ -49,17 +49,27 @@ yarn add sham-ui-router
     -   [storage](#storage)
     -   [bindPage](#bindpage)
         -   [Parameters](#parameters-5)
-    -   [resolve](#resolve)
-    -   [generate](#generate)
+    -   [navigate](#navigate)
         -   [Parameters](#parameters-6)
+    -   [hooks](#hooks)
+        -   [Parameters](#parameters-7)
+    -   [generate](#generate)
+        -   [Parameters](#parameters-8)
         -   [Examples](#examples-4)
     -   [notFound](#notfound)
-    -   [navigate](#navigate)
-        -   [Parameters](#parameters-7)
-    -   [hooks](#hooks)
-        -   [Parameters](#parameters-8)
+    -   [resolve](#resolve)
 -   [RouterStorage](#routerstorage)
     -   [Properties](#properties-2)
+
+### path
+
+Create new ParamsBuilder
+
+#### Parameters
+
+-   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of destination page
+
+Returns **[ParamsBuilder](#paramsbuilder)** 
 
 ### ParamsBuilder
 
@@ -112,16 +122,6 @@ Set active class
 ##### Parameters
 
 -   `activeClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-Returns **[ParamsBuilder](#paramsbuilder)** 
-
-### path
-
-Create new ParamsBuilder
-
-#### Parameters
-
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of destination page
 
 Returns **[ParamsBuilder](#paramsbuilder)** 
 
@@ -222,9 +222,23 @@ Bind page component & url
 
 Returns **[Router](#router)** 
 
-#### resolve
+#### navigate
 
-Resolve current url & run router
+Changing the page
+
+##### Parameters
+
+-   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Destination url
+
+#### hooks
+
+-   **See: <https://github.com/krasimir/navigo#hooks>**
+
+Hooks
+
+##### Parameters
+
+-   `hooks` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object with hooks
 
 #### generate
 
@@ -255,23 +269,9 @@ console.log(router.generate('trip.save')); // --> /trip/save
 
 Not found handler
 
-#### navigate
+#### resolve
 
-Changing the page
-
-##### Parameters
-
--   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Destination url
-
-#### hooks
-
--   **See: <https://github.com/krasimir/navigo#hooks>**
-
-Hooks
-
-##### Parameters
-
--   `hooks` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object with hooks
+Resolve current url & run router
 
 ### RouterStorage
 

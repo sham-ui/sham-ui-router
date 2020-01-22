@@ -1,3 +1,7 @@
+## 4.0.2
+* Fix race for `router:storage` (`activePageComponent === null`)
+* Use `sync` storage
+
 ## 4.0.1
 * Replace `router.lastRouteResolved` with `router:storage` 
 

@@ -16,4 +16,7 @@ export const { storage, useStorage } = createStorage( {
     params: {},
     activePageComponent: null,
     activePageOptions: null
-}, { DI: 'router:storage' } );
+}, {
+    DI: 'router:storage',
+    sync: true
+} );

@@ -10009,10 +10009,10 @@ shallow-clone@^1.0.0:
     kind-of "^5.0.0"
     mixin-object "^2.0.1"
 
-sham-ui-data-storage@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/sham-ui-data-storage/-/sham-ui-data-storage-1.0.1.tgz#23ef1815c4334e45404146513854949632ead76c"
-  integrity sha512-ZPXf0pT2d86AAb0v1amzLuePG+l0JvP4Fq7sBhRfzJxSvuzAcxkLbMiOX4wh60vCw6eUct6Nd1324a0cwaLQwg==
+sham-ui-data-storage@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/sham-ui-data-storage/-/sham-ui-data-storage-1.0.2.tgz#ef8b8a410ff22c0e7ebd650332c5ca568c05f16a"
+  integrity sha512-AviTotTj7iaLcHWGO10s04QdFBw5VsfdnJQYDYWzJlZNQv8v4DIfEb2VXj/27n9HevheVhEeg2zU1jo1+JZ3Aw==
   dependencies:
     sham-ui "^4.0.0"
 
