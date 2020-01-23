@@ -10,7 +10,8 @@ module.exports = {
         'link-to': './src/components/LinkTo.sfc',
         'active-page-container': './src/components/ActivePageContainer.js',
         'href-to': './src/directives/href-to.js',
-        'params': './src/builders/params.js'
+        'params': './src/builders/params.js',
+        'storage': './src/storage'
     },
     output: {
         path: __dirname,
@@ -23,7 +24,11 @@ module.exports = {
         'sham-ui',
         'sham-ui-data-storage',
         'navigo',
-        /^(core-js)/
+        /^(core-js)/,
+        {
+            './storage': 'sham-ui-router/storage',
+            '../storage': 'sham-ui-router/storage'
+        }
     ],
     plugins: plugins,
     module: {

@@ -1,3 +1,6 @@
+## 4.0.3
+* Fix duplication `sham-ui-router/storage`
+
 ## 4.0.2
 * Fix race for `router:storage` (`activePageComponent === null`)
 * Use `sync` storage
