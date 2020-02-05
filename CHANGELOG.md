@@ -1,3 +1,7 @@
+## 4.0.4
+* Update dependencies
+* Add `.travis.yml` to `.npmignore`
+
 ## 4.0.3
 * Fix duplication `sham-ui-router/storage`
 
