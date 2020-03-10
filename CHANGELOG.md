@@ -1,3 +1,6 @@
+## 4.0.5
+* Update dependencies
+
 ## 4.0.4
 * Update dependencies
 * Add `.travis.yml` to `.npmignore`
