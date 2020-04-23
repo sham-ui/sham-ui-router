@@ -1,3 +1,7 @@
+## 4.0.6
+* Fix change component without url
+* Update dependencies
+
 ## 4.0.5
 * Update dependencies
 

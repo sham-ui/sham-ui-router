@@ -30,27 +30,38 @@ class ActivePageContainer extends Component {
     constructor() {
         super( ...arguments );
         this.lastRendererdURL = null;
+        this.lastRenderedComponent = null;
         this.ref = null;
     }
 
     updateSpots() {
         const url = this.options.routerData.url;
-        if ( null !== this.lastRendererdURL && url !== this.lastRendererdURL ) {
+        const activePageComponent = this.options.routerData.activePageComponent;
+        if (
+            null !== this.lastRendererdURL &&
+            (
+                url !== this.lastRendererdURL ||
+
+                // Component can changed without change url
+                activePageComponent !== this.lastRenderedComponent
+            )
+        ) {
             this._clearContainer();
         }
-        if ( null === this.options.routerData.activePageComponent ) {
+        if ( null === activePageComponent ) {
             return;
         }
         window.__UI__.insert(
             this,
             this.container,
             this,
-            this.options.routerData.activePageComponent,
+            activePageComponent,
             this.options.routerData.activePageOptions,
             this.owner,
             this.blocks
         );
         this.lastRendererdURL = url;
+        this.lastRenderedComponent = activePageComponent;
     }
 
     _clearContainer() {
