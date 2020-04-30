@@ -8,6 +8,7 @@ import createStorage from 'sham-ui-data-storage';
  * @property {Object} params Current page params
  * @property {Class<Component>} activePageComponent Current page component class
  * @property {Object} activePageOptions Options for current page component
+ * @property {boolean} pageLoaded Current page component loaded (@see Router.bindLazyPage)
  */
 
 export const { storage, useStorage } = createStorage( {
@@ -15,7 +16,8 @@ export const { storage, useStorage } = createStorage( {
     name: '',
     params: {},
     activePageComponent: null,
-    activePageOptions: null
+    activePageOptions: null,
+    pageLoaded: true
 }, {
     DI: 'router:storage',
     sync: true

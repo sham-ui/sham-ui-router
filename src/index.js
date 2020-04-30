@@ -1,7 +1,18 @@
 import { DI } from 'sham-ui';
+import { inject } from 'sham-ui-macro/babel.macro';
 import { storage } from './storage';
 import Navigo from 'navigo';
 
+DI.bind(
+    'router:lazy-page',
+
+    /**
+     * Hook for process lazy page after loader finish. Can override with DI.bind( 'router:lazy-page' )
+     * @param {Class<Component>} pageComponent
+     * @return {Class<Component>}
+     */
+    pageComponent => pageComponent
+);
 
 /**
  * Router service
@@ -18,10 +29,11 @@ import Navigo from 'navigo';
  *         FooPage, // Component class
  *         { componentOption: 1 } // Component options
  *     )
- *     .bindPage( '/bar/:some_param/detail', 'bar', BarPage, {} )
+ *     .bindLazyPage( '/bar/:some_param/detail', 'bar', () => import( '../src/components/BarPage' ), {} )
  *     .resolve();
  */
 export default class Router {
+    @inject( 'router:lazy-page' ) lazyHook;
 
     /**
      * @param {string|null} [root=null] Root URL
@@ -149,7 +161,34 @@ export default class Router {
             uses: () => {
                 this.storage.activePageComponent = pageComponent;
                 this.storage.activePageOptions = componentOptions;
+                this.storage.pageLoaded = true;
                 this.storage.sync();
+            },
+            ...componentOptions
+        } );
+        return this;
+    }
+
+    /**
+     * Bind lazy loaded page component & url
+     * @param {string} url Url for page
+     * @param {string} name Page name*
+     * @param {Function} loader Loader for page component
+     * @param {Object} componentOptions Options for component
+     * @return {Router}
+     */
+    bindLazyPage( url, name, loader, componentOptions ) {
+        this.on( url, {
+            as: name,
+            uses: () => {
+                this.storage.pageLoaded = false;
+                this.storage.sync();
+                loader().then( module => {
+                    this.storage.activePageComponent = this.lazyHook( module.default );
+                    this.storage.activePageOptions = componentOptions;
+                    this.storage.pageLoaded = true;
+                    this.storage.sync();
+                } );
             },
             ...componentOptions
         } );

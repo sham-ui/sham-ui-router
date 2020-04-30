@@ -199,3 +199,50 @@ it( 'bindPage', () => {
     expect( router.storage.activePageComponent ).toEqual( DummyComponent );
     expect( router.storage.activePageOptions ).toEqual( { foo: 1 } );
 } );
+
+
+it( 'bindLazyPage', async() => {
+    expect.assertions( 8 );
+
+    const onMock = jest.fn();
+    Navigo.mockImplementation( () => {
+        return {
+            on: onMock,
+            resolve() {
+                onMock.mock.calls[ 0 ][ 1 ].uses();
+            },
+            lastRouteResolved() {
+                return {};
+            }
+        };
+    } );
+
+    const router = new Router();
+    expect( router.storage.activePageComponent ).toEqual( null );
+    expect( router.storage.activePageOptions ).toEqual( null );
+
+    const DummyComponent = compile`
+        <h1>Title</h1>
+        <div>Content for dummy component</div>
+    `;
+
+    const loader = new Promise( resolve => {
+        resolve( {
+            default: DummyComponent
+        } );
+    } );
+
+    router.bindLazyPage( '/', 'root', () => loader, { foo: 1 } );
+
+    expect( onMock.mock.calls ).toHaveLength( 1 );
+    expect( onMock.mock.calls[ 0 ][ 0 ] ).toBe( '/' );
+    expect( Object.keys( onMock.mock.calls[ 0 ][ 1 ] ).sort() ).toEqual( [ 'as', 'foo', 'uses' ] );
+    expect( onMock.mock.calls[ 0 ][ 1 ].as ).toBe( 'root' );
+
+    router.resolve();
+
+    await loader;
+
+    expect( router.storage.activePageComponent ).toEqual( DummyComponent );
+    expect( router.storage.activePageOptions ).toEqual( { foo: 1 } );
+} );

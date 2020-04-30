@@ -45,6 +45,7 @@ Object {
         "text": "Base page",
       },
       "name": "",
+      "pageLoaded": true,
       "params": Object {},
       "url": "",
     },

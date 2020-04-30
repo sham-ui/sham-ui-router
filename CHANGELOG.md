@@ -1,3 +1,6 @@
+## 4.1.0
+* Add `bindLazyPage` method
+
 ## 4.0.6
 * Fix change component without url
 * Update dependencies

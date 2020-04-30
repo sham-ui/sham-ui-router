@@ -24,17 +24,17 @@ yarn add sham-ui-router
 
 #### Table of Contents
 
--   [path](#path)
-    -   [Parameters](#parameters)
 -   [ParamsBuilder](#paramsbuilder)
     -   [Examples](#examples)
     -   [param](#param)
-        -   [Parameters](#parameters-1)
+        -   [Parameters](#parameters)
     -   [\_params](#_params)
-        -   [Parameters](#parameters-2)
+        -   [Parameters](#parameters-1)
     -   [\_useActiveClass](#_useactiveclass)
     -   [\_activeClass](#_activeclass)
-        -   [Parameters](#parameters-3)
+        -   [Parameters](#parameters-2)
+-   [path](#path)
+    -   [Parameters](#parameters-3)
 -   [ActivePageContainer](#activepagecontainer)
     -   [Examples](#examples-1)
 -   [LinkTo](#linkto)
@@ -43,33 +43,27 @@ yarn add sham-ui-router
     -   [Properties](#properties-1)
 -   [HrefTo](#hrefto)
     -   [Examples](#examples-2)
--   [Router](#router)
+-   [pageComponent](#pagecomponent)
     -   [Parameters](#parameters-4)
+-   [Router](#router)
+    -   [Parameters](#parameters-5)
     -   [Examples](#examples-3)
     -   [storage](#storage)
     -   [bindPage](#bindpage)
-        -   [Parameters](#parameters-5)
-    -   [navigate](#navigate)
         -   [Parameters](#parameters-6)
-    -   [hooks](#hooks)
+    -   [bindLazyPage](#bindlazypage)
         -   [Parameters](#parameters-7)
-    -   [generate](#generate)
+    -   [navigate](#navigate)
         -   [Parameters](#parameters-8)
-        -   [Examples](#examples-4)
+    -   [hooks](#hooks)
+        -   [Parameters](#parameters-9)
     -   [notFound](#notfound)
     -   [resolve](#resolve)
+    -   [generate](#generate)
+        -   [Parameters](#parameters-10)
+        -   [Examples](#examples-4)
 -   [RouterStorage](#routerstorage)
     -   [Properties](#properties-2)
-
-### path
-
-Create new ParamsBuilder
-
-#### Parameters
-
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of destination page
-
-Returns **[ParamsBuilder](#paramsbuilder)** 
 
 ### ParamsBuilder
 
@@ -125,6 +119,16 @@ Set active class
 
 Returns **[ParamsBuilder](#paramsbuilder)** 
 
+### path
+
+Create new ParamsBuilder
+
+#### Parameters
+
+-   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of destination page
+
+Returns **[ParamsBuilder](#paramsbuilder)** 
+
 ### ActivePageContainer
 
 **Extends Component**
@@ -176,6 +180,16 @@ Directive for links
 ....
 ```
 
+### pageComponent
+
+Hook for process lazy page after loader finish. Can override with DI.bind( 'router:lazy-page' )
+
+#### Parameters
+
+-   `pageComponent` **Class&lt;Component>** 
+
+Returns **Class&lt;Component>** 
+
 ### Router
 
 Router service
@@ -201,7 +215,7 @@ router
         FooPage, // Component class
         { componentOption: 1 } // Component options
     )
-    .bindPage( '/bar/:some_param/detail', 'bar', BarPage, {} )
+    .bindLazyPage( '/bar/:some_param/detail', 'bar', () => import( '../src/components/BarPage' ), {} )
     .resolve();
 ```
 
@@ -218,6 +232,19 @@ Bind page component & url
 -   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Url for page
 -   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Page name\*
 -   `pageComponent` **Class&lt;Component>** Component for page
+-   `componentOptions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options for component
+
+Returns **[Router](#router)** 
+
+#### bindLazyPage
+
+Bind lazy loaded page component & url
+
+##### Parameters
+
+-   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Url for page
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Page name\*
+-   `loader` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Loader for page component
 -   `componentOptions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options for component
 
 Returns **[Router](#router)** 
@@ -239,6 +266,16 @@ Hooks
 ##### Parameters
 
 -   `hooks` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object with hooks
+
+#### notFound
+
+-   **See: <https://github.com/krasimir/navigo#not-found-handler>**
+
+Not found handler
+
+#### resolve
+
+Resolve current url & run router
 
 #### generate
 
@@ -263,16 +300,6 @@ console.log(router.generate('trip.action', { tripId: 42, action: 'save' })); // 
 console.log(router.generate('trip.save')); // --> /trip/save
 ```
 
-#### notFound
-
--   **See: <https://github.com/krasimir/navigo#not-found-handler>**
-
-Not found handler
-
-#### resolve
-
-Resolve current url & run router
-
 ### RouterStorage
 
 -   **See: <https://github.com/sham-ui/sham-ui-data-storage>**
@@ -288,3 +315,4 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 -   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Current page params
 -   `activePageComponent` **Class&lt;Component>** Current page component class
 -   `activePageOptions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options for current page component
+-   `pageLoaded` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Current page component loaded (@see Router.bindLazyPage)
