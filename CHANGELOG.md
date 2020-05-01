@@ -1,3 +1,6 @@
+## 4.1.1
+* Reset `activePageComponent` before load lazy page
+
 ## 4.1.0
 * Add `bindLazyPage` method
 

@@ -182,6 +182,7 @@ export default class Router {
             as: name,
             uses: () => {
                 this.storage.pageLoaded = false;
+                this.storage.activePageComponent = null;
                 this.storage.sync();
                 loader().then( module => {
                     this.storage.activePageComponent = this.lazyHook( module.default );
