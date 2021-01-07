@@ -1,3 +1,6 @@
+## 4.2.0
+* Update dependencies
+
 ## 4.1.1
 * Reset `activePageComponent` before load lazy page
 

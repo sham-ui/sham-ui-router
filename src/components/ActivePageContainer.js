@@ -32,11 +32,16 @@ class ActivePageContainer extends Component {
         this.lastRendererdURL = null;
         this.lastRenderedComponent = null;
         this.ref = null;
+        this.spots = {
+            routerData( routerData ) {
+                this._insertComponent( routerData );
+            }
+        };
     }
 
-    updateSpots() {
-        const url = this.options.routerData.url;
-        const activePageComponent = this.options.routerData.activePageComponent;
+    _insertComponent( routerData ) {
+        const url = routerData.url;
+        const activePageComponent = routerData.activePageComponent;
         if (
             null !== this.lastRendererdURL &&
             (
@@ -56,7 +61,7 @@ class ActivePageContainer extends Component {
             this.container,
             this,
             activePageComponent,
-            this.options.routerData.activePageOptions,
+            routerData.activePageOptions,
             this.owner,
             this.blocks
         );
