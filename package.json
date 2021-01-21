@@ -3,7 +3,7 @@
   "description": "Router for sham-ui",
   "main": "index.js",
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "scripts": {
     "start": "node demo-app/server.js",
     "test:clear-cache": "jest --clearCache",
@@ -61,7 +61,7 @@
   "dependencies": {
     "navigo": "^7.1.2",
     "sham-ui": "^4.1.0",
-    "sham-ui-data-storage": "^1.1.0"
+    "sham-ui-data-storage": "^1.2.0"
   },
   "babel": {
     "presets": [
