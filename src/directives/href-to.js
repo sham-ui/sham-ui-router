@@ -1,5 +1,3 @@
-import { inject } from 'sham-ui-macro/babel.macro';
-
 /**
  * Directive for links
  * @example
@@ -10,9 +8,8 @@ import { inject } from 'sham-ui-macro/babel.macro';
  * ....
  */
 export default class HrefTo {
-    @inject router;
-
-    constructor() {
+    constructor( component ) {
+        this.router = component.DI.resolve( 'router' );
         this.node = null;
         this.activeClass = null;
         this.lastGeneratedURL = null;

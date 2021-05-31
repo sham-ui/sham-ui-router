@@ -1,8 +1,10 @@
 import Router from '../../src/index';
 import Navigo from 'navigo';
-import { DI } from 'sham-ui';
+import { createDI } from 'sham-ui';
 import { compile } from 'sham-ui-test-helpers';
 jest.mock( 'navigo' );
+
+const DI = createDI();
 
 beforeEach( () => {
     Navigo.mockClear();
@@ -13,17 +15,17 @@ afterEach( () => {
 } );
 
 it( 'use Navigo', () => {
-    new Router();
+    new Router( DI );
     expect( Navigo ).toHaveBeenCalledTimes( 1 );
 } );
 
 it( 'params', () => {
-    new Router( null, false, '#', false );
+    new Router( DI, null, '#', false );
     expect( Navigo ).toHaveBeenCalledTimes( 1 );
 } );
 
 it( 'DI registry', () => {
-    new Router();
+    new Router( DI );
     expect( DI.resolve( 'router' ) ).toBeInstanceOf( Router );
 } );
 
@@ -35,7 +37,7 @@ it( 'resolve', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.resolve();
 
     expect( resolveMock.mock.calls ).toHaveLength( 1 );
@@ -51,7 +53,7 @@ it( 'on', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.on();
 
     expect( onMock.mock.calls ).toHaveLength( 1 );
@@ -66,7 +68,7 @@ it( 'off', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.off();
 
     expect( offMock.mock.calls ).toHaveLength( 1 );
@@ -82,7 +84,7 @@ it( 'notFound', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.notFound();
 
     expect( notFoundMock.mock.calls ).toHaveLength( 1 );
@@ -97,7 +99,7 @@ it( 'navigate', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.navigate();
 
     expect( navigateMock.mock.calls ).toHaveLength( 1 );
@@ -112,7 +114,7 @@ it( 'hooks', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.hooks();
 
     expect( hooksMock.mock.calls ).toHaveLength( 1 );
@@ -127,7 +129,7 @@ it( 'destroy', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.destroy();
 
     expect( destroyMock.mock.calls ).toHaveLength( 1 );
@@ -142,7 +144,7 @@ it( 'link', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.link();
 
     expect( linkMock.mock.calls ).toHaveLength( 1 );
@@ -157,7 +159,7 @@ it( 'generate', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     router.generate();
 
     expect( generateMock.mock.calls ).toHaveLength( 1 );
@@ -178,7 +180,7 @@ it( 'bindPage', () => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     expect( router.storage.activePageComponent ).toEqual( null );
     expect( router.storage.activePageOptions ).toEqual( null );
 
@@ -217,7 +219,7 @@ it( 'bindLazyPage', async() => {
         };
     } );
 
-    const router = new Router();
+    const router = new Router( DI );
     expect( router.storage.activePageComponent ).toEqual( null );
     expect( router.storage.activePageOptions ).toEqual( null );
 
@@ -241,7 +243,7 @@ it( 'bindLazyPage', async() => {
 
     router.resolve();
 
-    await loader;
+    await loader.then();
 
     expect( router.storage.activePageComponent ).toEqual( DummyComponent );
     expect( router.storage.activePageOptions ).toEqual( { foo: 1 } );

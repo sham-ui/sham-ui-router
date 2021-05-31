@@ -1,0 +1,10 @@
+[
+  {
+    "path": "module/index.js",
+    "ignore": [
+      "sham-ui",
+      "sham-ui-data-storage"
+    ],
+    "limit": "4 KB"
+  }
+]

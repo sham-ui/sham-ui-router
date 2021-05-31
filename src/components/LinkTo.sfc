@@ -14,17 +14,16 @@
 </template>
 
 <script>
-    import { options, mergeWithTemplate } from 'sham-ui-macro/babel.macro';
-
-    @mergeWithTemplate
-    class LinkToComponent extends Template {
-        @options path = '';
-        @options text = '';
-        @options useActiveClass = false;
-        @options activeClass = 'active';
-        @options className = '';
-        @options params = {};
+    function LinkToComponent( options ) {
+        options( {
+            [ ref( 'path' ) ]: '',
+            [ ref( 'text' ) ]: '',
+            [ ref( 'useActiveClass' ) ]: false,
+            [ ref( 'activeClass' ) ]: 'active',
+            [ ref( 'className' ) ]: '',
+            [ ref( 'params' ) ]: {}
+        } );
     }
 
-    export default LinkToComponent;
+    export default Component( Template, LinkToComponent );
 </script>

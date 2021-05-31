@@ -4,8 +4,8 @@ import BarPage from '../components/BarPage.sht';
 import hrefto from '../../../src/directives/href-to';
 import Router from '../../../src';
 
-export default function() {
-    const router = new Router();
+export default function( DI ) {
+    const router = new Router( DI );
     router
         .bindPage( '/foo', 'foo', FooPage, {} )
         .bindPage( '/bar', 'bar', BarPage, {} )
@@ -13,6 +13,7 @@ export default function() {
         .resolve();
 
     new App( {
+        DI,
         ID: 'app',
         container: document.querySelector( 'body' ),
         directives: {

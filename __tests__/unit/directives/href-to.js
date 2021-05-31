@@ -1,8 +1,10 @@
-import { DI } from 'sham-ui';
+import { createDI } from 'sham-ui';
 import { storage } from '../../../src/storage';
 import HrefTo from '../../../src/directives/href-to';
 import path from '../../../src/builders/params';
 import renderer, { compile } from 'sham-ui-test-helpers';
+
+const DI = createDI();
 
 afterEach( () => {
     DI.resolve( 'router:storage' ).reset();
@@ -11,7 +13,7 @@ afterEach( () => {
 it( 'render correctly', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
@@ -25,6 +27,7 @@ it( 'render correctly', () => {
         
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             }
@@ -38,7 +41,7 @@ it( 'render correctly', () => {
 it( 'params', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
@@ -51,6 +54,7 @@ it( 'params', () => {
             </a>
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             }
@@ -64,7 +68,7 @@ it( 'params', () => {
 it( 'params from options', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
@@ -77,6 +81,7 @@ it( 'params from options', () => {
             </a>
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             },
@@ -93,14 +98,16 @@ it( 'params from options', () => {
 it( 'useActiveClass', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
+
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
 
     generateMock.mockReturnValue( '/base' );
-    storage.url = '/base';
-    storage.sync();
+    routerStorage.url = '/base';
+    routerStorage.sync();
 
     const meta = renderer(
         compile`
@@ -109,6 +116,7 @@ it( 'useActiveClass', () => {
             </a>
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             }
@@ -119,8 +127,8 @@ it( 'useActiveClass', () => {
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', {} ] );
     expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'active' );
 
-    storage.url = '/baz';
-    storage.sync();
+    routerStorage.url = '/baz';
+    routerStorage.sync();
     expect( meta.component.container.querySelector( 'a' ).className ).toEqual( '' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
@@ -128,14 +136,16 @@ it( 'useActiveClass', () => {
 it( 'activeClass', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
+
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    storage.url = '/base';
-    storage.sync();
+    routerStorage.url = '/base';
+    routerStorage.sync();
 
     const meta = renderer(
         compile`
@@ -144,6 +154,7 @@ it( 'activeClass', () => {
             </a>
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             }
@@ -155,14 +166,16 @@ it( 'activeClass', () => {
 it( 'class & useActiveClass & activeClass', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
+
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    storage.url = '/base';
-    storage.sync();
+    routerStorage.url = '/base';
+    routerStorage.sync();
 
     const meta = renderer(
         compile`
@@ -174,6 +187,7 @@ it( 'class & useActiveClass & activeClass', () => {
             </a>
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             }
@@ -188,7 +202,7 @@ it( 'click', () => {
     const navigateMock = jest.fn();
 
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock,
         navigate: navigateMock
     } );
@@ -203,6 +217,7 @@ it( 'click', () => {
         
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             }
@@ -218,7 +233,7 @@ it( 'click', () => {
 it( 'remove', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
@@ -232,6 +247,7 @@ it( 'remove', () => {
         
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             }
@@ -244,14 +260,15 @@ it( 'remove', () => {
 it( 'params builder', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base/1' );
-    storage.url = '/base/1';
-    storage.sync();
+    routerStorage.url = '/base/1';
+    routerStorage.sync();
 
     const meta = renderer(
         compile`
@@ -263,6 +280,7 @@ it( 'params builder', () => {
             </a>
         `,
         {
+            DI,
             directives: {
                 'hrefto': HrefTo
             },

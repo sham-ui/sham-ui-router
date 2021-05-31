@@ -2,7 +2,6 @@
 
 exports[`activeClass 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -15,7 +14,6 @@ Object {
 
 exports[`class & useActiveClass & activeClass 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -28,7 +26,6 @@ Object {
 
 exports[`click 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -41,7 +38,6 @@ Object {
 
 exports[`params 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -54,7 +50,6 @@ Object {
 
 exports[`params builder 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -68,7 +63,6 @@ Object {
 
 exports[`params from options 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -84,7 +78,6 @@ Object {
 
 exports[`remove 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -97,7 +90,6 @@ Object {
 
 exports[`render correctly 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -110,7 +102,6 @@ Object {
 
 exports[`useActiveClass 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {
@@ -123,7 +114,6 @@ Object {
 
 exports[`useActiveClass 2`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "directives": Object {

@@ -1,4 +1,4 @@
-{% import ActivePageContainer from '../../../src/components/ActivePageContainer' %}
+{% import ActivePageContainer from '../../../src/ActivePageContainer' %}
 {% import LinkTo from '../../../src/components/LinkTo.sfc' %}
 {% import path from '../../../src/builders/params' %}
 

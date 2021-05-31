@@ -1,18 +1,12 @@
-import { DI } from 'sham-ui';
-import { inject } from 'sham-ui-macro/babel.macro';
 import { storage } from './storage';
 import Navigo from 'navigo';
 
-DI.bind(
-    'router:lazy-page',
-
-    /**
-     * Hook for process lazy page after loader finish. Can override with DI.bind( 'router:lazy-page' )
-     * @param {Class<Component>} pageComponent
-     * @return {Class<Component>}
-     */
-    pageComponent => pageComponent
-);
+/**
+ * Hook for process lazy page after loader finish. Can override with DI.bind( 'router:lazy-page' )
+ * @param {Class<Component>} pageComponent
+ * @return {Class<Component>}
+ */
+const lazyPage = pageComponent => pageComponent;
 
 /**
  * Router service
@@ -33,19 +27,25 @@ DI.bind(
  *     .resolve();
  */
 export default class Router {
-    @inject( 'router:lazy-page' ) lazyHook;
 
     /**
+     * @param {Object} DI App DI container
      * @param {string|null} [root=null] Root URL
      * @param {boolean} [useHash=false] Use hash symbol as delimiter
      * @param {string} [hash='#'] Hash symbol (use useHash=true)
      */
-    constructor( root = null, useHash = false, hash = '#' ) {
+    constructor( DI, root = null, useHash = false, hash = '#' ) {
         DI.bind( 'router', this );
+
+        // Use already bind lazy-page hook or default
+        this.lazyPage = DI.resolve( 'router:lazy-page' ) || lazyPage;
+
         /**
          * @type {RouterStorage}
          */
-        this.storage = storage;
+        const routerStorage = storage( DI );
+        this.storage = routerStorage;
+
         this.router = new Navigo( root, useHash, hash );
 
         // Create proxy descriptor for _lastRouteResolved for set storage
@@ -58,9 +58,9 @@ export default class Router {
             },
             set( value ) {
                 if ( null !== value ) {
-                    storage.url = value.url;
-                    storage.name = value.name;
-                    storage.params = value.params || {};
+                    routerStorage.url = value.url;
+                    routerStorage.name = value.name;
+                    routerStorage.params = value.params || {};
                 }
                 _lastRouteResolved = value;
             }
@@ -156,16 +156,16 @@ export default class Router {
      * @return {Router}
      */
     bindPage( url, name, pageComponent, componentOptions ) {
-        this.on( url, {
+        this.on( url, Object.assign( {
             as: name,
             uses: () => {
-                this.storage.activePageComponent = pageComponent;
-                this.storage.activePageOptions = componentOptions;
-                this.storage.pageLoaded = true;
-                this.storage.sync();
-            },
-            ...componentOptions
-        } );
+                Object.assign( this.storage, {
+                    activePageComponent: pageComponent,
+                    activePageOptions: componentOptions,
+                    pageLoaded: true
+                } ).sync();
+            }
+        }, componentOptions ) );
         return this;
     }
 
@@ -178,21 +178,22 @@ export default class Router {
      * @return {Router}
      */
     bindLazyPage( url, name, loader, componentOptions ) {
-        this.on( url, {
+        this.on( url, Object.assign( {
             as: name,
             uses: () => {
-                this.storage.pageLoaded = false;
-                this.storage.activePageComponent = null;
-                this.storage.sync();
+                Object.assign( this.storage, {
+                    pageLoaded: false,
+                    activePageComponent: null
+                } ).sync();
                 loader().then( module => {
-                    this.storage.activePageComponent = this.lazyHook( module.default );
-                    this.storage.activePageOptions = componentOptions;
-                    this.storage.pageLoaded = true;
-                    this.storage.sync();
+                    Object.assign( this.storage, {
+                        activePageComponent: this.lazyPage( module.default ),
+                        activePageOptions: componentOptions,
+                        pageLoaded: true
+                    } ).sync();
                 } );
-            },
-            ...componentOptions
-        } );
+            }
+        }, componentOptions ) );
         return this;
     }
 }

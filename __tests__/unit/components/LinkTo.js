@@ -1,8 +1,10 @@
-import { DI } from 'sham-ui';
+import { createDI } from 'sham-ui';
 import { storage } from '../../../src/storage';
 import LinkTo from '../../../src/components/LinkTo.sfc';
 import hrefto from '../../../src/directives/href-to';
 import renderer from 'sham-ui-test-helpers';
+
+const DI = createDI();
 
 afterEach( () => {
     DI.bind( 'router', null );
@@ -12,13 +14,14 @@ afterEach( () => {
 it( 'render correctly', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         text: 'Base page',
         directives: {
@@ -33,13 +36,14 @@ it( 'render correctly', () => {
 it( 'params options', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base/1' );
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         params: {
             id: 1
@@ -56,16 +60,19 @@ it( 'params options', () => {
 it( 'useActiveClass options', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
+
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
 
     generateMock.mockReturnValue( '/base' );
-    storage.url = '/base';
-    storage.sync();
+    routerStorage.url = '/base';
+    routerStorage.sync();
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         useActiveClass: true,
         directives: {
@@ -80,16 +87,19 @@ it( 'useActiveClass options', () => {
 it( 'activeClass options', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
+
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    storage.url = '/base';
-    storage.sync();
+    routerStorage.url = '/base';
+    routerStorage.sync();
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         useActiveClass: true,
         activeClass: 'test-active',
@@ -103,13 +113,14 @@ it( 'activeClass options', () => {
 it( 'className option', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         text: 'Base page',
         className: 'foo bar',
@@ -124,16 +135,18 @@ it( 'className option', () => {
 it( 'className option & useActiveClass & activeClass', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
-    storage.url = '/base';
-    storage.sync();
+    routerStorage.url = '/base';
+    routerStorage.sync();
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         useActiveClass: true,
         activeClass: 'test-active',
@@ -151,7 +164,7 @@ it( 'click', () => {
     const navigateMock = jest.fn();
 
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock,
         navigate: navigateMock
     } );
@@ -159,6 +172,7 @@ it( 'click', () => {
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         directives: {
             'hrefto': hrefto
@@ -174,13 +188,14 @@ it( 'click', () => {
 it( 'remove', () => {
     const generateMock = jest.fn();
     DI.bind( 'router', {
-        storage,
+        storage: storage( DI ),
         generate: generateMock
     } );
 
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
+        DI,
         path: 'base',
         text: 'Base page',
         directives: {

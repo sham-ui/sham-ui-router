@@ -1,7 +1,9 @@
-import { DI } from 'sham-ui';
+import { createDI } from 'sham-ui';
 import { storage } from '../../../src/storage';
-import ActivePageContainer from '../../../src/components/ActivePageContainer';
+import ActivePageContainer from '../../../src/ActivePageContainer';
 import renderer, { compile } from 'sham-ui-test-helpers';
+
+const DI = createDI();
 
 afterEach( () => {
     DI.resolve( 'router:storage' ).reset();
@@ -10,42 +12,46 @@ afterEach( () => {
 it( 'renders correctly', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
+
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
-    storage.activePageComponent = compile`
+    routerStorage.activePageComponent = compile`
         <h1>Title</h1>
         <div>Content for dummy component</div>
     `;
-    storage.activePageOptions = {
+    routerStorage.activePageOptions = {
         path: 'base',
         text: 'Base page'
     };
-    storage.sync();
+    routerStorage.sync();
 
     generateMock.mockReturnValue( '/base' );
 
-    const meta = renderer( ActivePageContainer, {} );
+    const meta = renderer( ActivePageContainer, { DI } );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
 it( 'correct process dynamic placet', () => {
     const generateMock = jest.fn();
 
+    const routerStorage = storage( DI );
+
     DI.bind( 'router', {
-        storage,
+        storage: routerStorage,
         generate: generateMock
     } );
-    storage.activePageComponent = compile`
+    routerStorage.activePageComponent = compile`
         <h1>Title</h1>
         <div>Content for dummy component</div>
     `;
-    storage.activePageOptions = {
+    routerStorage.activePageOptions = {
         path: 'base',
         text: 'Base page'
     };
-    storage.sync();
+    routerStorage.sync();
 
     generateMock.mockReturnValue( '/base' );
 
@@ -62,6 +68,7 @@ it( 'correct process dynamic placet', () => {
         {% endif %}
         `,
         {
+            DI,
             withWrapper: false
         }
     );

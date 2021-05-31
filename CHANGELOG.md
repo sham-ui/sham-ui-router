@@ -1,3 +1,7 @@
+## 5.0.0-alpha.1
+* Update dependencies
+* Migrate to sham-ui@5.x 
+
 ## 4.3.1
 * Update dependencies
 

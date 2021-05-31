@@ -2,7 +2,6 @@
 
 exports[`correct process dynamic placet 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "withWrapper": false,
@@ -10,15 +9,14 @@ Object {
   "html": "
 <h1>Title</h1>
 <div>Content for dummy component</div>
-<!--ActivePageContainer-->
-<!--if-->
+<!--0-->
+<!--0-->
 ",
 }
 `;
 
 exports[`correct process dynamic placet 2`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ID": "component",
     "withWrapper": true,
@@ -28,14 +26,13 @@ Object {
   <h1>Title</h1>
   <div>Content for dummy component</div>
 </div>
-<!--if-->
+<!--0-->
 ",
 }
 `;
 
 exports[`renders correctly 1`] = `
 Object {
-  "Constructor": "ActivePageContainer",
   "Options": Object {
     "ID": "component",
     "routerData": Object {
