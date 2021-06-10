@@ -52,7 +52,7 @@
     "sham-ui-templates": "^5.0.0-alpha.7",
     "sham-ui-test-helpers": "^5.0.0-alpha.8",
     "stylelint": "^10.1.0",
-    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.8.0"
   },
   "dependencies": {
