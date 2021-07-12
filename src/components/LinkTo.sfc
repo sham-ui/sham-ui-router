@@ -16,12 +16,12 @@
 <script>
     function LinkToComponent( options ) {
         options( {
-            [ ref( 'path' ) ]: '',
-            [ ref( 'text' ) ]: '',
-            [ ref( 'useActiveClass' ) ]: false,
-            [ ref( 'activeClass' ) ]: 'active',
-            [ ref( 'className' ) ]: '',
-            [ ref( 'params' ) ]: {}
+            [ $.path ]: '',
+            [ $.text ]: '',
+            [ $.useActiveClass ]: false,
+            [ $.activeClass ]: 'active',
+            [ $.className ]: '',
+            [ $.params ]: {}
         } );
     }
 

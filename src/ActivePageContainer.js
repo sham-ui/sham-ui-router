@@ -1,4 +1,4 @@
-import { ref } from 'sham-ui-macro/ref.macro';
+import { $ } from 'sham-ui-macro/ref.macro';
 import { Component, insert } from 'sham-ui';
 import { useStorage } from './storage';
 
@@ -30,18 +30,16 @@ import { useStorage } from './storage';
 function ActivePageContainer() {
     this.ref = null;
 
-    const routerData = ref();
-
-    let lastRendererdURL = null;
+    let lastRenderedURL = null;
     let lastRenderedComponent = null;
 
     this.spots = [ [
-        routerData,
+        $.routerData,
         routerData => {
             const url = routerData.url;
             const activePageComponent = routerData.activePageComponent;
             if (
-                url !== lastRendererdURL ||
+                url !== lastRenderedURL ||
 
                 // Component can changed without change url
                 activePageComponent !== lastRenderedComponent
@@ -70,10 +68,10 @@ function ActivePageContainer() {
                 this.owner,
                 this.blocks
             );
-            lastRendererdURL = url;
+            lastRenderedURL = url;
             lastRenderedComponent = activePageComponent;
         }
     ] ];
 }
 
-export default Component( useStorage( ref( 'routerData' ) ), ActivePageContainer );
+export default Component( useStorage( $.routerData ), ActivePageContainer );
