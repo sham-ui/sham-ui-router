@@ -1,3 +1,6 @@
+## 5.0.0-alpha.5
+* Fix active class
+
 ## 5.0.0-alpha.4
 * Update dependencies
 

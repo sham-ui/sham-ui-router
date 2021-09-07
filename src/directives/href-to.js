@@ -41,7 +41,7 @@ export default class HrefTo {
     update( { path, params = {}, useActiveClass = false, activeClass = 'active' } ) {
         this.activeClass = activeClass;
         const url = this.router.generate( path, params );
-        this.lastGeneratedURL = url;
+        this.lastGeneratedURL = url.replace( /\/+$/, '' );
         this.node.href = url;
         if ( useActiveClass ) {
             this.toggleActiveClass();
@@ -55,7 +55,7 @@ export default class HrefTo {
     }
 
     toggleActiveClass() {
-        if ( this.lastGeneratedURL === this.router.storage.url ) {
+        if ( this.lastGeneratedURL === this.router.storage.url.replace( /\/+$/, '' ) ) {
             this.node.classList.add( this.activeClass );
         } else {
             this.node.classList.remove( this.activeClass );

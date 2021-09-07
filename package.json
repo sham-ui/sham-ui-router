@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "module": "module/index.js",
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
-  "version": "5.0.0-alpha.4",
+  "version": "5.0.0-alpha.5",
   "scripts": {
     "start": "MACRO_REF_REPLACE=enabled rollup -w -c ./demo-app/rollup.config.js",
     "test:clear-cache": "jest --clearCache",
