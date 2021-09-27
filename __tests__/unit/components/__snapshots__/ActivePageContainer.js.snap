@@ -42,7 +42,7 @@ Object {
         "text": "Base page",
       },
       "name": "",
-      "pageLoaded": true,
+      "pageLoaded": false,
       "params": Object {},
       "url": "",
     },
