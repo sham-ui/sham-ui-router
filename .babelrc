@@ -11,7 +11,8 @@
           "web.dom-collections.iterator",
           "es.array.iterator",
           "es.array.reverse",
-          "es.string.trim"
+          "es.string.trim",
+          "es.string.replace"
         ]
       }
     ]

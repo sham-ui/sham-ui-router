@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "module": "module/index.js",
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
-  "version": "5.0.0-alpha.7",
+  "version": "5.0.0-alpha.8",
   "scripts": {
     "start": "MACRO_REF_REPLACE=enabled rollup -w -c ./demo-app/rollup.config.js",
     "test:clear-cache": "jest --clearCache",
@@ -45,12 +45,12 @@
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-serve": "^1.1.0",
-    "rollup-plugin-sham-ui-templates": "^1.0.12",
+    "rollup-plugin-sham-ui-templates": "^1.0.13",
     "sass": "^1.32.12",
     "sham-ui-macro": "^3.6.0",
-    "sham-ui-templates": "^5.0.0-alpha.12",
-    "sham-ui-templates-jest-preprocessor": "^1.2.7",
-    "sham-ui-test-helpers": "^5.0.0-alpha.13",
+    "sham-ui-templates": "^5.0.0-alpha.14",
+    "sham-ui-templates-jest-preprocessor": "^1.2.8",
+    "sham-ui-test-helpers": "^5.0.0-alpha.14",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",
     "stylelint-scss": "^3.8.0"
@@ -58,6 +58,6 @@
   "dependencies": {
     "navigo": "7.1.2",
     "sham-ui": "^5.0.0-alpha.7",
-    "sham-ui-data-storage": "^2.0.0-alpha.10"
+    "sham-ui-data-storage": "^2.0.0-alpha.11"
   }
 }
