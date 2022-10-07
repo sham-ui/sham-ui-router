@@ -3,12 +3,8 @@
 exports[`activeClass options 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
     "activeClass": "test-active",
     "className": "",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {},
     "path": "base",
     "text": "",
@@ -25,12 +21,8 @@ Object {
 exports[`className option & useActiveClass & activeClass 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
     "activeClass": "test-active",
     "className": "foo",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {},
     "path": "base",
     "text": "",
@@ -47,12 +39,8 @@ Object {
 exports[`className option 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
     "activeClass": "active",
     "className": "foo bar",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {},
     "path": "base",
     "text": "Base page",
@@ -69,12 +57,8 @@ Object {
 exports[`click 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
     "activeClass": "active",
     "className": "",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {},
     "path": "base",
     "text": "",
@@ -91,12 +75,8 @@ Object {
 exports[`params options 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
     "activeClass": "active",
     "className": "",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {
       "id": 1,
     },
@@ -115,12 +95,8 @@ Object {
 exports[`render correctly 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
     "activeClass": "active",
     "className": "",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {},
     "path": "base",
     "text": "Base page",
@@ -137,12 +113,8 @@ Object {
 exports[`useActiveClass options 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
     "activeClass": "active",
     "className": "",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {},
     "path": "base",
     "text": "",

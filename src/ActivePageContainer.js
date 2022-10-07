@@ -1,5 +1,5 @@
 import { $ } from 'sham-ui-macro/ref.macro';
-import { Component, insert } from 'sham-ui';
+import { Component, insert, createChildContext } from 'sham-ui';
 import { useStorage } from './storage';
 
 /**
@@ -28,12 +28,15 @@ import { useStorage } from './storage';
  * ...
  */
 function ActivePageContainer() {
-    this.ref = null;
-
     let lastRenderedURL = null;
     let lastRenderedComponent = null;
 
-    this.spots = [ [
+    const ctx = createChildContext(
+        this,
+        this.ctx.container
+    );
+
+    this.addSpots( [
         $.routerData,
         routerData => {
             const url = routerData.url;
@@ -59,19 +62,11 @@ function ActivePageContainer() {
             if ( null === activePageComponent ) {
                 return;
             }
-            insert(
-                this,
-                this.container,
-                this,
-                activePageComponent,
-                routerData.activePageOptions,
-                this.owner,
-                this.blocks
-            );
+            insert( ctx, activePageComponent, routerData.activePageOptions );
             lastRenderedURL = url;
             lastRenderedComponent = activePageComponent;
         }
-    ] ];
+    ] );
 }
 
 export default Component( useStorage( $.routerData ), ActivePageContainer );

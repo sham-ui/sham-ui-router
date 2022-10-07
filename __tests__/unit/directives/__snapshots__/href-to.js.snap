@@ -2,48 +2,28 @@
 
 exports[`activeClass 1`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "<a href=\\"/base\\" class=\\"test-active\\"> Base page </a>",
 }
 `;
 
 exports[`class & useActiveClass & activeClass 1`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "<a class=\\"foo test-active\\" href=\\"/base\\"> Base page </a>",
 }
 `;
 
 exports[`click 1`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "<a href=\\"/base\\"> Base page </a>",
 }
 `;
 
 exports[`params 1`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "<a href=\\"/base/1\\"> Base page </a>",
 }
 `;
@@ -51,10 +31,6 @@ Object {
 exports[`params builder 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "path": [Function],
   },
   "html": "<a class=\\"foo test-active\\" href=\\"/base/1\\"> Base page </a>",
@@ -64,10 +40,6 @@ Object {
 exports[`params from options 1`] = `
 Object {
   "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
     "params": Object {
       "id": 1,
     },
@@ -78,48 +50,28 @@ Object {
 
 exports[`remove 1`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "",
 }
 `;
 
 exports[`render correctly 1`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "<a href=\\"/base\\"> Base page </a>",
 }
 `;
 
 exports[`useActiveClass 1`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "<a href=\\"/base\\" class=\\"active\\"> Base page </a>",
 }
 `;
 
 exports[`useActiveClass 2`] = `
 Object {
-  "Options": Object {
-    "ID": "component",
-    "directives": Object {
-      "hrefto": [Function],
-    },
-  },
+  "Options": Object {},
   "html": "<a href=\\"/base\\" class=\\"\\"> Base page </a>",
 }
 `;

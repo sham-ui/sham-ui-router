@@ -26,6 +26,7 @@ it( 'render correctly', () => {
             </a>
         
         `,
+        {},
         {
             DI,
             directives: {
@@ -53,6 +54,7 @@ it( 'params', () => {
                 Base page
             </a>
         `,
+        {},
         {
             DI,
             directives: {
@@ -81,12 +83,14 @@ it( 'params from options', () => {
             </a>
         `,
         {
+            params: {
+                id: 1
+            }
+        },
+        {
             DI,
             directives: {
                 'hrefto': HrefTo
-            },
-            params: {
-                id: 1
             }
         }
     );
@@ -115,6 +119,7 @@ it( 'useActiveClass', () => {
                 Base page
             </a>
         `,
+        {},
         {
             DI,
             directives: {
@@ -125,11 +130,11 @@ it( 'useActiveClass', () => {
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( generateMock.mock.calls ).toHaveLength( 1 );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', {} ] );
-    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'active' );
+    expect( meta.component.ctx.container.querySelector( 'a' ).className ).toEqual( 'active' );
 
     routerStorage.url = '/baz';
     routerStorage.sync();
-    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( '' );
+    expect( meta.component.ctx.container.querySelector( 'a' ).className ).toEqual( '' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
@@ -153,6 +158,7 @@ it( 'activeClass', () => {
                 Base page
             </a>
         `,
+        {},
         {
             DI,
             directives: {
@@ -186,6 +192,7 @@ it( 'class & useActiveClass & activeClass', () => {
                 Base page
             </a>
         `,
+        {},
         {
             DI,
             directives: {
@@ -193,7 +200,9 @@ it( 'class & useActiveClass & activeClass', () => {
             }
         }
     );
-    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
+    expect(
+        meta.component.ctx.container.querySelector( 'a' ).className
+    ).toEqual( 'foo test-active' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
@@ -216,6 +225,7 @@ it( 'click', () => {
             </a>
         
         `,
+        {},
         {
             DI,
             directives: {
@@ -223,7 +233,7 @@ it( 'click', () => {
             }
         }
     );
-    meta.component.container.querySelector( 'a' ).click();
+    meta.component.ctx.container.querySelector( 'a' ).click();
 
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( navigateMock.mock.calls ).toHaveLength( 1 );
@@ -246,6 +256,7 @@ it( 'remove', () => {
             </a>
         
         `,
+        {},
         {
             DI,
             directives: {
@@ -280,15 +291,17 @@ it( 'params builder', () => {
             </a>
         `,
         {
+            path
+        },
+        {
             DI,
             directives: {
                 'hrefto': HrefTo
-            },
-            path
+            }
         }
     );
-    expect( meta.component.container.querySelector( 'a' ).className ).toBe( 'foo test-active' );
-    expect( meta.component.container.querySelector( 'a' ).href ).toBe(
+    expect( meta.component.ctx.container.querySelector( 'a' ).className ).toBe( 'foo test-active' );
+    expect( meta.component.ctx.container.querySelector( 'a' ).href ).toBe(
         'http://sham-ui-router.example.com/base/1'
     );
     expect( generateMock.mock.calls[ 0 ] ).toEqual( [ 'base', { id: 1 } ] );

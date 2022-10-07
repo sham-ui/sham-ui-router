@@ -1,3 +1,4 @@
+import { createRootContext } from 'sham-ui';
 import App from '../components/App.sht';
 import FooPage from '../components/FooPage.sht';
 import BarPage from '../components/BarPage.sht';
@@ -12,12 +13,14 @@ export default function( DI ) {
         .bindPage( '/', 'root', FooPage, {} )
         .resolve();
 
-    new App( {
-        DI,
-        ID: 'app',
-        container: document.querySelector( 'body' ),
-        directives: {
-            hrefto
-        }
-    } );
+    new App(
+        createRootContext( {
+            DI,
+            ID: 'app',
+            container: document.querySelector( 'body' ),
+            directives: {
+                hrefto
+            }
+        } )
+    );
 }

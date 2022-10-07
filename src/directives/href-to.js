@@ -9,7 +9,7 @@
  */
 export default class HrefTo {
     constructor( component ) {
-        this.router = component.DI.resolve( 'router' );
+        this.router = component.ctx.DI.resolve( 'router' );
         this.node = null;
         this.activeClass = null;
         this.lastGeneratedURL = null;

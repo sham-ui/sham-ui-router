@@ -4,14 +4,9 @@ import LinkTo from '../../../src/components/LinkTo.sfc';
 import hrefto from '../../../src/directives/href-to';
 import renderer from 'sham-ui-test-helpers';
 
-const DI = createDI();
-
-afterEach( () => {
-    DI.bind( 'router', null );
-    DI.resolve( 'router:storage' ).reset();
-} );
-
 it( 'render correctly', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
     DI.bind( 'router', {
         storage: storage( DI ),
@@ -21,9 +16,10 @@ it( 'render correctly', () => {
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
-        DI,
         path: 'base',
-        text: 'Base page',
+        text: 'Base page'
+    }, {
+        DI,
         directives: {
             'hrefto': hrefto
         }
@@ -34,6 +30,8 @@ it( 'render correctly', () => {
 } );
 
 it( 'params options', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
     DI.bind( 'router', {
         storage: storage( DI ),
@@ -43,11 +41,12 @@ it( 'params options', () => {
     generateMock.mockReturnValueOnce( '/base/1' );
 
     const meta = renderer( LinkTo, {
-        DI,
         path: 'base',
         params: {
             id: 1
-        },
+        }
+    }, {
+        DI,
         directives: {
             'hrefto': hrefto
         }
@@ -58,6 +57,8 @@ it( 'params options', () => {
 } );
 
 it( 'useActiveClass options', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
 
     const routerStorage = storage( DI );
@@ -72,9 +73,10 @@ it( 'useActiveClass options', () => {
     routerStorage.sync();
 
     const meta = renderer( LinkTo, {
-        DI,
         path: 'base',
-        useActiveClass: true,
+        useActiveClass: true
+    }, {
+        DI,
         directives: {
             'hrefto': hrefto
         }
@@ -85,6 +87,8 @@ it( 'useActiveClass options', () => {
 } );
 
 it( 'activeClass options', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
 
     const routerStorage = storage( DI );
@@ -99,10 +103,11 @@ it( 'activeClass options', () => {
     routerStorage.sync();
 
     const meta = renderer( LinkTo, {
-        DI,
         path: 'base',
         useActiveClass: true,
-        activeClass: 'test-active',
+        activeClass: 'test-active'
+    }, {
+        DI,
         directives: {
             'hrefto': hrefto
         }
@@ -111,6 +116,8 @@ it( 'activeClass options', () => {
 } );
 
 it( 'className option', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
     DI.bind( 'router', {
         storage: storage( DI ),
@@ -120,19 +127,22 @@ it( 'className option', () => {
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
-        DI,
         path: 'base',
         text: 'Base page',
-        className: 'foo bar',
+        className: 'foo bar'
+    }, {
+        DI,
         directives: {
             'hrefto': hrefto
         }
     } );
-    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'foo bar' );
+    expect( meta.ctx.container.querySelector( 'a' ).className ).toEqual( 'foo bar' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
 it( 'className option & useActiveClass & activeClass', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
 
     const routerStorage = storage( DI );
@@ -146,20 +156,25 @@ it( 'className option & useActiveClass & activeClass', () => {
     routerStorage.sync();
 
     const meta = renderer( LinkTo, {
-        DI,
         path: 'base',
         useActiveClass: true,
         activeClass: 'test-active',
-        className: 'foo',
+        className: 'foo'
+    }, {
+        DI,
         directives: {
             'hrefto': hrefto
         }
     } );
-    expect( meta.component.container.querySelector( 'a' ).className ).toEqual( 'foo test-active' );
+    expect(
+        meta.ctx.container.querySelector( 'a' ).className
+    ).toEqual( 'foo test-active' );
     expect( meta.toJSON() ).toMatchSnapshot();
 } );
 
 it( 'click', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
     const navigateMock = jest.fn();
 
@@ -172,13 +187,14 @@ it( 'click', () => {
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
+        path: 'base'
+    }, {
         DI,
-        path: 'base',
         directives: {
             'hrefto': hrefto
         }
     } );
-    meta.component.container.querySelector( 'a' ).click();
+    meta.ctx.container.querySelector( 'a' ).click();
 
     expect( meta.toJSON() ).toMatchSnapshot();
     expect( navigateMock.mock.calls ).toHaveLength( 1 );
@@ -186,6 +202,8 @@ it( 'click', () => {
 } );
 
 it( 'remove', () => {
+    const DI = createDI();
+
     const generateMock = jest.fn();
     DI.bind( 'router', {
         storage: storage( DI ),
@@ -195,14 +213,14 @@ it( 'remove', () => {
     generateMock.mockReturnValueOnce( '/base' );
 
     const meta = renderer( LinkTo, {
-        DI,
         path: 'base',
-        text: 'Base page',
+        text: 'Base page'
+    }, {
+        DI,
         directives: {
             'hrefto': hrefto
         }
     } );
-    const container = meta.component.container;
     meta.component.remove();
-    expect( container.innerHTML ).toEqual( '' );
+    expect( meta.ctx.container.innerHTML ).toEqual( '' );
 } );
