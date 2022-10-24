@@ -1,3 +1,7 @@
+## 6.0.0-alpha.2
+* Add call context `resetOwner` on remove page component
+* Update dependencies
+
 ## 6.0.0-alpha.1
 * Update dependencies
 * Migrate to sham-ui@6.x 

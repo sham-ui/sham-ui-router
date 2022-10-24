@@ -58,6 +58,8 @@ function ActivePageContainer() {
                 while ( i-- ) {
                     this.nested[ i ].remove();
                 }
+
+                ctx.resetOwner();
             }
             if ( null === activePageComponent ) {
                 return;
