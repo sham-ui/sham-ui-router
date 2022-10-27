@@ -1,3 +1,6 @@
+## 6.0.0-alpha.3
+* Add `navigateToRoute` method to `Router` service
+
 ## 6.0.0-alpha.2
 * Add call context `resetOwner` on remove page component
 * Update dependencies

@@ -24,8 +24,14 @@ yarn add sham-ui-router
 
 #### Table of Contents
 
--   [ParamsBuilder](#paramsbuilder)
+-   [LinkToOptions](#linktooptions)
+    -   [Properties](#properties)
+-   [LinkTo](#linkto)
+    -   [Properties](#properties-1)
+-   [ActivePageContainer](#activepagecontainer)
     -   [Examples](#examples)
+-   [ParamsBuilder](#paramsbuilder)
+    -   [Examples](#examples-1)
     -   [param](#param)
         -   [Parameters](#parameters)
     -   [\_params](#_params)
@@ -35,35 +41,67 @@ yarn add sham-ui-router
         -   [Parameters](#parameters-2)
 -   [path](#path)
     -   [Parameters](#parameters-3)
--   [ActivePageContainer](#activepagecontainer)
-    -   [Examples](#examples-1)
--   [LinkTo](#linkto)
-    -   [Properties](#properties)
--   [LinkToOptions](#linktooptions)
-    -   [Properties](#properties-1)
 -   [HrefTo](#hrefto)
-    -   [Examples](#examples-2)
--   [pageComponent](#pagecomponent)
     -   [Parameters](#parameters-4)
--   [Router](#router)
+    -   [Examples](#examples-2)
+-   [lazyPage](#lazypage)
     -   [Parameters](#parameters-5)
+-   [Router](#router)
+    -   [Parameters](#parameters-6)
     -   [Examples](#examples-3)
-    -   [storage](#storage)
     -   [bindPage](#bindpage)
-        -   [Parameters](#parameters-6)
-    -   [bindLazyPage](#bindlazypage)
         -   [Parameters](#parameters-7)
-    -   [navigate](#navigate)
+    -   [bindLazyPage](#bindlazypage)
         -   [Parameters](#parameters-8)
-    -   [hooks](#hooks)
+    -   [navigateToRoute](#navigatetoroute)
         -   [Parameters](#parameters-9)
-    -   [notFound](#notfound)
     -   [resolve](#resolve)
-    -   [generate](#generate)
+    -   [notFound](#notfound)
+    -   [navigate](#navigate)
         -   [Parameters](#parameters-10)
+    -   [hooks](#hooks)
+        -   [Parameters](#parameters-11)
+    -   [generate](#generate)
+        -   [Parameters](#parameters-12)
         -   [Examples](#examples-4)
--   [RouterStorage](#routerstorage)
+-   [routerStorage](#routerstorage)
+-   [RouterStorage](#routerstorage-1)
     -   [Properties](#properties-2)
+
+### LinkToOptions
+
+Options for LinkTo
+
+Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+#### Properties
+
+-   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of page for link. Default ''
+-   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Params of page for link. Default {}
+-   `text` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Text for link. Default ''
+-   `useActiveClass` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use activeClass options for active page link. Default false
+-   `activeClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Class name for active link. Default 'active'
+
+### LinkTo
+
+Component for link to page
+
+#### Properties
+
+-   `options` **[LinkToOptions](#linktooptions)** 
+
+### ActivePageContainer
+
+Component-container for page
+
+#### Examples
+
+```javascript
+{% import ActivePageContainer from 'sham-ui-router/active-page-container' %}
+...
+<ActivePageContainer/>
+...
+```
 
 ### ParamsBuilder
 
@@ -129,46 +167,13 @@ Create new ParamsBuilder
 
 Returns **[ParamsBuilder](#paramsbuilder)** 
 
-### ActivePageContainer
-
-**Extends Component**
-
-Component-container for page
-
-#### Examples
-
-```javascript
-{% import ActivePageContainer from 'sham-ui-router/active-page-container' %}
-...
-<ActivePageContainer/>
-...
-```
-
-### LinkTo
-
-Component for link to page
-
-#### Properties
-
--   `options` **[LinkToOptions](#linktooptions)** 
-
-### LinkToOptions
-
-Options for LinkTo
-
-Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
-
-#### Properties
-
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of page for link. Default ''
--   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Params of page for link. Default {}
--   `text` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Text for link. Default ''
--   `useActiveClass` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use activeClass options for active page link. Default false
--   `activeClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Class name for active link. Default 'active'
-
 ### HrefTo
 
 Directive for links
+
+#### Parameters
+
+-   `component`  
 
 #### Examples
 
@@ -180,7 +185,7 @@ Directive for links
 ....
 ```
 
-### pageComponent
+### lazyPage
 
 Hook for process lazy page after loader finish. Can override with DI.bind( 'router:lazy-page' )
 
@@ -196,6 +201,7 @@ Router service
 
 #### Parameters
 
+-   `DI` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** App DI container
 -   `root` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | null)** Root URL (optional, default `null`)
 -   `useHash` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use hash symbol as delimiter (optional, default `false`)
 -   `hash` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Hash symbol (use useHash=true) (optional, default `'#'`)
@@ -219,10 +225,6 @@ router
     .resolve();
 ```
 
-#### storage
-
-Type: [RouterStorage](#routerstorage)
-
 #### bindPage
 
 Bind page component & url
@@ -243,11 +245,30 @@ Bind lazy loaded page component & url
 ##### Parameters
 
 -   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Url for page
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Page name\*
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Page name
 -   `loader` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Loader for page component
 -   `componentOptions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options for component
 
 Returns **[Router](#router)** 
+
+#### navigateToRoute
+
+Go to route by name
+
+##### Parameters
+
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Page name
+-   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Optional page params
+
+#### resolve
+
+Resolve current url & run router
+
+#### notFound
+
+-   **See: <https://github.com/krasimir/navigo#not-found-handler>**
+
+Not found handler
 
 #### navigate
 
@@ -266,16 +287,6 @@ Hooks
 ##### Parameters
 
 -   `hooks` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object with hooks
-
-#### notFound
-
--   **See: <https://github.com/krasimir/navigo#not-found-handler>**
-
-Not found handler
-
-#### resolve
-
-Resolve current url & run router
 
 #### generate
 
@@ -299,6 +310,10 @@ console.log(router.generate('trip.edit', { tripId: 42 })); // --> /trip/42/edit
 console.log(router.generate('trip.action', { tripId: 42, action: 'save' })); // --> /trip/save/42
 console.log(router.generate('trip.save')); // --> /trip/save
 ```
+
+### routerStorage
+
+Type: [RouterStorage](#routerstorage)
 
 ### RouterStorage
 

@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "module": "module/index.js",
   "author": "Eugeny Burnashov <shamcode@gmail.com>",
-  "version": "6.0.0-alpha.2",
+  "version": "6.0.0-alpha.3",
   "scripts": {
     "start": "MACRO_REF_REPLACE=enabled rollup -w -c ./demo-app/rollup.config.js",
     "test:clear-cache": "jest --clearCache",
@@ -13,7 +13,7 @@
     "build": "rollup -c",
     "size": "MACRO_REF_REPLACE=uniq yarn build && size-limit",
     "prepublish": "yarn size && yarn build",
-    "doc:generate": "documentation readme src/component.js --section=API",
+    "doc:generate": "documentation readme src/** --section=API",
     "doc:lint": "documentation lint src/**"
   },
   "devDependencies": {

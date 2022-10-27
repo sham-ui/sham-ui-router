@@ -172,7 +172,7 @@ export default class Router {
     /**
      * Bind lazy loaded page component & url
      * @param {string} url Url for page
-     * @param {string} name Page name*
+     * @param {string} name Page name
      * @param {Function} loader Loader for page component
      * @param {Object} componentOptions Options for component
      * @return {Router}
@@ -195,5 +195,16 @@ export default class Router {
             }
         }, componentOptions ) );
         return this;
+    }
+
+    /**
+     * Go to route by name
+     * @param {string} name Page name
+     * @param {Object} [params] Optional page params
+     */
+    navigateToRoute( name, params ) {
+        this.navigate(
+            this.generate( name, params )
+        );
     }
 }
