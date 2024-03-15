@@ -1,4 +1,4 @@
-## master
+## 6.1.0
 * Add `query` to `storage`
 
 ## 6.0.0
