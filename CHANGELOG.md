@@ -1,3 +1,6 @@
+## master
+* Add `query` to `storage`
+
 ## 6.0.0
 * Update dependencies
 

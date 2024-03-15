@@ -61,6 +61,7 @@ export default class Router {
                     routerStorage.url = value.url;
                     routerStorage.name = value.name;
                     routerStorage.params = value.params || {};
+                    routerStorage.query = value.query;
                 }
                 _lastRouteResolved = value;
             }
